@@ -103,6 +103,5 @@ export default {
 #sky {
   font-weight: bolder;
   text-shadow: 2px 2px 2px red;
-  margin-right: 10px;
 }
 </style>
