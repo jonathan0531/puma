@@ -1,6 +1,6 @@
 "use strict";
 
-const events = require("./events");
+const donor = require("./donor");
 const sql = require("mssql");
 
 const client = async (server, config) => {
@@ -52,7 +52,7 @@ const client = async (server, config) => {
   // this is the API the client exposes to the rest
   // of the application
   return {
-    events: await events.register({ sql, getConnection }),
+    donor: await donor.register({ sql, getConnection }),
   };
 };
 

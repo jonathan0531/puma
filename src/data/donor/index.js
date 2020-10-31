@@ -4,9 +4,9 @@ const utils = require("../utils");
 
 const register = async ({ sql, getConnection }) => {
   // read in all the .sql files for this folder
-  const sqlQueries = await utils.loadSqlQueries("events");
+  const sqlQueries = await utils.loadSqlQueries("donor");
 
-  const getEvents = async (userId) => {
+  const getDonor = async (Donor_ID) => {
     // get a connection to SQL Server
     const cnx = await getConnection();
 
@@ -14,14 +14,14 @@ const register = async ({ sql, getConnection }) => {
     const request = await cnx.request();
 
     // configure sql query parameters
-    request.input("userId", sql.VarChar(50), userId);
+    request.input("Donor_ID", sql.VarChar(50), Donor_ID);
 
     // return the executed query
-    return request.query(sqlQueries.getEvents);
+    return request.query(sqlQueries.getDonor);
   };
 
   return {
-    getEvents,
+    getDonor,
   };
 };
 

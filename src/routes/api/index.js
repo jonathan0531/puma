@@ -1,7 +1,7 @@
 "use strict";
 
-const events = require("./events");
+const donor = require("./donor");
 
 module.exports.register = async (server) => {
-  await events.register(server);
+  await donor.register(server);
 };

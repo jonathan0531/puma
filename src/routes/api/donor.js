@@ -3,7 +3,7 @@
 module.exports.register = async (server) => {
   server.route({
     method: "GET",
-    path: "/api/events",
+    path: "/api/donor",
 
     config: {
       handler: async (request) => {
@@ -16,7 +16,7 @@ module.exports.register = async (server) => {
           //const userId = "user1234";
 
           // execute the query
-          const res = await db.events.getEvents();
+          const res = await db.donor.getDonor();
 
           // return the recordset object
           return res.recordset;

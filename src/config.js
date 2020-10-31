@@ -11,7 +11,6 @@ const {
   PORT,
   HOST,
   HOST_URL,
-  ROUTE,
   COOKIE_ENCRYPT_PWD,
   SQL_SERVER,
   SQL_DATABASE,
@@ -25,7 +24,6 @@ const sqlEncrypt = process.env.SQL_ENCRYPT === "true";
 assert(PORT, "PORT configuration is required.");
 assert(HOST, "HOST configuration is required.");
 assert(HOST_URL, "HOST_URL configuration is required.");
-assert(ROUTE, "ROUTE configuration is required.");
 assert(COOKIE_ENCRYPT_PWD, "COOKIE_ENCRYPT_PWD configuration is required.");
 assert(SQL_SERVER, "SQL_SERVER configuration is required.");
 assert(SQL_DATABASE, "SQL_DATABASE configuration is required.");
@@ -37,7 +35,6 @@ module.exports = {
   port: PORT,
   host: HOST,
   url: HOST_URL,
-  route: ROUTE,
   cookiePwd: COOKIE_ENCRYPT_PWD,
   sql: {
     server: SQL_SERVER,
