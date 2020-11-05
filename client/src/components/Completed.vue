@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1 id="margin">Donor Information</h1>
+    <v-btn id="btn" color="primary" dark class="mb-2">New Donor</v-btn>
     <table class="table table-sm">
       <thead>
         <tr>
@@ -103,9 +104,13 @@ export default {
 </script>
 
 <style>
+#btn {
+  margin-bottom: 50px;
+}
 #margin {
   margin-top: 20px;
   margin-bottom: 20px;
+  text-align: center;
 }
 </style>
 
