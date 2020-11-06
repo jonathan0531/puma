@@ -1,4 +1,4 @@
-SELECT  [Donor_ID]
+SELECT  [donor_id]
        , [Blood_Type]
        , [Donor_FName]
        , [Donor_LName]
@@ -6,5 +6,7 @@ SELECT  [Donor_ID]
        , [Donor_St_Addr]
        , [Donor_City]
        , [Donor_State]
+       , [Donor_Country]
        , [Donor_Postal]
 FROM    [dbo].[donor]
+

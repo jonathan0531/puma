@@ -13,13 +13,14 @@
           <th scope="col">Address</th>
           <th scope="col">City</th>
           <th scope="col">State</th>
+          <th scope="col">Country</th>
           <th scope="col">Zip Code</th>
           <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="donors in donor" :key="donors.Donor_Id">
-          <td>{{ donors.Donor_ID }}</td>
+        <tr v-for="donors in donor" :key="donors.donor_id">
+          <td>{{ donors.donor_id }}</td>
           <td>{{ donors.Blood_Type }}</td>
           <td>{{ donors.Donor_FName }}</td>
           <td>{{ donors.Donor_LName }}</td>
@@ -27,12 +28,13 @@
           <td>{{ donors.Donor_St_Addr }}</td>
           <td>{{ donors.Donor_City }}</td>
           <td>{{ donors.Donor_State }}</td>
+          <td>{{ donors.Donor_Country }}</td>
           <td>{{ donors.Donor_Postal }}</td>
           <td class="justify-center layout px-0">
-            <v-btn icon class="mx-0" @click="editItem(props.item)">
+            <v-btn icon class="mx-0">
               <v-icon color="teal">edit</v-icon>
             </v-btn>
-            <v-btn icon class="mx-0" @click="deleteItem(props.item)">
+            <v-btn icon class="mx-0" @click="deleteDonor(donors.donor_id)">
               <v-icon color="pink">delete</v-icon>
             </v-btn>
           </td>
@@ -44,23 +46,25 @@
 </template>
 
 <script>
-import axios from "axios";
-import moment from "moment";
+import axios from 'axios';
+import moment from 'moment';
+import * as M from 'materialize-css';
 
 export default {
-  name: "Donors",
+  name: 'Donors',
   data() {
     return {
       donor: [],
-      Donor_ID: "",
-      Blood_Type: "",
-      Donor_FName: "",
-      Donor_LName: "",
-      Birth_Date: "",
-      Donor_St_Addr: "",
-      Donor_City: "",
-      Donor_State: "",
-      Donor_Postal: "",
+      id: '',
+      Blood_Type: '',
+      Donor_FName: '',
+      Donor_LName: '',
+      Birth_Date: '',
+      Donor_St_Addr: '',
+      Donor_City: '',
+      Donor_State: '',
+      Donor_Country: '',
+      Donor_Postal: '',
     };
   },
   mounted() {
@@ -68,27 +72,26 @@ export default {
   },
   methods: {
     formatDate(d) {
-      return d ? moment.utc(d).format("MMM D, YYYY") : "";
+      return d ? moment.utc(d).format('MMM D, YYYY') : '';
     },
     formatDonor(donor) {
-      return donor.map((donors) => {
-        return {
-          Donor_ID: donors.Donor_ID,
-          Blood_Type: donors.Blood_Type,
-          Donor_FName: donors.Donor_FName,
-          Donor_LName: donors.Donor_LName,
-          Birth_Date: this.formatDate(donors.Birth_Date),
-          Donor_St_Addr: donors.Donor_St_Addr,
-          Donor_City: donors.Donor_City,
-          Donor_State: donors.Donor_State,
-          Donor_Postal: donors.Donor_Postal,
-        };
-      });
+      return donor.map(donors => ({
+        donor_id: donors.donor_id,
+        Blood_Type: donors.Blood_Type,
+        Donor_FName: donors.Donor_FName,
+        Donor_LName: donors.Donor_LName,
+        Birth_Date: this.formatDate(donors.Birth_Date),
+        Donor_St_Addr: donors.Donor_St_Addr,
+        Donor_City: donors.Donor_City,
+        Donor_State: donors.Donor_State,
+        Donor_Country: donors.Donor_Country,
+        Donor_Postal: donors.Donor_Postal,
+      }));
     },
     async getDonor() {
       return axios({
-        method: "get",
-        url: "http://localhost:5000/api/donor",
+        method: 'get',
+        url: 'http://localhost:5000/api/donor',
       })
         .then((response) => {
           this.donor = response.data;
@@ -97,6 +100,20 @@ export default {
         .catch((err) => {
           this.msg = err.message;
           console.log(err);
+        });
+    },
+    async deleteDonor(donor_id) {
+      return axios({
+        method: 'delete',
+        url: `http://localhost:5000/api/donor/${donor_id}`,
+      })
+        .then((response) => {
+          this.$router.go(10);
+          swal('Success!', 'Donor Deleted!', 'success');
+        })
+        .catch((err) => {
+          const message = error.response.data.message;
+          swal('Not Deleted!', `${message}`, 'error');
         });
     },
   },

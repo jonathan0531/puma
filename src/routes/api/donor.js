@@ -26,4 +26,37 @@ module.exports.register = async (server) => {
       },
     },
   });
+
+  // server.route({
+  //   method: "GET",
+  //   path: "/api/donor/{Donor_ID}",
+  //   config: {
+  //     handler: async (request) => {
+  //       try {
+  //         const Donor_ID = request.params.donor_id;
+  //         const db = request.server.plugins.sql.client;
+  //         const res = await db.donor.getDonor({ Donor_ID });
+  //         return res.recordset;
+  //       } catch (err) {
+  //         console.log(err);
+  //       }
+  //     },
+  //   },
+  // });
+
+  server.route({
+    method: "DELETE",
+    path: "/api/donor/{donor_id}",
+    handler: async (request, h) => {
+      try {
+        const donor_id = request.params.donor_id;
+        const db = request.server.plugins.sql.client;
+        const res = await db.donor.deleteDonor({ donor_id });
+
+        return res.rowsAffected[0] === 1;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
 };

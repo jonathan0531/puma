@@ -32,14 +32,14 @@
 </template>
 
 <script>
-import axios from "axios";
-import swal from "sweetalert";
+import axios from 'axios';
+import swal from 'sweetalert';
 
 export default {
   data: () => ({
     valid: true,
-    email: "",
-    password: "",
+    email: '',
+    password: '',
     // emailRules: [
     //   (v) => !!v || "E-mail is required",
     //   (v) => /\S+@\S+\.\S+/.test(v) || "E-mail must be valid",
@@ -50,25 +50,25 @@ export default {
   methods: {
     async submit() {
       return axios({
-        method: "POST",
+        method: 'POST',
         data: {
           email: this.email,
           password: this.password,
         },
-        url: "http://localhost:5000/api/login",
+        url: 'http://localhost:5000/api/login',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
       })
         .then((response) => {
           // window.localStorage.setItem("auth", response.data.token);
-          swal("Login Success!", "You are ready to start!", "success");
-          this.$router.push({ name: "Completed" });
+          swal('Login Success!', 'You are ready to start!', 'success');
+          this.$router.push({ name: 'Completed' });
         })
         .catch((error) => {
           const message = error.response.data.message;
-          swal("Login Denied", `${message}`, "error");
-          this.$router.push({ name: "Login" });
+          swal('Login Denied', `${message}`, 'error');
+          this.$router.push({ name: 'Login' });
         });
     },
     clear() {

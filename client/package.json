@@ -19,6 +19,7 @@
     "bootstrap-vue": "^2.18.1",
     "dgram": "^1.0.1",
     "luxon": "^1.25.0",
+    "materialize-css": "^1.0.0",
     "moment": "^2.29.1",
     "mssql": "^6.2.3",
     "sweetalert": "^2.1.2",

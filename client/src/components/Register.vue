@@ -34,19 +34,19 @@
 </template>
 
 <script>
-import axios from "axios";
-import swal from "sweetalert";
+import axios from 'axios';
+import swal from 'sweetalert';
 
 export default {
   data: () => ({
     valid: true,
-    email: "",
-    password: "",
-    pwRules: [(v) => !!v || "Password cannot be left empty"],
+    email: '',
+    password: '',
+    pwRules: [v => !!v || 'Password cannot be left empty'],
     emailRules: [
-      (v) => !!v || "E-mail cannot be left empty",
-      (v) =>
-        /\S+@\S+\.\S+/.test(v) || "Invalid E-mail format. (EX: user@email.com)",
+      v => !!v || 'E-mail cannot be left empty',
+      v =>
+        /\S+@\S+\.\S+/.test(v) || 'Invalid E-mail format. (EX: user@email.com)',
     ],
   }),
   // If validations pass, the logic inside the submit method is processed
@@ -54,22 +54,22 @@ export default {
     async submit() {
       if (this.$refs.form.validate()) {
         axios
-          .post("http://localhost:5000/api/login", {
+          .post('http://localhost:5000/api/login', {
             email: this.email,
             password: this.password,
           })
           .then(
             (response) => {
               swal(
-                "Success!",
-                "You have been successfully registered!",
-                "success"
+                'Success!',
+                'You have been successfully registered!',
+                'success',
               );
             },
             (error) => {
               const message = error.response.data.message;
-              swal("Something went wrong..", `${message}`, "error");
-            }
+              swal('Something went wrong..', `${message}`, 'error');
+            },
           );
 
         //   return axios({
