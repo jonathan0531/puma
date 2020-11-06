@@ -27,22 +27,22 @@ module.exports.register = async (server) => {
     },
   });
 
-  // server.route({
-  //   method: "GET",
-  //   path: "/api/donor/{Donor_ID}",
-  //   config: {
-  //     handler: async (request) => {
-  //       try {
-  //         const Donor_ID = request.params.donor_id;
-  //         const db = request.server.plugins.sql.client;
-  //         const res = await db.donor.getDonor({ Donor_ID });
-  //         return res.recordset;
-  //       } catch (err) {
-  //         console.log(err);
-  //       }
-  //     },
-  //   },
-  // });
+  server.route({
+    method: "GET",
+    path: "/api/donor/{donor_id}",
+    config: {
+      handler: async (request) => {
+        try {
+          const donor_id = request.params.donor_id;
+          const db = request.server.plugins.sql.client;
+          const res = await db.donor.getOneDonor({ donor_id });
+          return res.recordset;
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    },
+  });
 
   server.route({
     method: "DELETE",

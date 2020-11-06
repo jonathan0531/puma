@@ -20,6 +20,13 @@ const register = async ({ sql, getConnection }) => {
     return request.query(sqlQueries.getDonor);
   };
 
+  const getOneDonor = async ({ donor_id }) => {
+    const cnx = await getConnection();
+    const request = await cnx.request();
+    request.input("donor_id", sql.Int, donor_id);
+    return request.query(sqlQueries.getOneDonor);
+  };
+
   const deleteDonor = async ({ donor_id }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
@@ -29,6 +36,7 @@ const register = async ({ sql, getConnection }) => {
 
   return {
     getDonor,
+    getOneDonor,
     deleteDonor,
   };
 };
