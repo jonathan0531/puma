@@ -1,4 +1,4 @@
 SELECT *
 FROM    [dbo].[donor]
-WHERE [donor_id] = @donor_id
+WHERE [Donor_ID] = @Donor_ID
 

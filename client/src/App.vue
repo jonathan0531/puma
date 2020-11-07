@@ -22,7 +22,10 @@
             >
           </v-list-item>
         </router-link>
-        <router-link v-bind:to="{ name: 'Config' }" class="side_bar_link">
+        <router-link
+          v-bind:to="{ name: 'LookbackConfig' }"
+          class="side_bar_link"
+        >
           <v-list-item>
             <v-list-item-action>
               <v-icon>gavel</v-icon>
@@ -42,6 +45,16 @@
             </v-list-item-action>
             <v-list-item-content class="text"
               >Search Records</v-list-item-content
+            >
+          </v-list-item>
+        </router-link>
+        <router-link v-bind:to="{ name: 'Donor' }" class="side_bar_link">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>gavel</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text"
+              >Donor Information</v-list-item-content
             >
           </v-list-item>
         </router-link>

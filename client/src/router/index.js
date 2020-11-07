@@ -1,51 +1,75 @@
-import Vue from 'vue';
-import Router from 'vue-router';
-import Completed from '@/components/Completed';
-import UserGuide from '@/components/UserGuide';
-import Pending from '@/components/Pending';
-import Config from '@/components/Config';
-import SearchRecords from '@/components/SearchRecords';
-import Register from '@/components/Register';
-import Login from '@/components/Login';
+import Vue from "vue";
+import Router from "vue-router";
+import Completed from "@/components/Completed";
+import UserGuide from "@/components/UserGuide";
+import Pending from "@/components/Pending";
+import LookbackConfig from "@/components/LookbackConfig";
+import SearchRecords from "@/components/SearchRecords";
+import UpdateDonor from "@/components/UpdateDonor";
+import Register from "@/components/Register";
+import Login from "@/components/Login";
+import AddDonor from "@/components/AddDonor";
+import Donor from "@/components/Donor";
+import Welcome from "@/components/Welcome";
 
 Vue.use(Router);
 
 export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'Completed',
-      component: Completed,
+      path: "/",
+      name: "Welcome",
+      component: Welcome
     },
     {
-      path: '/user',
-      name: 'UserGuide',
-      component: UserGuide,
+      path: "/completed",
+      name: "Completed",
+      component: Completed
     },
     {
-      path: '/pending',
-      name: 'Pending',
-      component: Pending,
+      path: "/user",
+      name: "UserGuide",
+      component: UserGuide
     },
     {
-      path: '/config',
-      name: 'Config',
-      component: Config,
+      path: "/pending",
+      name: "Pending",
+      component: Pending
     },
     {
-      path: '/search',
-      name: 'SearchRecords',
-      component: SearchRecords,
+      path: "/config",
+      name: "LookbackConfig",
+      component: LookbackConfig
     },
     {
-      path: '/login',
-      name: 'Login',
-      component: Login,
+      path: "/search",
+      name: "SearchRecords",
+      component: SearchRecords
     },
     {
-      path: '/register',
-      name: 'Register',
-      component: Register,
+      path: "/login",
+      name: "Login",
+      component: Login
     },
-  ],
+    {
+      path: "/register",
+      name: "Register",
+      component: Register
+    },
+    {
+      path: "/donor/:id",
+      name: "UpdateDonor",
+      component: UpdateDonor
+    },
+    {
+      path: "/donor/add",
+      name: "AddDonor",
+      component: AddDonor
+    },
+    {
+      path: "/donor",
+      name: "Donor",
+      component: Donor
+    }
+  ]
 });
