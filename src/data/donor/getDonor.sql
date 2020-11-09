@@ -1,11 +1,3 @@
-SELECT  [Donor_ID]
-       , [Blood_Type]
-       , [Donor_FName]
-       , [Donor_LName]
-       , [Birth_Date]
-       , [Donor_St_Addr]
-       , [Donor_City]
-       , [Donor_State]
-       , [Donor_Country]
-       , [Donor_Postal]
-FROM    [dbo].[DONOR]
+SELECT  *
+FROM    [dbo].[donor]
+

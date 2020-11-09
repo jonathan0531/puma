@@ -8,7 +8,6 @@
             <v-text-field
               label="Email*"
               v-model="email"
-              :rules="emailRules"
               placeholder="USER@EMAIL.COM"
               required
             ></v-text-field>
@@ -19,7 +18,6 @@
             <v-text-field
               label="Password*"
               v-model="password"
-              :rules="pwRules"
               placeholder="PASSWORD"
               required
             ></v-text-field>
@@ -42,30 +40,30 @@ export default {
     valid: true,
     email: '',
     password: '',
-    emailRules: [
-      v => !!v || 'E-mail is required',
-      v => /\S+@\S+\.\S+/.test(v) || 'E-mail must be valid',
-    ],
+    // emailRules: [
+    //   (v) => !!v || "E-mail is required",
+    //   (v) => /\S+@\S+\.\S+/.test(v) || "E-mail must be valid",
+    // ],
   }),
   // The submit method hits the API endpoint, takes the
   // parameter from the form, and responds with the correct message.
   methods: {
     async submit() {
       return axios({
-        method: 'post',
+        method: 'POST',
         data: {
           email: this.email,
           password: this.password,
         },
-        url: 'http://localhost:5000/api/members/login',
+        url: 'http://localhost:5000/api/login',
         headers: {
           'Content-Type': 'application/json',
         },
       })
         .then((response) => {
-          window.localStorage.setItem('auth', response.data.token);
+          // window.localStorage.setItem("auth", response.data.token);
           swal('Login Success!', 'You are ready to start!', 'success');
-          this.$router.push({ name: 'Volcano' });
+          this.$router.push({ name: 'Completed' });
         })
         .catch((error) => {
           const message = error.response.data.message;

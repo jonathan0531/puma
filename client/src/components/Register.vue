@@ -1,30 +1,8 @@
 <template>
   <div id="app">
     <v-flex xs12>
-      <h1>Member Registration</h1>
+      <h1>Employee Registration</h1>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
-        <v-row justify="center">
-          <v-col cols="10" sm="4">
-            <v-text-field
-              label="First Name*"
-              v-model="firstName"
-              :rules="nameRules"
-              placeholder="FIRST NAME"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
-        <v-row justify="center">
-          <v-col cols="10" sm="4">
-            <v-text-field
-              label="Last Name*"
-              v-model="lastName"
-              :rules="nameRules"
-              placeholder="LAST NAME"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
         <v-row justify="center">
           <v-col cols="10" sm="4">
             <v-text-field
@@ -62,11 +40,8 @@ import swal from 'sweetalert';
 export default {
   data: () => ({
     valid: true,
-    firstName: '',
-    lastName: '',
     email: '',
     password: '',
-    nameRules: [v => !!v || 'Name cannot be left empty'],
     pwRules: [v => !!v || 'Password cannot be left empty'],
     emailRules: [
       v => !!v || 'E-mail cannot be left empty',
@@ -78,31 +53,48 @@ export default {
   methods: {
     async submit() {
       if (this.$refs.form.validate()) {
-        return axios({
-          method: 'post',
-          data: {
-            firstName: this.firstName,
-            lastName: this.lastName,
+        axios
+          .post('http://localhost:5000/api/login', {
             email: this.email,
             password: this.password,
-          },
-          url: 'http://localhost:5000/api/members/register',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-        })
-          .then(() => {
-            swal(
-              'Success!',
-              'You have been successfully registered!',
-              'success',
-            );
-            this.$router.push({ name: 'Login' });
           })
-          .catch((error) => {
-            const message = error.response.data.message;
-            swal('Something went wrong..', `${message}`, 'error');
-          });
+          .then(
+            (response) => {
+              swal(
+                'Success!',
+                'You have been successfully registered!',
+                'success',
+              );
+            },
+            (error) => {
+              const message = error.response.data.message;
+              swal('Something went wrong..', `${message}`, 'error');
+            },
+          );
+
+        //   return axios({
+        //     method: "post",
+        //     data: {
+        //       email: this.email,
+        //       password: this.password,
+        //     },
+        //     url: "http://localhost:5000/api/login",
+        //     // headers: {
+        //     //   "Content-Type": "application/json",
+        //     // },
+        //   })
+        //     .then(() => {
+        //       swal(
+        //         "Success!",
+        //         "You have been successfully registered!",
+        //         "success"
+        //       );
+        //       this.$router.push({ name: "Login" });
+        //     })
+        //     .catch((error) => {
+        //       const message = error.response.data.message;
+        //       swal("Something went wrong..", `${message}`, "error");
+        //     });
       }
       return true;
     },
