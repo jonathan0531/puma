@@ -9,13 +9,10 @@ const register = async ({ sql, getConnection }) => {
   const getDonor = async (donor_id) => {
     // get a connection to SQL Server
     const cnx = await getConnection();
-
     // create a new request
     const request = await cnx.request();
-
     // configure sql query parameters
     request.input("donor_id", sql.Int, donor_id);
-
     // return the executed query
     return request.query(sqlQueries.getDonor);
   };

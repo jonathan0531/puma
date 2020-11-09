@@ -83,13 +83,35 @@ module.exports.register = async (server) => {
 
   server.route({
     method: "PUT",
-    path: "/api/donor/{donor_id}",
+    path: "/api/donor/{Donor_ID}",
     handler: async (request, h) => {
       try {
-        const donor_id = request.params.donor_id;
         const db = request.server.plugins.sql.client;
-        const res = await db.donor.updateDonor({ donor_id });
-        return res.rowsAffected[0] === 1;
+        const {
+          Donor_ID = request.params.Donor_ID,
+          Blood_Type,
+          Donor_FName,
+          Donor_LName,
+          Birth_Date,
+          Donor_St_Addr,
+          Donor_City,
+          Donor_State,
+          Donor_Country,
+          Donor_Postal,
+        } = request.payload;
+        const res = await db.donor.updateDonor({
+          Donor_ID,
+          Blood_Type,
+          Donor_FName,
+          Donor_LName,
+          Birth_Date,
+          Donor_St_Addr,
+          Donor_City,
+          Donor_State,
+          Donor_Country,
+          Donor_Postal,
+        });
+        return res.recordset[0];
       } catch (err) {
         console.log(err);
       }

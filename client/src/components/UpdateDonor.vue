@@ -6,7 +6,7 @@
         <v-row justify="center">
           <v-col cols="10" sm="4">
             <v-text-field
-              v-bind:disabled="isBeingEdit"
+              v-bind:disabled="disableID"
               label="Donor ID"
               v-model="Donor_ID"
               :rules="idRules"
@@ -100,7 +100,7 @@ export default {
   name: "Donors",
   data() {
     return {
-      Donor_ID: null,
+      Donor_ID: "",
       Blood_Type: "",
       Donor_FName: "",
       Donor_LName: "",
@@ -112,6 +112,7 @@ export default {
       Donor_Postal: "",
       valid: true,
       isBeingEdit: true,
+      disableID: true,
       visible: false,
       hide: true,
       idRules: [(v) => !!v || "Donor ID is required"],
@@ -152,23 +153,23 @@ export default {
       this.visible = true;
       this.hide = false;
     },
-    // async updateDonor() {
-    //   await DonorService.updateDonor({
-    //     id: this.$route.params.id,
-    //     Donor_ID: this.Donor_ID,
-    //     Blood_Type: this.Blood_Type,
-    //     Donor_FName: this.Donor_FName,
-    //     Donor_LName: this.Donor_LName,
-    //     Birth_Date: this.Birth_Date,
-    //     Donor_St_Addr: this.Donor_St_Addr,
-    //     Donor_City: this.Donor_City,
-    //     Donor_State: this.Donor_State,
-    //     Donor_Country: this.Donor_Country,
-    //     Donor_Postal: this.Donor_Postal,
-    //   });
-    //   swal("Success!", `Donor Updated!`, "success");
-    //   this.$router.push({ name: "Donor" });
-    // },
+    async updateDonor() {
+      await DonorService.updateDonor({
+        id: this.$route.params.id,
+        Donor_ID: this.Donor_ID,
+        Blood_Type: this.Blood_Type,
+        Donor_FName: this.Donor_FName,
+        Donor_LName: this.Donor_LName,
+        Birth_Date: this.Birth_Date,
+        Donor_St_Addr: this.Donor_St_Addr,
+        Donor_City: this.Donor_City,
+        Donor_State: this.Donor_State,
+        Donor_Country: this.Donor_Country,
+        Donor_Postal: this.Donor_Postal,
+      });
+      swal("Success!", `Donor Updated!`, "success");
+      this.$router.push({ name: "Donor" });
+    },
   },
 };
 </script>

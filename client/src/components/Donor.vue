@@ -1,6 +1,14 @@
 <template>
   <div>
     <h1 id="margin">Donor Information</h1>
+    <div>
+      <b-form-fieldset horizontal label="Filter" class="col-5">
+        <b-form-input
+          v-model="filter"
+          placeholder="Type to Search"
+        ></b-form-input>
+      </b-form-fieldset>
+    </div>
     <v-btn
       id="btn"
       color="primary"
@@ -9,46 +17,18 @@
       v-bind:to="{ name: 'AddDonor' }"
       >New Donor</v-btn
     >
-    <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Donor ID</th>
-          <th scope="col">Blood Type</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
-          <th scope="col">Birthday</th>
-          <th scope="col">Address</th>
-          <th scope="col">City</th>
-          <th scope="col">State</th>
-          <th scope="col">Country</th>
-          <th scope="col">Zip Code</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="donors in donor" :key="donors.Donor_ID">
-          <td>{{ donors.Donor_ID }}</td>
-          <td>{{ donors.Blood_Type }}</td>
-          <td>{{ donors.Donor_FName }}</td>
-          <td>{{ donors.Donor_LName }}</td>
-          <td>{{ donors.Birth_Date }}</td>
-          <td>{{ donors.Donor_St_Addr }}</td>
-          <td>{{ donors.Donor_City }}</td>
-          <td>{{ donors.Donor_State }}</td>
-          <td>{{ donors.Donor_Country }}</td>
-          <td>{{ donors.Donor_Postal }}</td>
-          <td class="justify-center layout px-0">
-            <v-btn icon class="mx-0" v-bind:to="`/donor/${donors.Donor_ID}`">
-              <v-icon color="teal">edit</v-icon>
-            </v-btn>
-            <v-btn icon class="mx-0" @click="deleteDonor(donors.Donor_ID)">
-              <v-icon color="pink">delete</v-icon>
-            </v-btn>
-          </td>
-        </tr>
-        <tr></tr>
-      </tbody>
-    </table>
+    <div>
+      <b-table striped hover :items="donor" :fields="fields" :filter="filter">
+        <template v-slot:cell(actions)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/donor/${data.item.Donor_ID}`">
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+          <v-btn icon class="mx-0" @click="deleteDonor(data.item.Donor_ID)">
+            <v-icon color="pink">delete</v-icon>
+          </v-btn>
+        </template>
+      </b-table>
+    </div>
   </div>
 </template>
 
@@ -61,6 +41,56 @@ export default {
   name: "Donors",
   data() {
     return {
+      fields: [
+        {
+          key: "Donor_ID",
+          label: "ID",
+          sortable: true,
+        },
+        {
+          key: "Blood_Type",
+          label: "Blood Type",
+          sortable: true,
+        },
+        {
+          key: "Donor_FName",
+          label: "First Name",
+          sortable: true,
+        },
+        {
+          key: "Donor_LName",
+          sortable: true,
+        },
+        {
+          key: "Birth_Date",
+          sortable: true,
+        },
+        {
+          key: "Donor_St_Addr",
+          sortable: true,
+        },
+        {
+          key: "Donor_City",
+          sortable: true,
+        },
+        {
+          key: "Donor_State",
+          sortable: true,
+        },
+        {
+          key: "Donor_Country",
+          sortable: true,
+        },
+        {
+          key: "Donor_Postal",
+          sortable: true,
+        },
+        {
+          key: "actions",
+          label: "Actions",
+        },
+      ],
+      filter: "",
       donor: [],
       Donor_ID: "",
       Blood_Type: "",
@@ -101,7 +131,6 @@ export default {
         url: "http://localhost:5000/api/donor",
       })
         .then((response) => {
-          this.donor = response.data;
           this.donor = this.formatDonor(response.data);
         })
         .catch((err) => {
@@ -134,6 +163,8 @@ export default {
 #margin {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+h1 {
   text-align: center;
 }
 </style>
