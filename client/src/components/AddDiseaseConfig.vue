@@ -1,0 +1,177 @@
+<template>
+  <div id="app">
+    <h4>Add/Modify Disease Configuration</h4>
+    <v-flex xs12>
+      <v-form ref="form" lazy-validation>
+        <v-row justify="center">
+          <v-col cols="10" sm="5">
+            <v-text-field
+              label="Disease ID"
+              placeholder="DISEASE ID"
+              v-model="Disease_ID"
+              :rules="dIdRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Disease Description"
+              placeholder="DISEASE DESCRIPTION"
+              v-model="Disease_Desc"
+              :rules="dDescRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Lookback Minimum"
+              placeholder="LOOKBACK MINIMUM"
+              v-model="Lookback_Min"
+              :rules="lMinRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Lookback Maximum"
+              placeholder="LOOKBACK MAXIMUM"
+              v-model="Lookback_Max"
+              :rules="lMaxRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Confirmation Needed"
+              placeholder="CONFIRMATION NEEDED"
+              v-model="Confrim_Needed"
+              :rules="confNeededRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Recipient Tracing"
+              placeholder="RECIPIENT TRACING"
+              v-model="Recip_Tracing"
+              :rules="rtRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Follow Up Days"
+              placeholder="FOLLOW UP DAYS"
+              v-model="Follow_Up_Days"
+              :rules="followUpRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Exception Comments"
+              placeholder="EXCEPTION COMMENTS"
+              v-model="Exception_Comments"
+              :rules="exceptionRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Recipient Tracing Letter"
+              placeholder="RECIPIENT TRACING LETTER"
+              v-model="RT_LETTER"
+              :rules="rtLetterRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Recipient Tracing Letter on Indecisive Result"
+              placeholder="RECIPIENT TRACING LETTER ON INDECISIVE RESULT"
+              v-model="RT_ON_IND_RESULT"
+              :rules="rtlIndecisiveRules"
+              required
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-btn class="button" color="disabled" v-bind:to="{ name: 'DISEASE_CONFIG' }"
+          >Back</v-btn
+        >
+        <v-btn class="button" color="success" @click="submit">Submit</v-btn>
+        <v-btn class="button" @click="clear">clear</v-btn>
+      </v-form>
+    </v-flex>
+  </div>
+</template>
+
+<script>
+import axios from "axios";
+import swal from "sweetalert";
+
+export default {
+  data: () => ({
+    valid: true,
+    Disease_ID: "",
+    Disease_Desc: "",
+    Lookback_Min: "",
+    Lookback_Max: "",
+    Confrim_Needed: "",
+    Recip_Tracing: "",
+    Follow_Up_Days: "",
+    Exception_Comments: "",
+    RT_LETTER: "",
+    RT_ON_IND_RESULT: "",
+    dIdRules: [(v) => !!v || "Disease ID is required"],
+    dDescRules: [(v) => !!v || "Disease Description is required"],
+    lMinRules: [(v) => !!v || "Lookback Minimum is required"],
+    lMaxRules: [(v) => !!v || "Lookback Maximum is required"],
+    confNeededRules: [(v) => !!v || "Confirmation Needed is required"],
+    rtRules: [(v) => !!v || "Recipient Tracing is required"],
+    followUpRules: [(v) => !!v || "Follow Up Days is required"],
+    exceptionRules: [(v) => !!v || "Exception Comments is required"],
+    rtLetterRules: [(v) => !!v || "Recipient Tracing Letter is required"],
+    rtlIndecisiveRules: [(v) => !!v || "Recipient Tracing Letter with Indecisive Results is required"],
+  }),
+  methods: {
+
+    async submit() {
+      return axios({
+        method: "POST",
+        data: {
+          Disease_ID: this.Disease_ID,
+          Disease_Desc: this.Disease_Desc,
+          Lookback_Min: this.Lookback_Min,
+          Lookback_Max: this.Lookback_Max,
+          Confrim_Needed: this.Confrim_Needed,
+          Recip_Tracing: this.Recip_Tracing,
+          Follow_Up_Days: this.Follow_Up_Days,
+          Exception_Comments: this.Exception_Comments,
+          RT_LETTER: this.RT_LETTER,
+          RT_ON_IND_RESULT: this.RT_ON_IND_RESULT,
+        },
+        url: "http://localhost:5000/api/DISEASE_CONFIG",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => {
+          // window.localStorage.setItem("auth", response.data.token);
+          swal("Success!", "Disease Configuartion updated", "success");
+          this.$router.push({ name: "DISEASE_CONFIG" });
+        })
+        .catch((error) => {
+          const message = error.response.data.message;
+          swal("Login Denied", `${message}`, "error");
+        });
+    },
+
+    clear() {
+      this.$refs.form.reset();
+    },
+  },
+};
+</script>
+
+<style scoped>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+.button {
+  margin: 10px 10px;
+}
+#form {
+  margin: 0;
+  padding: 0;
+}
+v-text-field {
+  margin: 0;
+  padding: 0;
+}
+</style>
