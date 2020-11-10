@@ -1,7 +1,6 @@
 "use strict";
 
 const donor = require("./donor");
-const blood = require("./blood");
 const login = require("./login");
 const resultset = require("./resultset");
 const sql = require("mssql");
@@ -56,7 +55,6 @@ const client = async (server, config) => {
   // of the application
   return {
     donor: await donor.register({ sql, getConnection }),
-    blood: await blood.register({ sql, getConnection }),
     login: await login.register({ sql, getConnection }),
     resultset: await resultset.register({ sql, getConnection }),
   };

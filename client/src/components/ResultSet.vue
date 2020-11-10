@@ -13,7 +13,11 @@
     <div>
       <b-table striped hover :items="resultset" :fields="fields">
         <template v-slot:cell(actions)="data">
-          <v-btn icon class="mx-0" v-bind:to="`/donor/${data.item.Donor_ID}`">
+          <v-btn
+            icon
+            class="mx-0"
+            v-bind:to="`/config/resultset/${data.item.Result_Set}`"
+          >
             <v-icon color="teal">edit</v-icon></v-btn
           >
           <!-- <v-btn icon class="mx-0" @click="deleteDonor(data.item.Donor_ID)">

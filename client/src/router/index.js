@@ -13,6 +13,7 @@ import Donor from "@/components/Donor";
 import Welcome from "@/components/Welcome";
 import ResultSet from "@/components/ResultSet";
 import AddResultSet from "@/components/AddResultSet";
+import UpdateResultSet from "@/components/UpdateResultSet";
 
 Vue.use(Router);
 
@@ -82,6 +83,11 @@ export default new Router({
       path: "/config/resultset/add",
       name: "AddResultSet",
       component: AddResultSet
+    },
+    {
+      path: "/config/resultset/:id",
+      name: "UpdateResultSet",
+      component: UpdateResultSet
     }
   ]
 });

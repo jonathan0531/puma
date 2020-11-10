@@ -19,6 +19,23 @@ module.exports.register = async (server) => {
   });
 
   server.route({
+    method: "GET",
+    path: "/api/resultset/{Result_Set}",
+    config: {
+      handler: async (request) => {
+        try {
+          const Result_Set = request.params.Result_Set;
+          const db = request.server.plugins.sql.client;
+          const res = await db.resultset.getOneRS({ Result_Set });
+          return res.recordset[0];
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    },
+  });
+
+  server.route({
     method: "POST",
     path: "/api/resultset",
     handler: async (request) => {
@@ -37,6 +54,43 @@ module.exports.register = async (server) => {
           Repeat_Count,
         } = request.payload;
         const res = await db.resultset.addRS({
+          Result_Set,
+          Result,
+          Result_Value,
+          Value_Desc,
+          Nat_Result,
+          Nat_Count,
+          Conf_Result,
+          Conf_Count,
+          Repeat_Result,
+          Repeat_Count,
+        });
+        return res.recordset[0];
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
+
+  server.route({
+    method: "PUT",
+    path: "/api/resultset/{Result_Set}",
+    handler: async (request, h) => {
+      try {
+        const db = request.server.plugins.sql.client;
+        const {
+          Result_Set = request.params.Result_Set,
+          Result,
+          Result_Value,
+          Value_Desc,
+          Nat_Result,
+          Nat_Count,
+          Conf_Result,
+          Conf_Count,
+          Repeat_Result,
+          Repeat_Count,
+        } = request.payload;
+        const res = await db.resultset.updateRS({
           Result_Set,
           Result,
           Result_Value,
