@@ -23,9 +23,9 @@
           <v-btn icon class="mx-0" v-bind:to="`/donor/${data.item.Donor_ID}`">
             <v-icon color="teal">edit</v-icon></v-btn
           >
-          <v-btn icon class="mx-0" @click="deleteDonor(data.item.Donor_ID)">
+          <!-- <v-btn icon class="mx-0" @click="deleteDonor(data.item.Donor_ID)">
             <v-icon color="pink">delete</v-icon>
-          </v-btn>
+          </v-btn> -->
         </template>
       </b-table>
     </div>
@@ -144,7 +144,7 @@ export default {
         url: `http://localhost:5000/api/donor/${donor_id}`,
       })
         .then((response) => {
-          this.$router.go(5);
+          this.$router.go(2);
           swal("Success!", "Donor Deleted!", "success");
         })
         .catch((err) => {

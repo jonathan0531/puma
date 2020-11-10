@@ -3,6 +3,25 @@
     <v-flex xs12>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
         <h4>Update Donor</h4>
+        <div>
+          <v-btn class="button" color="primary" v-show="hide" @click="beginEdit"
+            >Begin Edit</v-btn
+          >
+          <v-btn
+            class="button"
+            v-show="visible"
+            color="primary"
+            @click="updateDonor"
+            >Update</v-btn
+          >
+          <v-btn
+            class="button"
+            v-show="visible"
+            color="disabled"
+            v-bind:to="{ name: 'Donor' }"
+            >Back</v-btn
+          >
+        </div>
         <v-row justify="center">
           <v-col cols="10" sm="4">
             <v-text-field
@@ -67,25 +86,6 @@
             ></v-text-field>
           </v-col>
         </v-row>
-        <div>
-          <v-btn class="button" color="primary" v-show="hide" @click="beginEdit"
-            >Begin Edit</v-btn
-          >
-          <v-btn
-            class="button"
-            v-show="visible"
-            color="primary"
-            @click="updateDonor"
-            >Update</v-btn
-          >
-          <v-btn
-            class="button"
-            v-show="visible"
-            color="disabled"
-            v-bind:to="{ name: 'Donor' }"
-            >Back</v-btn
-          >
-        </div>
       </v-form>
     </v-flex>
   </div>

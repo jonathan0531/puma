@@ -11,6 +11,8 @@ import Login from "@/components/Login";
 import AddDonor from "@/components/AddDonor";
 import Donor from "@/components/Donor";
 import Welcome from "@/components/Welcome";
+import ResultSet from "@/components/ResultSet";
+import AddResultSet from "@/components/AddResultSet";
 
 Vue.use(Router);
 
@@ -70,6 +72,16 @@ export default new Router({
       path: "/donor",
       name: "Donor",
       component: Donor
+    },
+    {
+      path: "/config/resultset",
+      name: "ResultSet",
+      component: ResultSet
+    },
+    {
+      path: "/config/resultset/add",
+      name: "AddResultSet",
+      component: AddResultSet
     }
   ]
 });
