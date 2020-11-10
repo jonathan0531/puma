@@ -64,14 +64,14 @@
             <v-text-field
               v-bind:disabled="isBeingEdit"
               label="Recipient Tracing Letter"
-              v-model="RT_LETTER"
+              v-model="Rt_Let"
               :rules="rtLetterRules"
               required
             ></v-text-field>
             <v-text-field
               v-bind:disabled="isBeingEdit"
               label="Recipient Tracing Letter on Indecisive Result"
-              v-model="RT_ON_IND_RESULT"
+              v-model="Rt_on_Ind_Res"
               :rules="rtlIndecisiveRules"
               required
             ></v-text-field>
@@ -122,8 +122,8 @@ export default {
       Recip_Tracing: "",
       Follow_Up_Days: "",
       Exception_Comments: "",
-      RT_LETTER: "",
-      RT_ON_IND_RESULT: "",
+      RT_Let: "",
+      Rt_on_Ind_Res: "",
       dIdRules: [(v) => !!v || "Disease ID is required"],
       dDescRules: [(v) => !!v || "Disease Description is required"],
       lMinRules: [(v) => !!v || "Lookback Minimum is required"],
@@ -152,9 +152,9 @@ export default {
       this.Confirm_Needed = response.data.Confirm_Needed;
       this.Recip_Tracing = response.data.Recip_Tracing;
       this.Follow_Up_Days = response.data.Follow_Up_Days;
+      this.Rt_Let = response.data.Rt_Let;
+      this.Rt_on_Ind_Res = response.data.Rt_on_Ind_Res;
       this.Exception_Comments = response.data.Exception_Comments;
-      this.RT_LETTER;
-      this.RT_ON_IND_RESULT;
       console.log(this.Disease_ID);
     },
     beginEdit() {

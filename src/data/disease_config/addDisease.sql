@@ -7,9 +7,9 @@ INSERT INTO [dbo].[disease_config]
    , [Confirm_Needed]
    , [Recip_Tracing]
    , [Follow_Up_Days]
+   , [Rt_Let]
+   , [Rt_on_Ind_Res]
    , [Exception_Comments]
-   , [RT_LETTER]
-   , [RT_ON_IND_RESULT]
 )
 VALUES
 (
@@ -20,9 +20,9 @@ VALUES
    , @Confirm_Needed
    , @Recip_Tracing
    , @Follow_Up_Days
+   , @Rt_Let
+   , @Rt_on_Ind_Res
    , @Exception_Comments
-   , @RT_LETTER
-   , @RT_ON_IND_RESULT
 );
 
 SELECT SCOPE_IDENTITY() AS id;

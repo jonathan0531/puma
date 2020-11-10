@@ -19,9 +19,9 @@
           <th scope="col">Confirm_Needed</th>
           <th scope="col">Recip_Tracing</th>
           <th scope="col">Follow_Up_Days</th>
+          <th scope="col">Rt_Let</th>
+          <th scope="col">Rt_on_Ind_Res</th>
           <th scope="col">Exception_Comments</th>
-          <th scope="col">RT_LETTER</th>
-          <th scope="col">RT_ON_IND_RESULT</th>
         </tr>
       </thead>
       <tbody>
@@ -33,11 +33,11 @@
           <td>{{ disease_config.confirm_Needed }}</td>
           <td>{{ disease_config.Recip_Tracing }}</td>
           <td>{{ disease_config.Follow_Up_Days }}</td>
+          <td>{{ disease_config.Rt_Let }}</td>
+          <td>{{ disease_config.Rt_on_Ind_Res }}</td>
           <td>{{ disease_config.Exception_Comments }}</td>
-          <td>{{ disease_config.RT_LETTER }}</td>
-          <td>{{ disease_config.RT_ON_IND_RESULT }}</td>
           <td class="justify-center layout px-0">
-            <v-btn icon class="mx-0" v-bind:to="`/DiseaseConfig/${disease_config.Disease_ID}`">
+            <v-btn icon class="mx-0" v-bind:to="`/disease_config/${disease_config.Disease_ID}`">
               <v-icon color="teal">edit</v-icon>
             </v-btn>
             <v-btn icon class="mx-0" @click="deleteDisease(disease_config.Disease_ID)">
@@ -68,9 +68,9 @@ export default {
       Confirm_Needed: "",
       Recip_Tracing: "",
       Follow_Up_Days: "",
+      Rt_Let: "",
+      Rt_on_Ind_Res: "",
       Exception_Comments: "",
-      RT_LETTER: "",
-      RT_ON_IND_RESULT: "",
     };
   },
   mounted() {
@@ -89,9 +89,9 @@ export default {
         Confirm_Needed: disease_config.Confirm_Needed,
         Recip_Tracing: disease_config.Recip_Tracing,
         Follow_Up_Days: disease_config.Follow_Up_Days,
+        Rt_Let: disease_config.Rt_Let,
+        Rt_on_Ind_Res: disease_config.Rt_on_Ind_Res,
         Exception_Comments: disease_config.Exception_Comments,
-        RT_LETTER: disease_config.RT_LETTER,
-        RT_ON_IND_RESULT: disease_config.RT_ON_IND_RESULT,
       }));
     },
     async getDisease() {

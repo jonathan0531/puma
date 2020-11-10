@@ -35,22 +35,22 @@ const register = async ({ sql, getConnection }) => {
     Confirm_Needed,
     Recip_Tracing,
     Follow_Up_Days,
+    Rt_Let,
+    Rt_on_Ind_Res,
     Exception_Comments,
-    RT_LETTER,
-    RT_ON_IND_RESULT,
   }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
-    request.input("Disease_ID", sql.Int, Disease_ID);
-    request.input("Disease_Desc", sql.VarChar(4), Disease_Desc);
-    request.input("Lookback_Min", sql.VarChar(50), Lookback_Min);
-    request.input("Lookback_Max", sql.VarChar(50), Lookback_Max);
-    request.input("Confirm_Needed", sql.Date, Confirm_Needed);
-    request.input("Recip_Tracing", sql.VarChar(50), Recip_Tracing);
-    request.input("Follow_Up_Days", sql.VarChar(50), Follow_Up_Days);
-    request.input("Exception_Comments", sql.VarChar(4), Exception_Comments);
-    request.input("RT_LETTER", sql.VarChar(60), RT_LETTER);
-    request.input("RT_ON_IND_RESULT", sql.VarChar(12), RT_ON_IND_RESULT);
+    request.input("Disease_ID", sql.VarChar(4), Disease_ID);
+    request.input("Disease_Desc", sql.VarChar(120), Disease_Desc);
+    request.input("Lookback_Min", sql.Int, Lookback_Min);
+    request.input("Lookback_Max", sql.Int, Lookback_Max);
+    request.input("Confirm_Needed", sql.Int, Confirm_Needed);
+    request.input("Recip_Tracing", sql.Int, Recip_Tracing);
+    request.input("Follow_Up_Days", sql.Int, Follow_Up_Days);
+    request.input("Rt_Let", sql.VarChar(6), Rt_Let);
+    request.input("Rt_on_Ind_Res", sql.Int, Rt_on_Ind_Res);
+    request.input("Exception_Comments", sql.VarChar(200), Exception_Comments);
     return await request.query(sqlQueries.addDisease);
   };
 
@@ -62,22 +62,22 @@ const register = async ({ sql, getConnection }) => {
     Confirm_Needed,
     Recip_Tracing,
     Follow_Up_Days,
+    Rt_Let,
+    Rt_on_Ind_Res,
     Exception_Comments,
-    RT_LETTER,
-    RT_ON_IND_RESULT,
   }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
-    request.input("Disease_ID", sql.Int, Disease_ID);
-    request.input("Disease_Desc", sql.VarChar(4), Disease_Desc);
-    request.input("Lookback_Min", sql.VarChar(50), Lookback_Min);
-    request.input("Lookback_Max", sql.VarChar(50), Lookback_Max);
-    request.input("Confirm_Needed", sql.Date, Confirm_Needed);
-    request.input("Recip_Tracing", sql.VarChar(50), Recip_Tracing);
-    request.input("Follow_Up_Days", sql.VarChar(50), Follow_Up_Days);
-    request.input("Exception_Comments", sql.VarChar(4), Exception_Comments);
-    request.input("RT_LETTER", sql.VarChar(60), RT_LETTER);
-    request.input("RT_ON_IND_RESULT", sql.VarChar(12), RT_ON_IND_RESULT);
+    request.input("Disease_ID", sql.VarChar(4), Disease_ID);
+    request.input("Disease_Desc", sql.VarChar(120), Disease_Desc);
+    request.input("Lookback_Min", sql.Int, Lookback_Min);
+    request.input("Lookback_Max", sql.Int, Lookback_Max);
+    request.input("Confirm_Needed", sql.Int, Confirm_Needed);
+    request.input("Recip_Tracing", sql.Int, Recip_Tracing);
+    request.input("Follow_Up_Days", sql.Int, Follow_Up_Days);
+    request.input("Rt_Let", sql.VarChar(6), Rt_Let);
+    request.input("Rt_on_Ind_Res", sql.Int, Rt_on_Ind_Res);
+    request.input("Exception_Comments", sql.VarChar(200), Exception_Comments);
     return request.query(sqlQueries.updateDisease);
   };
 

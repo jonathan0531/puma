@@ -7,8 +7,8 @@ SET          [disease_id] = @disease_id
    , [recip_tracing] = @recip_tracing
    , [follow_up_days] = @follow_up_days
    , [exception_comments] = @exception_comments
-   , [rt_letter] = @rt_letter
-   , [rt_on_ind_result] = @rt_on_ind_result
+   , [rt_let] = @rt_let
+   , [rt_on_ind_res] = @rt_on_ind_res
 WHERE   [disease_id] = @disease_id
 
 SELECT [disease_id]
@@ -19,7 +19,7 @@ SELECT [disease_id]
    , [recip_tracing]
    , [follow_up_days]
    , [exception_comments]
-   , [rt_letter]
-   , [rt_on_ind_result]
+   , [rt_let]
+   , [rt_on_ind_res]
 FROM    [dbo].[disease_config]
 WHERE   [disease_id] = @disease_id

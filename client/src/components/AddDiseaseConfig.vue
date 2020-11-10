@@ -55,24 +55,24 @@
               required
             ></v-text-field>
             <v-text-field
-              label="Exception Comments"
-              placeholder="EXCEPTION COMMENTS"
-              v-model="Exception_Comments"
-              :rules="exceptionRules"
-              required
-            ></v-text-field>
-            <v-text-field
               label="Recipient Tracing Letter"
               placeholder="RECIPIENT TRACING LETTER"
-              v-model="RT_LETTER"
+              v-model="Rt_Let"
               :rules="rtLetterRules"
               required
             ></v-text-field>
             <v-text-field
               label="Recipient Tracing Letter on Indecisive Result"
               placeholder="RECIPIENT TRACING LETTER ON INDECISIVE RESULT"
-              v-model="RT_ON_IND_RESULT"
+              v-model="Rt_on_Ind_Res"
               :rules="rtlIndecisiveRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              label="Exception Comments"
+              placeholder="EXCEPTION COMMENTS"
+              v-model="Exception_Comments"
+              :rules="exceptionRules"
               required
             ></v-text-field>
           </v-col>
@@ -102,8 +102,8 @@ export default {
     Recip_Tracing: "",
     Follow_Up_Days: "",
     Exception_Comments: "",
-    RT_LETTER: "",
-    RT_ON_IND_RESULT: "",
+    Rt_Let: "",
+    Rt_on_Ind_Res: "",
     dIdRules: [(v) => !!v || "Disease ID is required"],
     dDescRules: [(v) => !!v || "Disease Description is required"],
     lMinRules: [(v) => !!v || "Lookback Minimum is required"],
@@ -128,9 +128,9 @@ export default {
           Confirm_Needed: this.Confirm_Needed,
           Recip_Tracing: this.Recip_Tracing,
           Follow_Up_Days: this.Follow_Up_Days,
+          Rt_Let: this.Rt_Let,
+          Rt_on_Ind_Res: this.Rt_on_Ind_Res,
           Exception_Comments: this.Exception_Comments,
-          RT_LETTER: this.RT_LETTER,
-          RT_ON_IND_RESULT: this.RT_ON_IND_RESULT,
         },
         url: "http://localhost:5000/api/disease_config",
         headers: {
@@ -139,12 +139,12 @@ export default {
       })
         .then((response) => {
           // window.localStorage.setItem("auth", response.data.token);
-          swal("Success!", "Disease Configuartion updated", "success");
+          swal("Success!", "Disease Configuration updated", "success");
           this.$router.push({ name: "DiseaseConfig" });
         })
         .catch((error) => {
           const message = error.response.data.message;
-          swal("Login Denied", `${message}`, "error");
+          swal("Error", `${message}`, "error");
         });
     },
 

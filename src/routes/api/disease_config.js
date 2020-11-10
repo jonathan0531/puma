@@ -58,9 +58,9 @@ module.exports.register = async (server) => {
           Confirm_Needed,
           Recip_Tracing,
           Follow_Up_Days,
+          Rt_Let,
+          Rt_on_Ind_Res,
           Exception_Comments,
-          RT_LETTER,
-          RT_ON_IND_RESULT,
         } = request.payload;
         const res = await db.disease_config.addDisease({
           Disease_ID,
@@ -70,9 +70,9 @@ module.exports.register = async (server) => {
           Confirm_Needed,
           Recip_Tracing,
           Follow_Up_Days,
+          Rt_Let,
+          Rt_on_Ind_Res,
           Exception_Comments,
-          RT_LETTER,
-          RT_ON_IND_RESULT,
         });
         return res.recordset[0];
       } catch (err) {

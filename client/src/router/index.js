@@ -11,6 +11,9 @@ import Login from "@/components/Login";
 import AddDonor from "@/components/AddDonor";
 import Donor from "@/components/Donor";
 import Welcome from "@/components/Welcome";
+import DiseaseConfig from "@/components/DiseaseConfig";
+import AddDiseaseConfig from "@/components/AddDiseaseConfig";
+import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
 
 Vue.use(Router);
 
@@ -70,6 +73,21 @@ export default new Router({
       path: "/donor",
       name: "Donor",
       component: Donor
+    },
+    {
+      path: "/disease_config/:id",
+      name: "UpdateDiseaseConfig",
+      component: UpdateDiseaseConfig
+    },
+    {
+      path: "/disease_config/add",
+      name: "AddDiseaseConfig",
+      component: AddDiseaseConfig
+    },
+    {
+      path: "/disease_config",
+      name: "DiseaseConfig",
+      component: DiseaseConfig
     }
   ]
 });
