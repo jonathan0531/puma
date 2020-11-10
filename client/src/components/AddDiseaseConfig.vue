@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <h4>Add/Modify Disease Configuration</h4>
+    <h4>Add Disease Configuration</h4>
     <v-flex xs12>
       <v-form ref="form" lazy-validation>
         <v-row justify="center">
@@ -36,7 +36,7 @@
             <v-text-field
               label="Confirmation Needed"
               placeholder="CONFIRMATION NEEDED"
-              v-model="Confrim_Needed"
+              v-model="Confirm_Needed"
               :rules="confNeededRules"
               required
             ></v-text-field>
@@ -77,7 +77,7 @@
             ></v-text-field>
           </v-col>
         </v-row>
-        <v-btn class="button" color="disabled" v-bind:to="{ name: 'DISEASE_CONFIG' }"
+        <v-btn class="button" color="disabled" v-bind:to="{ name: 'DiseaseConfig' }"
           >Back</v-btn
         >
         <v-btn class="button" color="success" @click="submit">Submit</v-btn>
@@ -98,7 +98,7 @@ export default {
     Disease_Desc: "",
     Lookback_Min: "",
     Lookback_Max: "",
-    Confrim_Needed: "",
+    Confirm_Needed: "",
     Recip_Tracing: "",
     Follow_Up_Days: "",
     Exception_Comments: "",
@@ -125,14 +125,14 @@ export default {
           Disease_Desc: this.Disease_Desc,
           Lookback_Min: this.Lookback_Min,
           Lookback_Max: this.Lookback_Max,
-          Confrim_Needed: this.Confrim_Needed,
+          Confirm_Needed: this.Confirm_Needed,
           Recip_Tracing: this.Recip_Tracing,
           Follow_Up_Days: this.Follow_Up_Days,
           Exception_Comments: this.Exception_Comments,
           RT_LETTER: this.RT_LETTER,
           RT_ON_IND_RESULT: this.RT_ON_IND_RESULT,
         },
-        url: "http://localhost:5000/api/DISEASE_CONFIG",
+        url: "http://localhost:5000/api/disease_config",
         headers: {
           "Content-Type": "application/json",
         },
@@ -140,7 +140,7 @@ export default {
         .then((response) => {
           // window.localStorage.setItem("auth", response.data.token);
           swal("Success!", "Disease Configuartion updated", "success");
-          this.$router.push({ name: "DISEASE_CONFIG" });
+          this.$router.push({ name: "DiseaseConfig" });
         })
         .catch((error) => {
           const message = error.response.data.message;

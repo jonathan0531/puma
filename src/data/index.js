@@ -3,6 +3,7 @@
 const donor = require("./donor");
 const blood = require("./blood");
 const login = require("./login");
+const disease_config = require("./disease_config");
 const sql = require("mssql");
 
 const client = async (server, config) => {
@@ -57,6 +58,7 @@ const client = async (server, config) => {
     donor: await donor.register({ sql, getConnection }),
     blood: await blood.register({ sql, getConnection }),
     login: await login.register({ sql, getConnection }),
+    disease_config: await disease_config.register({ sql, getConnection }),
   };
 };
 
