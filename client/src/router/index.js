@@ -14,6 +14,9 @@ import Welcome from "@/components/Welcome";
 import ResultSet from "@/components/ResultSet";
 import AddResultSet from "@/components/AddResultSet";
 import UpdateResultSet from "@/components/UpdateResultSet";
+import ComponentConfig from "@/components/ComponentConfig";
+import AddComponent from "@/components/AddComponent";
+import UpdateComponent from "@/components/UpdateComponent";
 
 Vue.use(Router);
 
@@ -88,6 +91,21 @@ export default new Router({
       path: "/config/resultset/:id",
       name: "UpdateResultSet",
       component: UpdateResultSet
+    },
+    {
+      path: "/config/component",
+      name: "ComponentConfig",
+      component: ComponentConfig
+    },
+    {
+      path: "/config/component/add",
+      name: "AddComponent",
+      component: AddComponent
+    },
+    {
+      path: "/config/component/:id",
+      name: "UpdateComponent",
+      component: UpdateComponent
     }
   ]
 });

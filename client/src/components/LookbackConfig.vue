@@ -40,7 +40,7 @@
                   x-large
                   color="primary"
                   dark
-                  v-bind:to="{ name: 'Donor' }"
+                  v-bind:to="{ name: 'ComponentConfig' }"
                 >
                   Component Configuration
                 </v-btn>

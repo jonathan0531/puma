@@ -48,7 +48,7 @@
             >
           </v-list-item>
         </router-link>
-        <router-link v-bind:to="{ name: 'Donor' }" class="side_bar_link">
+        <!-- <router-link v-bind:to="{ name: 'Donor' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
               <v-icon>gavel</v-icon>
@@ -57,7 +57,7 @@
               >Donor Information</v-list-item-content
             >
           </v-list-item>
-        </router-link>
+        </router-link> -->
         <router-link v-bind:to="{ name: 'UserGuide' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
@@ -71,9 +71,9 @@
     <v-app-bar color="#3257bf" dark app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title> Lookback Management System </v-toolbar-title>
-      <v-spacer></v-spacer>
+      <!-- <v-spacer></v-spacer>
       <v-btn text v-bind:to="{ name: 'Login' }">Sign In</v-btn>
-      <v-btn text v-bind:to="{ name: 'Register' }">Register</v-btn>
+      <v-btn text v-bind:to="{ name: 'Register' }">Register</v-btn>  -->
     </v-app-bar>
     <v-content>
       <v-container fluid>

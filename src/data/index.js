@@ -3,6 +3,7 @@
 const donor = require("./donor");
 const login = require("./login");
 const resultset = require("./resultset");
+const component = require("./component");
 const sql = require("mssql");
 
 const client = async (server, config) => {
@@ -57,6 +58,7 @@ const client = async (server, config) => {
     donor: await donor.register({ sql, getConnection }),
     login: await login.register({ sql, getConnection }),
     resultset: await resultset.register({ sql, getConnection }),
+    component: await component.register({ sql, getConnection }),
   };
 };
 
