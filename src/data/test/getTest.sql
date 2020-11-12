@@ -1,0 +1,3 @@
+SELECT  *
+FROM    [dbo].[TEST_CONFIG]
+

@@ -26,6 +26,12 @@
           <v-col cols="10" sm="4">
             <v-text-field
               v-bind:disabled="disableID"
+              label="Result_ID"
+              v-model="Result_ID"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
               label="Result_Set"
               v-model="Result_Set"
               required
@@ -100,6 +106,7 @@ export default {
   name: "Donors",
   data() {
     return {
+      Result_ID: "",
       Result_Set: "",
       Result: "",
       Result_Value: "",
@@ -128,6 +135,7 @@ export default {
       const response = await ResultSetService.getOneRS({
         id: this.$route.params.id,
       });
+      this.Result_ID = response.data.Result_ID;
       this.Result_Set = response.data.Result_Set;
       this.Result = response.data.Result;
       this.Result_Value = response.data.Result_Value;
@@ -138,7 +146,7 @@ export default {
       this.Conf_Count = response.data.Conf_Count;
       this.Repeat_Result = response.data.Repeat_Result;
       this.Repeat_Count = response.data.Repeat_Count;
-      console.log(this.Result_Set);
+      console.log(this.Result_ID);
     },
     beginEdit() {
       this.isBeingEdit = false;

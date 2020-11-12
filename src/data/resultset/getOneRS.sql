@@ -1,3 +1,3 @@
 SELECT *
 FROM    [dbo].[RESULT_SET]
-WHERE [Result_Set] = @Result_Set
+WHERE [Result_ID] = @Result_ID

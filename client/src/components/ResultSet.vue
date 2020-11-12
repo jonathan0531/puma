@@ -16,13 +16,10 @@
           <v-btn
             icon
             class="mx-0"
-            v-bind:to="`/config/resultset/${data.item.Result_Set}`"
+            v-bind:to="`/config/resultset/${data.item.Result_ID}`"
           >
             <v-icon color="teal">edit</v-icon></v-btn
           >
-          <!-- <v-btn icon class="mx-0" @click="deleteDonor(data.item.Donor_ID)">
-            <v-icon color="pink">delete</v-icon>
-          </v-btn> -->
         </template>
       </b-table>
     </div>
@@ -37,6 +34,11 @@ export default {
   data() {
     return {
       fields: [
+        {
+          key: "Result_ID",
+          label: "Result ID",
+          sortable: true,
+        },
         {
           key: "Result_Set",
           label: "Result Set",

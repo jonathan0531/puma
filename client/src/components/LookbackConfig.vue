@@ -30,7 +30,7 @@
                   x-large
                   color="primary"
                   dark
-                  v-bind:to="{ name: 'Donor' }"
+                  v-bind:to="{ name: 'TestConfig' }"
                 >
                   Test Configuration
                 </v-btn>

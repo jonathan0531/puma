@@ -9,7 +9,7 @@ SET     [Result_Set] = @Result_Set
        , [Conf_Count] = @Conf_Count
        , [Repeat_Result] = @Repeat_Result
        , [Repeat_Count] = @Repeat_Count
-WHERE   [Result_Set] = @Result_Set
+WHERE   [Result_ID] = @Result_ID
 
 SELECT  [Result_Set]
        , [Result]
@@ -22,4 +22,4 @@ SELECT  [Result_Set]
        , [Repeat_Result]
        , [Repeat_Count]
 FROM    [dbo].[RESULT_SET]
-WHERE   [Result_Set] = @Result_Set
+WHERE   [Result_ID] = @Result_ID

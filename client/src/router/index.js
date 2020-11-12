@@ -17,6 +17,9 @@ import UpdateResultSet from "@/components/UpdateResultSet";
 import ComponentConfig from "@/components/ComponentConfig";
 import AddComponent from "@/components/AddComponent";
 import UpdateComponent from "@/components/UpdateComponent";
+import TestConfig from "@/components/TestConfig";
+import AddTestConfig from "@/components/AddTestConfig";
+import UpdateTestConfig from "@/components/UpdateTestConfig";
 
 Vue.use(Router);
 
@@ -106,6 +109,21 @@ export default new Router({
       path: "/config/component/:id",
       name: "UpdateComponent",
       component: UpdateComponent
+    },
+    {
+      path: "/config/test",
+      name: "TestConfig",
+      component: TestConfig
+    },
+    {
+      path: "/config/test/add",
+      name: "AddTestConfig",
+      component: AddTestConfig
+    },
+    {
+      path: "/config/test/:id",
+      name: "UpdateTestConfig",
+      component: UpdateTestConfig
     }
   ]
 });
