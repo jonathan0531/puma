@@ -20,6 +20,9 @@ import UpdateComponent from "@/components/UpdateComponent";
 import TestConfig from "@/components/TestConfig";
 import AddTestConfig from "@/components/AddTestConfig";
 import UpdateTestConfig from "@/components/UpdateTestConfig";
+import DiseaseConfig from "@/components/DiseaseConfig";
+import AddDiseaseConfig from "@/components/AddDiseaseConfig";
+import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
 
 Vue.use(Router);
 
@@ -124,6 +127,21 @@ export default new Router({
       path: "/config/test/:id",
       name: "UpdateTestConfig",
       component: UpdateTestConfig
+    },
+    {
+      path: "/disease_config/:id",
+      name: "UpdateDiseaseConfig",
+      component: UpdateDiseaseConfig
+    },
+    {
+      path: "/disease_config/add",
+      name: "AddDiseaseConfig",
+      component: AddDiseaseConfig
+    },
+    {
+      path: "/disease_config",
+      name: "DiseaseConfig",
+      component: DiseaseConfig
     }
   ]
 });
