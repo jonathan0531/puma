@@ -117,7 +117,6 @@ export default {
         },
       })
         .then((response) => {
-          // window.localStorage.setItem("auth", response.data.token);
           swal("Success!", "Result Set Added!", "success");
           this.$router.push({ name: "ResultSet" });
         })

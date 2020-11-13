@@ -1,7 +1,6 @@
 INSERT INTO [dbo].[RESULT_SET]
 (
-     [Result_ID]
-   , [Result_Set]
+     [Result_Set]
    , [Result]
    , [Result_Value]
    , [Value_Desc]
@@ -14,8 +13,7 @@ INSERT INTO [dbo].[RESULT_SET]
 )
 VALUES
 (
-     @Result_ID
-   , @Result_Set
+     @Result_Set
    , @Result
    , @Result_Value
    , @Value_Desc

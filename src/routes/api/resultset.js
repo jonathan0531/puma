@@ -42,7 +42,6 @@ module.exports.register = async (server) => {
       try {
         const db = request.server.plugins.sql.client;
         const {
-          Result_ID,
           Result_Set,
           Result,
           Result_Value,
@@ -55,7 +54,6 @@ module.exports.register = async (server) => {
           Repeat_Count,
         } = request.payload;
         const res = await db.resultset.addRS({
-          Result_ID,
           Result_Set,
           Result,
           Result_Value,

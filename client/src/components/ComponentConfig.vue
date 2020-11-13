@@ -11,7 +11,15 @@
       >Add Component</v-btn
     >
     <div style="overflow: scroll">
-      <b-table striped hover :items="component_config" :fields="fields">
+      <b-table
+        striped
+        hover
+        :items="component_config"
+        :fields="fields"
+        small
+        bordered
+        head-variant="dark"
+      >
         <template v-slot:cell(actions)="data">
           <v-btn
             icon
@@ -42,121 +50,98 @@ export default {
         {
           key: "RBCIN",
           label: "RBCIN",
-          sortable: true,
         },
         {
           key: "PLTIN",
           label: "PLTIN",
-          sortable: true,
         },
         {
           key: "PLAIN",
           label: "PLAIN",
-          sortable: true,
         },
         {
           key: "SLEUKIN",
           label: "SLEUKIN",
-          sortable: true,
         },
         {
           key: "RPIN",
           label: "RPIN",
-          sortable: true,
         },
         {
           key: "SPLAIN",
           label: "SPLAIN",
-          sortable: true,
         },
         {
           key: "FPLTIN",
           label: "FPLTIN",
-          sortable: true,
         },
         {
           key: "RBCINV",
           label: "RBCINV",
-          sortable: true,
         },
         {
           key: "PLTINV",
           label: "PLTINV",
-          sortable: true,
         },
         {
           key: "PLAINV",
           label: "PLAINV",
-          sortable: true,
         },
         {
           key: "SLEUKINV",
           label: "SLEUKINV",
-          sortable: true,
         },
         {
           key: "RPINV",
           label: "RPINV",
-          sortable: true,
         },
         {
           key: "SPLAINV",
           label: "SPLAINV",
-          sortable: true,
         },
         {
           key: "FPLTINV",
           label: "FPLTINV",
-          sortable: true,
         },
         {
           key: "RBCOUT",
           label: "RBCOUT",
-          sortable: true,
         },
         {
           key: "PLTOUT",
           label: "PLTOUT",
-          sortable: true,
         },
         {
           key: "PLAOUT",
           label: "PLAOUT",
-          sortable: true,
         },
         {
           key: "SLEUKOUT",
           label: "SLEUKOUT",
-          sortable: true,
         },
         {
           key: "RPOUT",
           label: "RPOUT",
-          sortable: true,
         },
         {
           key: "SPLAOUT",
           label: "SPLAOUT",
-          sortable: true,
         },
         {
           key: "FPLTOUT",
           label: "FPLTOUT",
-          sortable: true,
         },
         {
           key: "Do_Init",
           label: "Do_Init",
-          sortable: true,
         },
         {
           key: "Do_Look",
           label: "Do_Look",
-          sortable: true,
         },
         {
           key: "actions",
-          label: "Actions",
+          label: "Edit",
         },
       ],
       component_config: [],

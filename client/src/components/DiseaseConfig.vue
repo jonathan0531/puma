@@ -7,9 +7,9 @@
       dark
       class="mb-2"
       v-bind:to="{ name: 'AddDiseaseConfig' }"
-      >Disease Configuration</v-btn
+      >Add New Disease</v-btn
     >
-    <table class="table table-sm">
+    <!-- <table class="table table-sm">
       <thead>
         <tr>
           <th scope="col">Disease_ID</th>
@@ -47,53 +47,92 @@
         </tr>
         <tr></tr>
       </tbody>
-    </table>
+    </table> -->
+    <div style="overflow: scroll">
+      <b-table
+        striped
+        hover
+        :items="disease_config"
+        :fields="fields"
+        small
+        bordered
+        head-variant="dark"
+      >
+        <template v-slot:cell(actions)="data">
+          <v-btn
+            icon
+            class="mx-0"
+            v-bind:to="`/disease_config/${data.item.Disease_ID}`"
+          >
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
+      </b-table>
+    </div>
   </div>
 </template>
 
 <script>
 import axios from "axios";
-import moment from "moment";
-import * as M from "materialize-css";
 
 export default {
-  name: "disease_config",
+  name: "app",
   data() {
     return {
+      fields: [
+        {
+          key: "Disease_ID",
+          label: "Disease ID",
+          sortable: true,
+        },
+        {
+          key: "Disease_Desc",
+          label: "Disease Desc",
+        },
+        {
+          key: "Lookback_Min",
+          label: "Lookback Min",
+        },
+        {
+          key: "Lookback_Max",
+          label: "Lookback Max",
+        },
+        {
+          key: "Confirm_Needed",
+          label: "Confirm Needed",
+        },
+        {
+          key: "Recip_Tracing",
+          label: "Recip Tracing",
+        },
+        {
+          key: "Follow_Up_Days",
+          label: "Follow Up Days",
+        },
+        {
+          key: "Rt_Let",
+          label: "Rt Let",
+        },
+        {
+          key: "Rt_on_Ind_Res",
+          label: "Rt_on Ind_Res",
+        },
+        {
+          key: "Exception_Comments",
+          label: "Exception Comments",
+        },
+        {
+          key: "actions",
+          label: "Edit",
+        },
+      ],
       disease_config: [],
-      Disease_ID: "",
-      Disease_Desc: "",
-      Lookback_Min: "",
-      Lookback_Max: "",
-      Confirm_Needed: "",
-      Recip_Tracing: "",
-      Follow_Up_Days: "",
-      Rt_Let: "",
-      Rt_on_Ind_Res: "",
-      Exception_Comments: "",
     };
   },
   mounted() {
     this.getDisease();
   },
   methods: {
-    formatDate(d) {
-      return d ? moment.utc(d).format("MMM D, YYYY") : "";
-    },
-    formatDisease(disease_config) {
-      return disease_config.map((disease_config) => ({
-        Disease_ID: disease_config.Disease_ID,
-        Disease_Desc: disease_config.Disease_Desc,
-        Lookback_Min: disease_config.Lookback_Min,
-        Lookback_Max: disease_config.Lookback_Max,
-        Confirm_Needed: disease_config.Confirm_Needed,
-        Recip_Tracing: disease_config.Recip_Tracing,
-        Follow_Up_Days: disease_config.Follow_Up_Days,
-        Rt_Let: disease_config.Rt_Let,
-        Rt_on_Ind_Res: disease_config.Rt_on_Ind_Res,
-        Exception_Comments: disease_config.Exception_Comments,
-      }));
-    },
     async getDisease() {
       return axios({
         method: "get",
@@ -101,34 +140,32 @@ export default {
       })
         .then((response) => {
           this.disease_config = response.data;
-          this.disease_config = this.formatDisease(response.data);
         })
         .catch((err) => {
           this.msg = err.message;
           console.log(err);
         });
     },
-    async deleteDisease(disease_id) {
-      return axios({
-        method: "delete",
-        url: `http://localhost:5000/api/disease_config/${disease_id}`,
-      })
-        .then((response) => {
-          this.$router.go(5);
-          swal("Success!", "Disease Deleted!", "success");
-        })
-        .catch((err) => {
-          const message = error.response.data.message;
-          swal("Not Deleted!", `${message}`, "error");
-        });
-    },
+    // async deleteDisease(disease_id) {
+    //   return axios({
+    //     method: "delete",
+    //     url: `http://localhost:5000/api/disease_config/${disease_id}`,
+    //   })
+    //     .then((response) => {
+    //       this.$router.go(5);
+    //       swal("Success!", "Disease Deleted!", "success");
+    //     })
+    //     .catch((err) => {
+    //       const message = error.response.data.message;
+    //       swal("Not Deleted!", `${message}`, "error");
+    //     });
+    // },
   },
 };
 </script>
 
 <style>
 #btn {
-  margin-bottom: 50px;
 }
 #margin {
   margin-top: 20px;

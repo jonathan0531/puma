@@ -5,7 +5,7 @@
         <router-link v-bind:to="{ name: 'Pending' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>home</v-icon>
+              <v-icon>search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Pending Lookbacks</v-list-item-content
@@ -15,23 +15,10 @@
         <router-link v-bind:to="{ name: 'Completed' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>gavel</v-icon>
+              <v-icon>search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Completed Lookbacks</v-list-item-content
-            >
-          </v-list-item>
-        </router-link>
-        <router-link
-          v-bind:to="{ name: 'LookbackConfig' }"
-          class="side_bar_link"
-        >
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>gavel</v-icon>
-            </v-list-item-action>
-            <v-list-item-content class="text"
-              >Lookback Configuration</v-list-item-content
             >
           </v-list-item>
         </router-link>
@@ -41,13 +28,58 @@
         >
           <v-list-item>
             <v-list-item-action>
-              <v-icon>gavel</v-icon>
+              <v-icon>search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
-              >Search Records</v-list-item-content
+              >Search Blood Donations</v-list-item-content
             >
           </v-list-item>
         </router-link>
+        <router-link v-bind:to="{ name: 'ResultSet' }" class="side_bar_link">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>edit</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text">Result Set</v-list-item-content>
+          </v-list-item>
+        </router-link>
+        <router-link
+          v-bind:to="{ name: 'DiseaseConfig' }"
+          class="side_bar_link"
+        >
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>edit</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text"
+              >Disease Configuration</v-list-item-content
+            >
+          </v-list-item>
+        </router-link>
+        <router-link v-bind:to="{ name: 'TestConfig' }" class="side_bar_link">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>edit</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text"
+              >Test Configuration</v-list-item-content
+            >
+          </v-list-item>
+        </router-link>
+        <router-link
+          v-bind:to="{ name: 'ComponentConfig' }"
+          class="side_bar_link"
+        >
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>edit</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text">
+              Component Config</v-list-item-content
+            >
+          </v-list-item>
+        </router-link>
+
         <!-- <router-link v-bind:to="{ name: 'Donor' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>

@@ -11,7 +11,14 @@
       >Add Result Set</v-btn
     >
     <div>
-      <b-table striped hover :items="resultset" :fields="fields">
+      <b-table
+        striped
+        hover
+        :items="resultset"
+        :fields="fields"
+        bordered
+        head-variant="dark"
+      >
         <template v-slot:cell(actions)="data">
           <v-btn
             icon
@@ -42,7 +49,6 @@ export default {
         {
           key: "Result_Set",
           label: "Result Set",
-          sortable: true,
         },
         {
           key: "Result",
@@ -52,7 +58,6 @@ export default {
         {
           key: "Result_Value",
           label: "Result Value",
-          sortable: true,
         },
         {
           key: "Value_Desc",
@@ -62,36 +67,30 @@ export default {
         {
           key: "Nat_Result",
           label: "Nat Result",
-          sortable: true,
         },
         {
           key: "Nat_Count",
           label: "Nat Count",
-          sortable: true,
         },
         {
           key: "Conf_Result",
           label: "Config Results",
-          sortable: true,
         },
         {
           key: "Conf_Count",
           label: "Config Count",
-          sortable: true,
         },
         {
           key: "Repeat_Result",
           label: "Repeat Result",
-          sortable: true,
         },
         {
           key: "Repeat_Count",
           label: "Repeat Count",
-          sortable: true,
         },
         {
           key: "actions",
-          label: "Actions",
+          label: "Edit",
         },
       ],
       resultset: [],

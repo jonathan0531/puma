@@ -20,7 +20,6 @@ const register = async ({ sql, getConnection }) => {
   };
 
   const addRS = async ({
-    Result_ID,
     Result_Set,
     Result,
     Result_Value,
@@ -34,7 +33,6 @@ const register = async ({ sql, getConnection }) => {
   }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
-    request.input("Result_ID", sql.Int, Result_ID);
     request.input("Result_Set", sql.Int, Result_Set);
     request.input("Result", sql.VarChar(4), Result);
     request.input("Result_Value", sql.Decimal(7, 3), Result_Value);

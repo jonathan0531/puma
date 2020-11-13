@@ -4,8 +4,8 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import BootstrapVue from "bootstrap-vue";
-// import 'materialize-css';
-// import 'materialize-css/dist/css/materialize.min.css';
+// import "materialize-css";
+// import "materialize-css/dist/css/materialize.min.css";
 
 import Vue from "vue";
 import Vuetify from "vuetify";
@@ -25,7 +25,11 @@ Vue.config.productionTip = false;
 new Vue({
   el: "#app",
   router,
-  vuetify: new Vuetify(),
+  vuetify: new Vuetify({
+    icons: {
+      iconfont: "mdiSvg" // 'mdi' || 'mdiSvg' || 'md' || 'fa' || 'fa4' || 'faSvg'
+    }
+  }),
   components: { App },
   template: "<App/>"
 });

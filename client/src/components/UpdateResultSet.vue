@@ -167,7 +167,7 @@ export default {
         Repeat_Result: this.Repeat_Result,
         Repeat_Count: this.Repeat_Count,
       });
-      swal("Success!", `Donor Updated!`, "success");
+      swal("Success!", `Result Set Updated!`, "success");
       this.$router.push({ name: "ResultSet" });
     },
   },

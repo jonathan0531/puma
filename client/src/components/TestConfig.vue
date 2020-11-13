@@ -11,7 +11,14 @@
       >Add Test</v-btn
     >
     <div>
-      <b-table striped hover :items="test" :fields="fields">
+      <b-table
+        striped
+        hover
+        :items="test"
+        :fields="fields"
+        bordered
+        head-variant="dark"
+      >
         <template v-slot:cell(actions)="data">
           <v-btn
             icon
@@ -61,7 +68,7 @@ export default {
         },
         {
           key: "actions",
-          label: "Actions",
+          label: "Edit",
         },
       ],
       test: [],

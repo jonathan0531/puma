@@ -25,7 +25,7 @@
         <v-row justify="center">
           <v-col cols="10" sm="4">
             <v-text-field
-              v-bind:disabled="isBeingEdit"
+              v-bind:disabled="disableID"
               label="Test_ID"
               v-model="Test_ID"
               required
