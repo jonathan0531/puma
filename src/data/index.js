@@ -5,6 +5,7 @@ const login = require("./login");
 const resultset = require("./resultset");
 const component = require("./component");
 const test = require("./test");
+const tracking = require("./tracking");
 const sql = require("mssql");
 
 const client = async (server, config) => {
@@ -61,6 +62,7 @@ const client = async (server, config) => {
     resultset: await resultset.register({ sql, getConnection }),
     component: await component.register({ sql, getConnection }),
     test: await test.register({ sql, getConnection }),
+    tracking: await tracking.register({ sql, getConnection }),
   };
 };
 

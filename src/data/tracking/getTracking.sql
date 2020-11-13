@@ -1,0 +1,6 @@
+SELECT 	  [Track_ID]
+		, [BUI]
+		, [Disease_ID]
+		, [Donor_ID]
+		, [Test_ID]
+FROM	[dbo].[TRACKING_DATA]
