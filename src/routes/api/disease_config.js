@@ -81,7 +81,7 @@ module.exports.register = async (server) => {
     },
   });
 
-  server.route({
+  /*server.route({
     method: "PUT",
     path: "/api/disease_config/{disease_id}",
     handler: async (request, h) => {
@@ -90,6 +90,42 @@ module.exports.register = async (server) => {
         const db = request.server.plugins.sql.client;
         const res = await db.disease_config.updateDisease({ disease_id });
         return res.rowsAffected[0] === 1;
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });*/
+  server.route({
+    method: "PUT",
+    path: "/api/disease_config/{disease_id}",
+    handler: async (request, h) => {
+      try {
+        const db = request.server.plugins.sql.client;
+        const {
+          Disease_ID = request.params.Disease_ID,
+          Disease_Desc,
+          Lookback_Min,
+          Lookback_Max,
+          Confirm_Needed,
+          Recip_Tracing,
+          Follow_Up_Days,
+          Rt_Let,
+          Rt_on_Ind_Res,
+          Exception_Comments,
+        } = request.payload;
+        const res = await db.disease_config.updateDisease({
+          Disease_ID,
+          Disease_Desc,
+          Lookback_Min,
+          Lookback_Max,
+          Confirm_Needed,
+          Recip_Tracing,
+          Follow_Up_Days,
+          Rt_Let,
+          Rt_on_Ind_Res,
+          Exception_Comments,
+        });
+        return res.recordset[0];
       } catch (err) {
         console.log(err);
       }

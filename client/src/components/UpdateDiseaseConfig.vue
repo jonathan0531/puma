@@ -2,7 +2,7 @@
   <div id="app">
     <v-flex xs12>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
-        <h4>Update Diseaese Configuration</h4>
+        <h4>Update Disease Configuration</h4>
         <v-row justify="center">
           <v-col cols="10" sm="4">
             <v-text-field
@@ -56,13 +56,6 @@
             ></v-text-field>
             <v-text-field
               v-bind:disabled="isBeingEdit"
-              label="Exception Comments"
-              v-model="Exception_Comments"
-              :rules="exceptionRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
               label="Recipient Tracing Letter"
               v-model="Rt_Let"
               :rules="rtLetterRules"
@@ -73,6 +66,13 @@
               label="Recipient Tracing Letter on Indecisive Result"
               v-model="Rt_on_Ind_Res"
               :rules="rtlIndecisiveRules"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Exception Comments"
+              v-model="Exception_Comments"
+              :rules="exceptionRules"
               required
             ></v-text-field>
           </v-col>
@@ -121,9 +121,9 @@ export default {
       Confirm_Needed: "",
       Recip_Tracing: "",
       Follow_Up_Days: "",
-      Exception_Comments: "",
-      RT_Let: "",
+      Rt_Let: "",
       Rt_on_Ind_Res: "",
+      Exception_Comments: "",
       dIdRules: [(v) => !!v || "Disease ID is required"],
       dDescRules: [(v) => !!v || "Disease Description is required"],
       lMinRules: [(v) => !!v || "Lookback Minimum is required"],
@@ -162,23 +162,23 @@ export default {
       this.visible = true;
       this.hide = false;
     },
-    // async updateDonor() {
-    //   await DonorService.updateDonor({
-    //     id: this.$route.params.id,
-    //     Donor_ID: this.Donor_ID,
-    //     Blood_Type: this.Blood_Type,
-    //     Donor_FName: this.Donor_FName,
-    //     Donor_LName: this.Donor_LName,
-    //     Birth_Date: this.Birth_Date,
-    //     Donor_St_Addr: this.Donor_St_Addr,
-    //     Donor_City: this.Donor_City,
-    //     Donor_State: this.Donor_State,
-    //     Donor_Country: this.Donor_Country,
-    //     Donor_Postal: this.Donor_Postal,
-    //   });
-    //   swal("Success!", `Donor Updated!`, "success");
-    //   this.$router.push({ name: "Donor" });
-    // },
+    async updateDisease() {
+      await DiseaseService.updateDisease({
+        id: this.$route.params.id,
+        Disease_ID: this.Disease_ID,
+        Disease_Desc: this.Disease_Desc,
+        Lookback_Min: this.Lookback_Min,
+        Lookback_Max: this.Lookback_Max,
+        Confirm_Needed: this.Confirm_Needed,
+        Recip_Tracing: this.Recip_Tracing,
+        Follow_Up_Days: this.Follow_Up_Days,
+        Rt_Let: this.Rt_Let,
+        Rt_on_Ind_Res: this.Rt_on_Ind_Res,
+        Exception_Comments: this.Exception_Comments,
+      });
+      swal("Success!", `Disease Updated!`, "success");
+      this.$router.push({ name: "DiseaseConfig" });
+    },
   },
 };
 </script>

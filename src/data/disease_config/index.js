@@ -14,7 +14,7 @@ const register = async ({ sql, getConnection }) => {
     const request = await cnx.request();
 
     // configure sql query parameters
-    request.input("disease_id", sql.Int, disease_id);
+    request.input("disease_id", sql.VarChar(4), disease_id);
 
     // return the executed query
     return request.query(sqlQueries.getDisease);
@@ -23,7 +23,7 @@ const register = async ({ sql, getConnection }) => {
   const getOneDisease = async ({ Disease_ID }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
-    request.input("Disease_ID", sql.Int, Disease_ID);
+    request.input("Disease_ID", sql.VarChar(4), Disease_ID);
     return request.query(sqlQueries.getOneDisease);
   };
 
