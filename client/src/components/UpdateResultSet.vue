@@ -2,10 +2,10 @@
   <div id="app">
     <v-flex xs12>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
-        <h4>Update Result Set</h4>
+        <h2>Update Result Set</h2>
         <div>
           <v-btn class="button" color="primary" v-show="hide" @click="beginEdit"
-            >Begin Edit</v-btn
+            >Edit</v-btn
           >
           <v-btn
             class="button"
@@ -22,8 +22,8 @@
             >Back</v-btn
           >
         </div>
-        <v-row justify="center">
-          <v-col cols="10" sm="4">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               v-bind:disabled="disableID"
               label="Result_ID"

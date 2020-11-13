@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h4>Add Disease Configuration</h4>
+    <h2>Add Disease Configuration</h2>
     <v-flex xs12>
       <v-form ref="form" lazy-validation>
-        <v-row justify="center">
-          <v-col cols="10" sm="5">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               label="Disease ID"
               placeholder="DISEASE ID"
@@ -77,7 +77,10 @@
             ></v-text-field>
           </v-col>
         </v-row>
-        <v-btn class="button" color="disabled" v-bind:to="{ name: 'DiseaseConfig' }"
+        <v-btn
+          class="button"
+          color="disabled"
+          v-bind:to="{ name: 'DiseaseConfig' }"
           >Back</v-btn
         >
         <v-btn class="button" color="success" @click="submit">Submit</v-btn>
@@ -113,10 +116,12 @@ export default {
     followUpRules: [(v) => !!v || "Follow Up Days is required"],
     exceptionRules: [(v) => !!v || "Exception Comments is required"],
     rtLetterRules: [(v) => !!v || "Recipient Tracing Letter is required"],
-    rtlIndecisiveRules: [(v) => !!v || "Recipient Tracing Letter with Indecisive Results is required"],
+    rtlIndecisiveRules: [
+      (v) =>
+        !!v || "Recipient Tracing Letter with Indecisive Results is required",
+    ],
   }),
   methods: {
-
     async submit() {
       return axios({
         method: "POST",

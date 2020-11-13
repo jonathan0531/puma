@@ -36,27 +36,26 @@ export default {
       fields: [
         {
           key: "TRACK_ID",
-          label: "TRACK_ID",
+          label: "Tracking ID",
           sortable: true,
         },
         {
           key: "VISIT_DATE",
-          label: "VISIT_DATE",
-          sortable: true,
+          label: "Date Tested",
         },
         {
           key: "DONOR_FNAME",
-          label: "DONOR_FNAME",
+          label: "First Name",
           sortable: true,
         },
         {
           key: "DONOR_LNAME",
-          label: "DONOR_LNAME",
+          label: "Last Name",
           sortable: true,
         },
         {
           key: "DISEASE_ID",
-          label: "DISEASE_ID",
+          label: "Disease Tested",
           sortable: true,
         },
       ],

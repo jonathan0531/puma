@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h4>Add Component</h4>
+    <h2>Add Component</h2>
     <v-flex xs12>
       <v-form ref="form" lazy-validation>
-        <v-row justify="center">
-          <v-col cols="10" sm="3">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               label="Disease_ID"
               placeholder="Disease_ID"

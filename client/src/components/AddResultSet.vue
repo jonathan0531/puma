@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h4>Add Result Set</h4>
+    <h2>Add Result Set</h2>
     <v-flex xs12>
       <v-form ref="form" lazy-validation>
-        <v-row justify="center">
-          <v-col cols="10" sm="3">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               label="Result Set"
               placeholder="Result Set"
@@ -145,8 +145,6 @@ export default {
   margin: 10px 10px;
 }
 #form {
-  margin: 0;
-  padding: 0;
 }
 v-text-field {
   margin: 0;

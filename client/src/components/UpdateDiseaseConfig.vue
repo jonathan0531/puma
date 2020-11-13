@@ -2,91 +2,10 @@
   <div id="app">
     <v-flex xs12>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
-        <h4>Update Disease Configuration</h4>
-        <v-row justify="center">
-          <v-col cols="10" sm="4">
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Disease ID"
-              v-model="Disease_ID"
-              :rules="dIdRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Disease Description"
-              v-model="Disease_Desc"
-              :rules="dDescRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Lookback Minimum"
-              v-model="Lookback_Min"
-              :rules="lMinRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Lookback Maximum"
-              v-model="Lookback_Max"
-              :rules="lMaxRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Confirmation Needed"
-              v-model="Confirm_Needed"
-              :rules="confNeededRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Recipient Tracing"
-              v-model="Recip_Tracing"
-              :rules="rtRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Follow Up Days"
-              v-model="Follow_Up_Days"
-              :rules="followUpRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Recipient Tracing Letter"
-              v-model="Rt_Let"
-              :rules="rtLetterRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Recipient Tracing Letter on Indecisive Result"
-              v-model="Rt_on_Ind_Res"
-              :rules="rtlIndecisiveRules"
-              required
-            ></v-text-field>
-            <v-text-field
-              v-bind:disabled="isBeingEdit"
-              label="Exception Comments"
-              v-model="Exception_Comments"
-              :rules="exceptionRules"
-              required
-            ></v-text-field>
-          </v-col>
-        </v-row>
+        <h2>Update Disease Configuration</h2>
         <div>
           <v-btn class="button" color="primary" v-show="hide" @click="beginEdit"
-            >Begin Edit</v-btn
-          >
-          <v-btn
-            class="button"
-            v-show="visible"
-            color="primary"
-            @click="updateDisease"
-            >Update</v-btn
+            >Edit</v-btn
           >
           <v-btn
             class="button"
@@ -95,7 +14,78 @@
             v-bind:to="{ name: 'DiseaseConfig' }"
             >Back</v-btn
           >
+          <v-btn
+            class="button"
+            v-show="visible"
+            color="primary"
+            @click="updateDisease"
+            >Update</v-btn
+          >
         </div>
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
+            <v-text-field
+              v-bind:disabled="disableID"
+              label="Disease ID"
+              v-model="Disease_ID"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Disease Description"
+              v-model="Disease_Desc"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Lookback Minimum"
+              v-model="Lookback_Min"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Lookback Maximum"
+              v-model="Lookback_Max"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Confirmation Needed"
+              v-model="Confirm_Needed"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Recipient Tracing"
+              v-model="Recip_Tracing"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Follow Up Days"
+              v-model="Follow_Up_Days"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Recipient Tracing Letter"
+              v-model="Rt_Let"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Recipient Tracing Letter on Indecisive Result"
+              v-model="Rt_on_Ind_Res"
+              required
+            ></v-text-field>
+            <v-text-field
+              v-bind:disabled="isBeingEdit"
+              label="Exception Comments"
+              v-model="Exception_Comments"
+              required
+            ></v-text-field>
+          </v-col>
+        </v-row>
       </v-form>
     </v-flex>
   </div>
@@ -107,10 +97,11 @@ import swal from "sweetalert";
 import DiseaseService from "@/services/DiseaseService";
 
 export default {
-  name: "disease_config",
+  name: "app",
   data() {
     return {
       valid: true,
+      disableID: true,
       isBeingEdit: true,
       visible: false,
       hide: true,
@@ -124,16 +115,19 @@ export default {
       Rt_Let: "",
       Rt_on_Ind_Res: "",
       Exception_Comments: "",
-      dIdRules: [(v) => !!v || "Disease ID is required"],
-      dDescRules: [(v) => !!v || "Disease Description is required"],
-      lMinRules: [(v) => !!v || "Lookback Minimum is required"],
-      lMaxRules: [(v) => !!v || "Lookback Maximum is required"],
-      confNeededRules: [(v) => !!v || "Confirmation Needed is required"],
-      rtRules: [(v) => !!v || "Recipient Tracing is required"],
-      followUpRules: [(v) => !!v || "Follow Up Days is required"],
-      exceptionRules: [(v) => !!v || "Exception Comments is required"],
-      rtLetterRules: [(v) => !!v || "Recipient Tracing Letter is required"],
-      rtlIndecisiveRules: [(v) => !!v || "Recipient Tracing Letter with Indecisive Results is required"],
+      // dIdRules: [(v) => !!v || "Disease ID is required"],
+      // dDescRules: [(v) => !!v || "Disease Description is required"],
+      // lMinRules: [(v) => !!v || "Lookback Minimum is required"],
+      // lMaxRules: [(v) => !!v || "Lookback Maximum is required"],
+      // confNeededRules: [(v) => !!v || "Confirmation Needed is required"],
+      // rtRules: [(v) => !!v || "Recipient Tracing is required"],
+      // followUpRules: [(v) => !!v || "Follow Up Days is required"],
+      // exceptionRules: [(v) => !!v || "Exception Comments is required"],
+      // rtLetterRules: [(v) => !!v || "Recipient Tracing Letter is required"],
+      // rtlIndecisiveRules: [
+      //   (v) =>
+      //     !!v || "Recipient Tracing Letter with Indecisive Results is required",
+      // ],
     };
   },
   mounted() {

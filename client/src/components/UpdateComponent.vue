@@ -2,17 +2,10 @@
   <div id="app">
     <v-flex xs12>
       <v-form id="form" v-model="valid" ref="form" lazy-validation>
-        <h4>Update Result Set</h4>
+        <h2>Update Result Set</h2>
         <div>
           <v-btn class="button" color="primary" v-show="hide" @click="beginEdit"
-            >Begin Edit</v-btn
-          >
-          <v-btn
-            class="button"
-            v-show="visible"
-            color="primary"
-            @click="updateComp"
-            >Update</v-btn
+            >Edit</v-btn
           >
           <v-btn
             class="button"
@@ -21,9 +14,16 @@
             v-bind:to="{ name: 'ComponentConfig' }"
             >Back</v-btn
           >
+          <v-btn
+            class="button"
+            v-show="visible"
+            color="primary"
+            @click="updateComp"
+            >Update</v-btn
+          >
         </div>
-        <v-row justify="center">
-          <v-col cols="10" sm="3">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               v-bind:disabled="disableID"
               label="Disease_ID"

@@ -1,10 +1,10 @@
 <template>
   <div id="app">
-    <h4>Add Test Configuration</h4>
+    <h2>Add Test Configuration</h2>
     <v-flex xs12>
       <v-form ref="form" lazy-validation>
-        <v-row justify="center">
-          <v-col cols="10" sm="3">
+        <v-row justify="left">
+          <v-col cols="10" sm="10">
             <v-text-field
               label="Test_ID"
               placeholder="Test_ID"
