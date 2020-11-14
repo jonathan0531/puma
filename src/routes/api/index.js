@@ -7,6 +7,9 @@ const component = require("./component");
 const test = require("./test");
 const tracking = require("./tracking");
 const disease_config = require("./disease_config");
+const pending = require("./pending");
+const completed = require("./completed");
+const lookback = require("./lookback");
 
 module.exports.register = async (server) => {
   await donor.register(server);
@@ -16,4 +19,7 @@ module.exports.register = async (server) => {
   await test.register(server);
   await tracking.register(server);
   await disease_config.register(server);
+  await pending.register(server);
+  await completed.register(server);
+  await lookback.register(server);
 };

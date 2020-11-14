@@ -1,0 +1,3 @@
+SELECT *
+FROM [dbo].[LOOKBACK_DATA]
+ORDER BY [Lookback_ID] DESC

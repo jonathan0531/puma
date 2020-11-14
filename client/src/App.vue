@@ -23,7 +23,20 @@
           </v-list-item>
         </router-link>
         <router-link
-          v-bind:to="{ name: 'SearchRecords' }"
+          v-bind:to="{ name: 'SearchLookback' }"
+          class="side_bar_link"
+        >
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>search</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text"
+              >Search Lookbacks</v-list-item-content
+            >
+          </v-list-item>
+        </router-link>
+        <router-link
+          v-bind:to="{ name: 'SearchDonations' }"
           class="side_bar_link"
         >
           <v-list-item>

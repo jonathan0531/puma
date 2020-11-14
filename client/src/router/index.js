@@ -4,7 +4,8 @@ import Completed from "@/components/Completed";
 import UserGuide from "@/components/UserGuide";
 import Pending from "@/components/Pending";
 import LookbackConfig from "@/components/LookbackConfig";
-import SearchRecords from "@/components/SearchRecords";
+import SearchDonations from "@/components/SearchDonations";
+import SearchLookback from "@/components/SearchLookback";
 import UpdateDonor from "@/components/UpdateDonor";
 import Register from "@/components/Register";
 import Login from "@/components/Login";
@@ -54,9 +55,14 @@ export default new Router({
       component: LookbackConfig
     },
     {
-      path: "/search",
-      name: "SearchRecords",
-      component: SearchRecords
+      path: "/search/donations",
+      name: "SearchDonations",
+      component: SearchDonations
+    },
+    {
+      path: "/search/lookback",
+      name: "SearchLookback",
+      component: SearchLookback
     },
     {
       path: "/login",

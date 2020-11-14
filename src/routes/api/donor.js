@@ -12,9 +12,6 @@ module.exports.register = async (server) => {
 
           const db = request.server.plugins.sql.client;
 
-          // TODO: Get the current authenticate user's ID
-          //const userId = "user1234";
-
           // execute the query
           const res = await db.donor.getDonor();
 

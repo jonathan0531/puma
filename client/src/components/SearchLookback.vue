@@ -1,12 +1,22 @@
 <template>
   <div>
-    <h1 id="margin">Pending Lookbacks</h1>
+    <h1 id="margin">Search Lookbacks</h1>
+    <div>
+      <b-form-fieldset horizontal label="Filter:" class="col-5">
+        <b-form-input
+          v-model="filter"
+          placeholder="Search Lookbacks"
+        ></b-form-input>
+      </b-form-fieldset>
+    </div>
+
     <div style="overflow: scroll">
       <b-table
         striped
         hover
-        :items="pending"
+        :items="lookback"
         :fields="fields"
+        :filter="filter"
         bordered
         head-variant="dark"
         small
@@ -124,20 +134,21 @@ export default {
           label: "Look_Processed",
         },
       ],
-      pending: [],
+      filter: "",
+      lookback: [],
     };
   },
   mounted() {
-    this.getPending();
+    this.getLookback();
   },
   methods: {
-    async getPending() {
+    async getLookback() {
       return axios({
         method: "get",
-        url: "http://localhost:5000/api/pending",
+        url: "http://localhost:5000/api/lookback",
       })
         .then((response) => {
-          this.pending = response.data;
+          this.lookback = response.data;
         })
         .catch((err) => {
           this.msg = err.message;

@@ -7,6 +7,9 @@ const component = require("./component");
 const test = require("./test");
 const tracking = require("./tracking");
 const disease_config = require("./disease_config");
+const pending = require("./pending");
+const completed = require("./completed");
+const lookback = require("./lookback");
 const sql = require("mssql");
 
 const client = async (server, config) => {
@@ -64,6 +67,9 @@ const client = async (server, config) => {
     component: await component.register({ sql, getConnection }),
     test: await test.register({ sql, getConnection }),
     tracking: await tracking.register({ sql, getConnection }),
+    pending: await pending.register({ sql, getConnection }),
+    completed: await completed.register({ sql, getConnection }),
+    lookback: await lookback.register({ sql, getConnection }),
     disease_config: await disease_config.register({ sql, getConnection }),
   };
 };
