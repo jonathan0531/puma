@@ -11,6 +11,15 @@
         head-variant="dark"
         small
       >
+        <template v-slot:cell(actions)="data">
+          <v-btn
+            icon
+            class="mx-0"
+            v-bind:to="`/form/notification/${data.item.Lookback_ID}`"
+          >
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
       </b-table>
     </div>
   </div>
@@ -25,6 +34,10 @@ export default {
     return {
       fields: [
         {
+          key: "actions",
+          label: "Initial Notification Form",
+        },
+        {
           key: "Lookback_ID",
           label: "Lookback_ID",
           sortable: true,
@@ -36,7 +49,6 @@ export default {
         {
           key: "Look_CMP_Code",
           label: "Look_CMP_Code",
-          sortable: true,
         },
         {
           key: "Disease_ID",
@@ -45,7 +57,6 @@ export default {
         {
           key: "Org_ID",
           label: "Org_ID",
-          sortable: true,
         },
         {
           key: "Donor_ID",

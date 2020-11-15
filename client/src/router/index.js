@@ -24,6 +24,7 @@ import UpdateTestConfig from "@/components/UpdateTestConfig";
 import DiseaseConfig from "@/components/DiseaseConfig";
 import AddDiseaseConfig from "@/components/AddDiseaseConfig";
 import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
+import InitialNotification from "@/components/InitialNotification";
 
 Vue.use(Router);
 
@@ -148,6 +149,11 @@ export default new Router({
       path: "/disease_config",
       name: "DiseaseConfig",
       component: DiseaseConfig
+    },
+    {
+      path: "/form/notification/:id",
+      name: "InitialNotification",
+      component: InitialNotification
     }
   ]
 });
