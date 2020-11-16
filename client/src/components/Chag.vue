@@ -30,7 +30,7 @@
               </v-col>
               <v-col class="v-col" cols="6" md="4" style="border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black;">
                 <v-card tile>
-                  <span style="padding-left: 4px">RESULT</span>
+                  <span style="padding-left: 4px">Positive</span>
                 </v-card>
               </v-col>
             </v-row>
@@ -42,7 +42,7 @@
               </v-col>
               <v-col class="v-col" cols="6" md="4" style="border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black;">
                 <v-card tile>
-                  <span style="padding-left: 4px">RESULT</span>
+                  <span style="padding-left: 4px">Positive</span>
                 </v-card>
               </v-col>
             </v-row>
@@ -533,7 +533,7 @@
                       </v-col>
                       <v-col class="v-col" cols="6" md="4" style="border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black;">
                         <v-card tile>
-                          <span style="padding-left: 4px">RESULT</span>
+                          <span style="padding-left: 4px">Positive</span>
                         </v-card>
                       </v-col>
                     </v-row>
@@ -545,7 +545,7 @@
                       </v-col>
                       <v-col class="v-col" cols="6" md="4" style="border-left: 2px solid black; border-bottom: 2px solid black; border-right: 2px solid black;">
                         <v-card tile>
-                          <span style="padding-left: 4px">RESULT</span>
+                          <span style="padding-left: 4px">Positive</span>
                         </v-card>
                       </v-col>
                     </v-row>
@@ -1003,7 +1003,7 @@
 
 <script>
 import axios from "axios";
-import jsPDF from "jspdf";
+import LookbackService from "@/services/LookbackService";
 import VueHtml2pdf from "vue-html2pdf";
 
 export default {
@@ -1013,18 +1013,43 @@ export default {
     name: "app",
     data() {
       return {
-        today: ""
+        today: "",
+        Lookback_ID: "",
+        Test_ID: "",
+        Disease_Desc: "",
+        BUI: "",
+        Look_CMP_Code: "",
+        Look_CMP_Desc: "",
+        Blood_Type: "",
+        Look_Ship_Date: "",
+        Look_Ship_ID: ""
       };
     },
 
     mounted() {
-    this.todayDate();
+      this.todayDate();
+      this.getOneLookback();
     },
 
     methods: {
       generateReport() {
         this.$refs.html2Pdf.generatePdf();
-      }
+      },
+      async getOneLookback() {
+        const response = await LookbackService.getOneLookback({
+          id: this.$route.params.id,
+        });
+        this.Lookback_ID = response.data.Lookback_ID;
+        this.Test_ID = response.data.Test_ID;
+        this.Disease_Desc = response.data.Disease_Desc;
+        this.BUI = response.data.BUI;
+        this.Look_CMP_Code = response.data.Look_CMP_Code;
+        this.Look_CMP_Desc = response.data.Look_CMP_Desc;
+        this.Blood_Type = response.data.Blood_Type;
+        this.Look_Ship_Date = response.data.Look_Ship_Date;
+        this.Look_Ship_ID = response.data.Look_Ship_ID;
+        console.log(this.Lookback_ID);
+      },
     },
 };
 </script>
