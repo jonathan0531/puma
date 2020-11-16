@@ -25,6 +25,7 @@ import DiseaseConfig from "@/components/DiseaseConfig";
 import AddDiseaseConfig from "@/components/AddDiseaseConfig";
 import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
 import InitialNotification from "@/components/InitialNotification";
+import Chag from "@/components/Chag";
 
 Vue.use(Router);
 
@@ -154,6 +155,11 @@ export default new Router({
       path: "/form/notification/:id",
       name: "InitialNotification",
       component: InitialNotification
+    },
+    {
+      path: "/chag",
+      name: "Chag",
+      component: Chag
     }
   ]
 });
