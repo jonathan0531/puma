@@ -24,7 +24,6 @@
                                                                 src="../assets/GCRBC-Logo-BLACK-450x133px.png"
                                                                 alt=""
                                                                 style="width:200px;" />
-                                                                {{today}}
                                                         </td>
                                                         <td style="text-align: right; border-bottom: 2px solid black; border-top: none; border-left: none; border-right: none;">SOP 1000.28</td>
                                                     </tr>
@@ -37,7 +36,7 @@
                                         <tr id="pbody" style="border: none;">
                                             <td style="border: none;"> <!-- page 1 content -->
                                                 <h3>URGENT LOOKBACK - RECIPIENT TRACING REQUIRED</h3>
-                                                <p>11/15/2020</p>
+                                                {{today}}
                                                 <br>
                                                 <br>
                                                 <p>
@@ -328,7 +327,6 @@
                                                                         src="../assets/GCRBC-Logo-BLACK-450x133px.png"
                                                                         alt=""
                                                                         style="width:200px;" />
-                                                                        {{today}}
                                                                 </td>
                                                                 <td style="text-align: right; border-bottom: 2px solid black; border-top: none; border-left: none; border-right: none;">SOP 1000.28</td>
                                                             </tr>
@@ -341,7 +339,7 @@
                                                 <tr id="pbody" style="border: none;">
                                                     <td style="border: none; height: 910px; vertical-align: top;"> <!-- page 1 content -->
                                                         <h3>URGENT LOOKBACK - RECIPIENT TRACING REQUIRED</h3>
-                                                        <p>11/15/2020</p>
+                                                        {{today}}
                                                         <br>
                                                         <br>
                                                         <p>
@@ -624,6 +622,7 @@ export default {
       Test_ID: "",
       Disease_ID: "",
       Disease_Desc: "",
+      today: "",
     };
   },
   mounted() {

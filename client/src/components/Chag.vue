@@ -394,7 +394,7 @@
         style="border-left: 2px solid black; border-bottom: 2px solid black"
       >
         <v-card class="text-center" tile v-if="Look_Ship_Date == '12/31/1969'">
-          <span class="letter"></span>
+          <span class="letter">N/A</span>
         </v-card>
         <v-card class="text-center" tile v-else>
           <span class="letter">{{Look_Ship_Date}}</span>
@@ -410,7 +410,10 @@
           border-right: 2px solid black;
         "
       >
-        <v-card class="text-center" tile>
+        <v-card class="text-center" tile v-if="Look_Ship_ID == NULL">
+          <span class="letter">N/A</span>
+        </v-card>
+        <v-card class="text-center" tile v-else>
           <span class="letter">{{Look_Ship_ID}}</span>
         </v-card>
       </v-col>
@@ -1541,7 +1544,7 @@
                 "
               >
                 <v-card class="text-center" tile v-if="Look_Ship_Date == '12/31/1969'">
-                  <span class="letter"></span>
+                  <span class="letter">N/A</span>
                 </v-card>
                 <v-card class="text-center" tile v-else>
                   <span class="letter">{{Look_Ship_Date}}</span>
@@ -1557,7 +1560,10 @@
                   border-right: 2px solid black;
                 "
               >
-                <v-card class="text-center" tile>
+                <v-card class="text-center" tile v-if="Look_Ship_ID == NULL">
+                  <span class="letter">N/A</span>
+                </v-card>
+                <v-card class="text-center" tile v-else>
                   <span class="letter">{{Look_Ship_ID}}</span>
                 </v-card>
               </v-col>
@@ -2335,7 +2341,7 @@ export default {
       Look_CMP_Desc: "",
       Blood_Type: "",
       Look_Ship_Date: "",
-      Look_Ship_ID: "",
+      Look_Ship_ID: NULL
     };
   },
   mounted() {
