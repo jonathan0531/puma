@@ -39,6 +39,12 @@
             <v-icon color="teal">edit</v-icon></v-btn
           >
         </template>
+
+        <template v-slot:cell(nat)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/nat/${data.item.Lookback_ID}`">
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
       </b-table>
     </div>
   </div>
@@ -63,13 +69,17 @@ export default {
           label: "Chag Form",
         },
         {
+          key: "nat",
+          label: "NAT Form",
+        },
+        {
           key: "Lookback_ID",
-          label: "Lookback_ID",
+          label: "Lookback ID",
           sortable: true,
         },
         {
           key: "Test_ID",
-          label: "Test_ID",
+          label: "Test ID",
         },
         {
           key: "BUI",
@@ -77,12 +87,12 @@ export default {
         },
         {
           key: "Look_CMP_Code",
-          label: "Look_CMP_Code",
+          label: "CMP Code",
           sortable: true,
         },
         {
           key: "Disease_ID",
-          label: "Disease_ID",
+          label: "Disease ID",
         },
         {
           key: "Org_ID",
@@ -91,75 +101,75 @@ export default {
         },
         {
           key: "Donor_ID",
-          label: "Donor_ID",
+          label: "Donor ID",
         },
         {
           key: "Look_Visit_Date",
-          label: "Look_Visit_Date",
+          label: "Visit Date",
         },
         {
           key: "Look_BUI",
-          label: "Look_BUI",
+          label: "Look BUI",
         },
         {
           key: "Look_CMP_Desc",
-          label: "Look_CMP_Desc",
+          label: "CMP Desc",
         },
         {
           key: "Look_CMP_Group",
-          label: "Look_CMP_Group",
+          label: "CMP Group",
         },
         {
           key: "Look_Loc_Code",
-          label: "Look_Loc_Code",
+          label: "Location",
         },
         {
           key: "Look_Sub_Loc",
-          label: "Look_Sub_Loc",
+          label: "Sub Loc",
         },
         {
           key: "Look_Stat_Code",
-          label: "Look_Stat_Code",
+          label: "Stat Code",
         },
         {
           key: "Look_Pooled",
-          label: "Look_Pooled",
+          label: "Pooled",
         },
         {
           key: "Look_Ship_Date",
-          label: "Look_Ship_Date",
+          label: "Shipment Date",
         },
         {
           key: "Look_Ship_ID",
-          label: "Look_Ship_ID",
+          label: "Shipment ID",
         },
         {
           key: "Look_Ship_Box_No",
-          label: "Look_Ship_Box_No",
+          label: "Ship Box No",
         },
         {
           key: "Look_Salvage_Date",
-          label: "Look_Salvage_Date",
+          label: "Salvage Date",
         },
         {
           key: "Look_Salvage_ID",
-          label: "Look_Salvage_ID",
+          label: "SalvageID",
         },
         {
           key: "Look_Sal_Carton_ID",
-          label: "Look_Sal_Carton_ID",
+          label: "Salvage Carton ID",
         },
         {
           key: "Look_Inv",
-          label: "Look_Inv",
+          label: "In Inventory",
         },
         {
           key: "Look_In_Date",
-          label: "Look_In_Date",
+          label: "In Date",
         },
         {
           key: "Look_Out_Date",
-          label: "Look_Out_Date",
+          label: "Out Date",
         },
         {
           key: "Look_Processed",
