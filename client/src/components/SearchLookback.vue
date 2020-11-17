@@ -24,12 +24,18 @@
         head-variant="dark"
         small
       >
-        <template v-slot:cell(actions)="data">
+        <template v-slot:cell(initial)="data">
           <v-btn
             icon
             class="mx-0"
             v-bind:to="`/form/notification/${data.item.Lookback_ID}`"
           >
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
+
+        <template v-slot:cell(chag)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/chag/${data.item.Lookback_ID}`">
             <v-icon color="teal">edit</v-icon></v-btn
           >
         </template>
@@ -49,13 +55,21 @@ export default {
     return {
       fields: [
         {
-          key: "actions",
+          key: "initial",
           label: "Initial Notification Form",
+        },
+        {
+          key: "chag",
+          label: "Chag Form",
         },
         {
           key: "Lookback_ID",
           label: "Lookback_ID",
           sortable: true,
+        },
+        {
+          key: "Test_ID",
+          label: "Test_ID",
         },
         {
           key: "BUI",
