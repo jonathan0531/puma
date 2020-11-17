@@ -4,46 +4,6 @@
         <v-btn class="btn" color="primary" @click="generateReport"
             >Generate Report</v-btn>
         <head>
-        <!-- <style>
-        table, th, td {
-        border: 1px solid black;
-        padding: 2px;
-        }
-        #NAT {
-            width: 850px;
-        }
-        #body {
-            width: 100%;
-            height: 100%;
-            vertical-align:top;
-        }
-        #page {
-            width: 100%;
-            height: 1100px;
-            vertical-align:top;
-        }
-        #phead {
-            background-color: #f1f1c1;
-            width: 6%;
-        }
-        #pbody {
-            width: 100%;
-            height: 100%;
-            vertical-align:top;
-        }
-        #pfoot {
-            background-color: #f1f1c1;
-            width: 6%;
-        }
-        #RMarg {
-            background-color: #f1f1c1;
-            width: 7%;
-        }
-        #LMarg {
-            background-color: #f1f1c1;
-            width: 7%;
-        }
-        </style> -->
         </head>
         <body>
             <table id="NAT" style="border: none;"> <!-- Scope of NAT document design -->
@@ -64,6 +24,7 @@
                                                                 src="../assets/GCRBC-Logo-BLACK-450x133px.png"
                                                                 alt=""
                                                                 style="width:200px;" />
+                                                                {{today}}
                                                         </td>
                                                         <td style="text-align: right; border-bottom: 2px solid black; border-top: none; border-left: none; border-right: none;">SOP 1000.28</td>
                                                     </tr>
@@ -93,13 +54,19 @@
 
                                                 <table style="width: 100%">
                                                     <tr>
-                                                        <th colspan="3" style="text-align: center"> Hepatitis C <input type="checkbox" /></th>
+                                                        <th colspan="3" style="text-align: center; background-color: #A8A8A8"> {{Disease_ID}} </th>
                                                     </tr>
                                                     <tr>
-                                                        <td>tests</td>
-                                                        <td style="width:150px"> Negative <input type="checkbox" /></td>
+                                                        <td style="padding-left: 4px">{{Disease_Desc}}</td>
+                                                        <td style="width:150px; padding-left: 4px"> Negative <input type="checkbox" /></td>
                                                             
-                                                        <td style="width:150px"> Positive <input type="checkbox" /></td>
+                                                        <td style="width:150px; padding-left: 4px"> Positive <input type="checkbox" checked/></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td style="padding-left: 4px">Supplemental Test</td>
+                                                        <td style="width:150px; padding-left: 4px"> Negative <input type="checkbox" /></td>
+                                                            
+                                                        <td style="width:150px; padding-left: 4px"> Positive <input type="checkbox"/></td>
                                                     </tr>
                                                 </table>
                                                 <p>
@@ -116,19 +83,10 @@
                                                 </p>
                                             </td>
                                         </tr>
-                                        <tr id="pfoot" style="border: none;"> <!-- page 1 footer -->
-                                            <td style="border: none;">
-                                                <table style="width:100%; border: none;">
-                                                    <tr style="border: none;">
-                                                        <td style="border: none;">DOC ID</td>
-                                                        <td style="border: none; width:90%; text-align: center;">Commit for Life.®</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
                                     </table>
                                 </td>
                             </tr>
+                            <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
                             <tr id="page2" style="border: none;"> <!-- page 2 -->
                                 <td style="border: none;">
                                     <table id="body" style="width: 100%; border: none;">
@@ -154,10 +112,58 @@
                                         <tr id="pbody" style="border: none;">
                                             <td style="border: none;"> <!-- page 2 content -->
                                                 <h3>Lookback Notification Recipient Status Report</h3>
-                                                <table style="width: 100%;">
+                                                <table style="width: 100%;" v-if="Disease_ID=== 'HIV'">
                                                     <tr>
                                                         <td><b>&nbsp;Tests Ordered</b></td>
-                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                        <td style="text-align: center;"> <input type="checkbox" checked/>&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                    </tr>
+                                                </table>
+                                                <table style="width: 100%;" v-else-if="Disease_ID=== 'HCV'">
+                                                    <tr>
+                                                        <td><b>&nbsp;Tests Ordered</b></td>
+                                                        <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                        <td style="text-align: center;"><input type="checkbox" checked />&nbsp;Anti-HCV & HCV NAT </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                    </tr>
+                                                </table>
+                                                <table style="width: 100%;" v-else-if="Disease_ID=== 'WNV'">
+                                                    <tr>
+                                                        <td><b>&nbsp;Tests Ordered</b></td>
+                                                        <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align: center;"><input type="checkbox" checked />&nbsp;NAT WNV </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                    </tr>
+                                                </table>
+                                                <table style="width: 100%;" v-else-if="Disease_ID=== 'HBV'">
+                                                    <tr>
+                                                        <td><b>&nbsp;Tests Ordered</b></td>
+                                                        <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                        <td style="text-align: center;"><input type="checkbox" checked />&nbsp;HBsAg and HBV NAT </td>
+                                                    </tr>
+                                                </table>
+                                                <table style="width: 100%;" v-else>
+                                                    <tr>
+                                                        <td><b>&nbsp;Tests Ordered</b></td>
+                                                        <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
                                                         <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
                                                     </tr>
                                                     <tr>
@@ -179,26 +185,27 @@
                                                 </ul>
                                                 <table style="width: 100%;">
                                                     <tr >
-                                                        <td>&nbsp;Transfusing Facility</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Transfusing Facility</td>
                                                         <td colspan="4"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>&nbsp;Recipient Unique ID#:</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Recipient Unique ID#:</td>
                                                         <td colspan="4"></td>
                                                     </tr>
                                                     <tr>
-                                                        <td>&nbsp;Unit Number</td>
-                                                        <td>&nbsp;Component Code/Type</td>
-                                                        <td>&nbsp;Blood Type</td>
-                                                        <td>&nbsp;Shipment Date</td>
-                                                        <td>&nbsp;Shipment #</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Unit Number</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Component Code/Type</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Blood Type</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Shipment Date</td>
+                                                        <td style="background-color: #E8E8E8">&nbsp;Shipment #</td>
                                                     </tr>
                                                     <tr>
-                                                        <td>&nbsp;unit#</td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td></td>
-                                                        <td style="text-align: center;">/</td>
+                                                        <td style="text-align: center;">{{BUI}}</td>
+                                                        <td style="text-align: center;">{{Look_CMP_Code}} / {{Look_CMP_Desc}}</td>
+                                                        <td style="text-align: center;">{{Blood_Type}}</td>
+                                                        <td style="text-align: center;" v-if="Look_Ship_Date == '12/31/1969'"></td>
+                                                        <td style="text-align: center;" v-else>{{Look_Ship_Date}}</td>
+                                                        <td style="text-align: center;">{{Look_Ship_ID}}</td>
                                                     </tr>
                                                     <tr>
                                                         <td colspan="5" style="background-color: #999999; text-align: center;">
@@ -272,16 +279,7 @@
                                                 </p>
                                             </td>
                                         </tr>
-                                        <tr id="pfoot" style="border: none;"> <!-- page 2 footer -->
-                                            <td style="border: none;">
-                                                <table style="width:100%; border: none;">
-                                                    <tr style="border: none;">
-                                                        <td style="border: none;">DOC ID</td>
-                                                        <td style="border: none; width:90%; text-align: center;">Commit for Life.®</td>
-                                                    </tr>
-                                                </table>
-                                            </td>
-                                        </tr>
+                                       <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
                                     </table>
                                 </td>
                             </tr>
@@ -292,8 +290,6 @@
             </table>
 
         </body>
-        
-
       <div>
         <vue-html2pdf
           :show-layout="false"
@@ -332,6 +328,7 @@
                                                                         src="../assets/GCRBC-Logo-BLACK-450x133px.png"
                                                                         alt=""
                                                                         style="width:200px;" />
+                                                                        {{today}}
                                                                 </td>
                                                                 <td style="text-align: right; border-bottom: 2px solid black; border-top: none; border-left: none; border-right: none;">SOP 1000.28</td>
                                                             </tr>
@@ -361,13 +358,19 @@
 
                                                         <table style="width: 100%">
                                                             <tr>
-                                                                <th colspan="3" style="text-align: center"> Hepatitis C <input type="checkbox" /></th>
+                                                                <th colspan="3" style="text-align: center; background-color: #A8A8A8"> {{Disease_ID}} </th>
                                                             </tr>
                                                             <tr>
-                                                                <td>tests</td>
-                                                                <td style="width:150px"> Negative <input type="checkbox" /></td>
+                                                                <td style="padding-left: 4px">{{Disease_Desc}}</td>
+                                                                <td style="width:150px; padding-left: 4px"> Negative <input type="checkbox" /></td>
                                                                     
-                                                                <td style="width:150px"> Positive <input type="checkbox" /></td>
+                                                                <td style="width:150px; padding-left: 4px"> Positive <input type="checkbox" checked/></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td style="padding-left: 4px">Supplemental Test</td>
+                                                                <td style="width:150px; padding-left: 4px"> Negative <input type="checkbox" /></td>
+                                                                    
+                                                                <td style="width:150px; padding-left: 4px"> Positive <input type="checkbox"/></td>
                                                             </tr>
                                                         </table>
                                                         <p>
@@ -384,19 +387,10 @@
                                                         </p>
                                                     </td>
                                                 </tr>
-                                                <tr id="pfoot" style="border: none;"> <!-- page 1 footer -->
-                                                    <td style="border: none;">
-                                                        <table style="width:100%; border: none;">
-                                                            <tr style="border: none;">
-                                                                <td style="border: none;">DOC ID</td>
-                                                                <td style="border: none; width:90%; text-align: center;">Commit for Life.®</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
                                             </table>
                                         </td>
                                     </tr>
+                                    <img class="img" src="../assets/chag_footer_1.jpg" alt="" /><br><br><br><br>
                                     <tr id="page" style="border: none;"> <!-- page 2 -->
                                         <td style="border: none;">
                                             <table id="body" style="width: 100%; border: none;">
@@ -422,10 +416,58 @@
                                                 <tr id="pbody" style="border: none;">
                                                     <td style="border: none; height: 910px; vertical-align: top;"> <!-- page 2 content -->
                                                         <h3>Lookback Notification Recipient Status Report</h3>
-                                                        <table style="width: 100%;">
+                                                        <table style="width: 100%;" v-if="Disease_ID=== 'HIV'">
                                                             <tr>
                                                                 <td><b>&nbsp;Tests Ordered</b></td>
-                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                                <td style="text-align: center;"> <input type="checkbox" checked/>&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table style="width: 100%;" v-else-if="Disease_ID=== 'HCV'">
+                                                            <tr>
+                                                                <td><b>&nbsp;Tests Ordered</b></td>
+                                                                <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                                <td style="text-align: center;"><input type="checkbox" checked />&nbsp;Anti-HCV & HCV NAT </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table style="width: 100%;" v-else-if="Disease_ID=== 'WNV'">
+                                                            <tr>
+                                                                <td><b>&nbsp;Tests Ordered</b></td>
+                                                                <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td style="text-align: center;"><input type="checkbox" checked />&nbsp;NAT WNV </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;HBsAg and HBV NAT </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table style="width: 100%;" v-else-if="Disease_ID=== 'HBV'">
+                                                            <tr>
+                                                                <td><b>&nbsp;Tests Ordered</b></td>
+                                                                <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td></td>
+                                                                <td style="text-align: center;"><input type="checkbox" />&nbsp;NAT WNV </td>
+                                                                <td style="text-align: center;"><input type="checkbox" checked />&nbsp;HBsAg and HBV NAT </td>
+                                                            </tr>
+                                                        </table>
+                                                        <table style="width: 100%;" v-else>
+                                                            <tr>
+                                                                <td><b>&nbsp;Tests Ordered</b></td>
+                                                                <td style="text-align: center;"> <input type="checkbox" />&nbsp;Anti-HIV-1/2+O & HIV NAT </td>
                                                                 <td style="text-align: center;"><input type="checkbox" />&nbsp;Anti-HCV & HCV NAT </td>
                                                             </tr>
                                                             <tr>
@@ -447,26 +489,27 @@
                                                         </ul>
                                                         <table style="width: 100%;">
                                                             <tr >
-                                                                <td>&nbsp;Transfusing Facility</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Transfusing Facility</td>
                                                                 <td colspan="4"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp;Recipient Unique ID#:</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Recipient Unique ID#:</td>
                                                                 <td colspan="4"></td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp;Unit Number</td>
-                                                                <td>&nbsp;Component Code/Type</td>
-                                                                <td>&nbsp;Blood Type</td>
-                                                                <td>&nbsp;Shipment Date</td>
-                                                                <td>&nbsp;Shipment #</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Unit Number</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Component Code/Type</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Blood Type</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Shipment Date</td>
+                                                                <td style="background-color: #E8E8E8">&nbsp;Shipment #</td>
                                                             </tr>
                                                             <tr>
-                                                                <td>&nbsp;unit#</td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td></td>
-                                                                <td style="text-align: center;">/</td>
+                                                                <td style="text-align: center;">{{BUI}}</td>
+                                                                <td style="text-align: center;">{{Look_CMP_Code}} / {{Look_CMP_Desc}}</td>
+                                                                <td style="text-align: center;">{{Blood_Type}}</td>
+                                                                <td style="text-align: center;" v-if="Look_Ship_Date == '12/31/1969'"></td>
+                                                                <td style="text-align: center;" v-else>{{Look_Ship_Date}}</td>
+                                                                <td style="text-align: center;">{{Look_Ship_ID}}</td>
                                                             </tr>
                                                             <tr>
                                                                 <td colspan="5" style="background-color: #999999; text-align: center;">
@@ -540,17 +583,8 @@
                                                         </p>
                                                     </td>
                                                 </tr>
-                                                <tr id="pfoot" style="border: none;"> <!-- page 2 footer -->
-                                                    <td style="border: none;">
-                                                        <table style="width:100%; border: none;">
-                                                            <tr style="border: none;">
-                                                                <td style="border: none;">DOC ID</td>
-                                                                <td style="border: none; width:90%; text-align: center;">Commit for Life.®</td>
-                                                            </tr>
-                                                        </table>
-                                                    </td>
-                                                </tr>
                                             </table>
+                                            <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
                                         </td>
                                     </tr>
                                 </table>
@@ -558,7 +592,6 @@
                             <td id="RMarg" style="border: none; width: 7%;"></td> <!-- document right margin -->
                         </tr>
                     </table>
-
                 </body>
             </section>
         </vue-html2pdf>
@@ -588,29 +621,51 @@ export default {
       Look_CMP_Desc: "",
       Look_CMP_Group: "",
       Look_Loc_Code: "",
+      Test_ID: "",
+      Disease_ID: "",
+      Disease_Desc: "",
     };
   },
   mounted() {
-    this.getOneLookback();
+    this.getNatLookback()
   },
   methods: {
     generateReport() {
       this.$refs.html2Pdf.generatePdf();
     },
-    async getOneLookback() {
-      const response = await LookbackService.getOneLookback({
+    async getNatLookback() {
+      const response = await LookbackService.getNatLookback({
         id: this.$route.params.id,
       });
       this.Lookback_ID = response.data.Lookback_ID;
       this.BUI = response.data.BUI;
       this.Look_CMP_Code = response.data.Look_CMP_Code;
-      this.Org_ID = response.data.Org_ID;
-      this.Donor_ID = response.data.Donor_ID;
-      this.Look_Visit_Date = response.data.Look_Visit_Date;
-      this.Look_BUI = response.data.Look_BUI;
       this.Look_CMP_Desc = response.data.Look_CMP_Desc;
-      this.Look_CMP_Group = response.data.Look_CMP_Group;
-      this.Look_Loc_Code = response.data.Look_Loc_Code;
+      this.Blood_Type = response.data.Blood_Type;
+      this.Disease_ID = response.data.Disease_ID;
+      this.Disease_Desc = response.data.Disease_Desc;
+      this.Test_ID = response.data.Test_ID;
+      var Look_Ship_Date = new Date(response.data.Look_Ship_Date);
+      var dd = Look_Ship_Date.getDate();
+      var mm = Look_Ship_Date.getMonth()+1; 
+      var yyyy = Look_Ship_Date.getFullYear();
+      if(dd<10) {dd='0'+dd;} 
+
+      if(mm<10) {mm='0'+mm;} 
+      Look_Ship_Date = mm+'/'+dd+'/'+yyyy;
+      this.Look_Ship_Date = Look_Ship_Date;
+      this.Look_Ship_ID = response.data.Look_Ship_ID;
+
+      var today = new Date();
+      var dd2 = today.getDate();
+
+      var mm2 = today.getMonth()+1; 
+      var yyyy2 = today.getFullYear();
+      if(dd2<10) {dd2='0'+dd2;} 
+
+      if(mm2<10) {mm2='0'+mm2;} 
+      today = mm2+'/'+dd2+'/'+yyyy2;
+      this.today = today;
       console.log(this.Lookback_ID);
     },
   },

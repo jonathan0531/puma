@@ -566,6 +566,7 @@ export default {
       Look_CMP_Desc: "",
       Look_CMP_Group: "",
       Look_Loc_Code: "",
+      today: ""
     };
   },
 
