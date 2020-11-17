@@ -40,4 +40,21 @@ module.exports.register = async (server) => {
       },
     },
   });
+
+  server.route({
+    method: "GET",
+    path: "/api/nat/{Lookback_ID}",
+    config: {
+      handler: async (request) => {
+        try {
+          const Lookback_ID = request.params.Lookback_ID;
+          const db = request.server.plugins.sql.client;
+          const res = await db.lookback.getNatLookback({ Lookback_ID });
+          return res.recordset[0];
+        } catch (err) {
+          console.log(err);
+        }
+      },
+    },
+  });
 };

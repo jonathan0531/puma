@@ -163,7 +163,7 @@ export default new Router({
       component: Chag
     },
     {
-      path: "/nat",
+      path: "/nat/:id",
       name: "NAT",
       component: NAT
     }
