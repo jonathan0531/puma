@@ -594,15 +594,15 @@ export default {
   },
 
   mounted() {
-    this.getOneLookback();
+    this.getInitLookback();
   },
 
   methods: {
     generateReport() {
       this.$refs.html2Pdf.generatePdf();
     },
-    async getOneLookback() {
-      const response = await LookbackService.getOneLookback({
+    async getInitLookback() {
+      const response = await LookbackService.getInitLookback({
         id: this.$route.params.id,
       });
       this.Lookback_ID = response.data.Lookback_ID;
