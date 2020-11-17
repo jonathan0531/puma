@@ -13,3 +13,4 @@ JOIN [dbo].[TEST_CONFIG] [tc]
 ON [tc].[Disease_ID] =[dc].[Disease_ID]
 JOIN [dbo].[DONOR] [d]
 ON [d].[Donor_ID] = [td].[Donor_ID]
+WHERE	[Lookback_ID] = @Lookback_ID
