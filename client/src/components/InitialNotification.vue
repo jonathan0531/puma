@@ -9,8 +9,9 @@
       <h3>Consignee Notification - Inventory Lookback</h3>
       <table style="width: 100%">
         <tr>
-          <label>Consignee: Plasma Llc/Korean Green Cross</label>
-          <!-- <input v-model="message" placeholder="placeholder" /> -->
+          <input style="width: 195px; margin-left: 15px" v-model="Org_Name" />
+          <label style="margin-left: 5px">/</label>
+          <input v-model="Contact" />
         </tr>
         <tr>
           <td>
@@ -50,14 +51,14 @@
             <label>Unit Number:</label>
           </td>
           <td>
-            <input id="input" v-model="BUI" />
+            <input id="input" v-model="Look_BUI" />
           </td>
 
           <td>
             <label>Date Drawn</label>
           </td>
           <td>
-            <input id="input" placeholder="10/18/2020" />
+            <input id="input" style="width: 82px" v-model="Donation_Date" />
           </td>
         </tr>
         <tr>
@@ -65,13 +66,16 @@
             <label>Component: </label>
           </td>
           <td>
-            <input id="input" placeholder="E5622 - PLASMA >24" />
+            <input id="input" style="width: 50px" v-model="Look_CMP_Code" />
+            /
+            <input v-model="Look_CMP_Desc" />
           </td>
           <td>
             <label>Box / Shipment</label>
           </td>
           <td>
-            <input id="input" placeholder="G6011573" />
+            <label>N/A </label>
+            <input id="input" v-model="Look_Ship_Box_No" />
           </td>
         </tr>
         <tr>
@@ -79,7 +83,8 @@
             <label>Shipment Date:</label>
           </td>
           <td>
-            <input id="input" placeholder="03/31/2020" />
+            <label>N/A </label>
+            <input id="input" v-model="Look_Ship_Date" />
           </td>
         </tr>
       </table>
@@ -133,7 +138,8 @@
             <label>Confirmatory Test Result:</label>
           </td>
           <td colspan="4">
-            <input id="input" placeholder="IHCV - Negative" />
+            <input id="input" style="width: 90px" v-model="Disease_ID" />
+            <label>- Negative</label>
           </td>
         </tr>
         <tr>
@@ -149,7 +155,8 @@
             <label>Supplemental Test Result:</label>
           </td>
           <td colspan="3">
-            <input id="input" placeholder="HXV2 - Negative" />
+            <input id="input" style="width: 90px" v-model="Disease_ID" />
+            <label>- Negative</label>
           </td>
         </tr>
         <tr>
@@ -273,19 +280,21 @@
         >
           <section slot="pdf-content">
             <img class="img" src="../assets/bc.png" alt="" />
-
             <h2>URGENT</h2>
             <h3>Consignee Notification - Inventory Lookback</h3>
-
             <table style="width: 100%">
               <tr>
-                <label>Consignee: Plasma Llc/Korean Green Cross</label>
-                <!-- <input v-model="message" placeholder="placeholder" /> -->
+                <input
+                  style="width: 195px; margin-left: 15px"
+                  v-model="Org_Name"
+                />
+                <label style="margin-left: 5px">/</label>
+                <input v-model="Contact" />
               </tr>
               <tr>
                 <td>
-                  <label>Date of Priliminary Notification: </label>
-                  <input v-model="Lookback_ID" />
+                  <label>Date of Preliminary Notification: </label>
+                  <input placeholder="10/01/2020" />
                 </td>
                 <td>
                   <label>Completed By: Robin Fuller</label>
@@ -294,7 +303,7 @@
               <tr>
                 <td>
                   <label>Date of Final Notification: </label>
-                  <input v-model="BUI" placeholder="10/20/2020" />
+                  <input placeholder="10/20/2020" />
                 </td>
                 <td>
                   <label>Completed By: Robin Fuller</label>
@@ -313,8 +322,6 @@
                 <th colspan="4">
                   <label> Cosigned Unit / Product Information</label>
                 </th>
-
-                <th></th>
               </tr>
 
               <tr>
@@ -322,14 +329,18 @@
                   <label>Unit Number:</label>
                 </td>
                 <td>
-                  <input id="input" v-model="BUI" />
+                  <input id="input" v-model="Look_BUI" />
                 </td>
 
                 <td>
                   <label>Date Drawn</label>
                 </td>
                 <td>
-                  <input id="input" placeholder="10/18/2020" />
+                  <input
+                    id="input"
+                    style="width: 82px"
+                    v-model="Donation_Date"
+                  />
                 </td>
               </tr>
               <tr>
@@ -337,13 +348,20 @@
                   <label>Component: </label>
                 </td>
                 <td>
-                  <input id="input" placeholder="E5622 - PLASMA >24" />
+                  <input
+                    id="input"
+                    style="width: 50px"
+                    v-model="Look_CMP_Code"
+                  />
+                  /
+                  <input v-model="Look_CMP_Desc" />
                 </td>
                 <td>
                   <label>Box / Shipment</label>
                 </td>
                 <td>
-                  <input id="input" placeholder="G6011573" />
+                  <label>N/A </label>
+                  <input id="input" v-model="Look_Ship_Box_No" />
                 </td>
               </tr>
               <tr>
@@ -351,7 +369,8 @@
                   <label>Shipment Date:</label>
                 </td>
                 <td>
-                  <input id="input" placeholder="03/31/2020" />
+                  <label>N/A </label>
+                  <input id="input" v-model="Look_Ship_Date" />
                 </td>
               </tr>
             </table>
@@ -392,6 +411,7 @@
                 </td>
               </tr>
             </table>
+
             <table style="width: 100%">
               <tr id="header">
                 <th colspan="4">
@@ -404,7 +424,8 @@
                   <label>Confirmatory Test Result:</label>
                 </td>
                 <td colspan="4">
-                  <input id="input" placeholder="IHCV - Negative" />
+                  <input id="input" style="width: 90px" v-model="Disease_ID" />
+                  <label>- Negative</label>
                 </td>
               </tr>
               <tr>
@@ -420,7 +441,8 @@
                   <label>Supplemental Test Result:</label>
                 </td>
                 <td colspan="3">
-                  <input id="input" placeholder="HXV2 - Negative" />
+                  <input id="input" style="width: 90px" v-model="Disease_ID" />
+                  <label>- Negative</label>
                 </td>
               </tr>
               <tr>
@@ -444,6 +466,7 @@
                 </td>
               </tr>
             </table>
+
             <table style="width: 100%">
               <tr id="header">
                 <th colspan="4">
@@ -557,15 +580,18 @@ export default {
         },
       },
       Lookback_ID: "",
-      BUI: "",
+      Look_Ship_date: "",
       Look_CMP_Code: "",
       Org_ID: "",
-      Donor_ID: "",
-      Look_Visit_Date: "",
+      Org_Name: "",
+      Contact: "",
       Look_BUI: "",
       Look_CMP_Desc: "",
-      Look_CMP_Group: "",
-      Look_Loc_Code: "",
+      Look_Ship_ID: "",
+      Look_Ship_Box_No: "",
+      Disease_ID: "",
+      Disease_Desc: "",
+      Donation_Date: "",
     };
   },
 
@@ -582,15 +608,20 @@ export default {
         id: this.$route.params.id,
       });
       this.Lookback_ID = response.data.Lookback_ID;
-      this.BUI = response.data.BUI;
+      this.Look_Ship_date = response.data.Look_Ship_date;
       this.Look_CMP_Code = response.data.Look_CMP_Code;
       this.Org_ID = response.data.Org_ID;
-      this.Donor_ID = response.data.Donor_ID;
-      this.Look_Visit_Date = response.data.Look_Visit_Date;
+      this.Org_Name = response.data.Org_Name;
+      this.Contact = response.data.Contact;
       this.Look_BUI = response.data.Look_BUI;
       this.Look_CMP_Desc = response.data.Look_CMP_Desc;
-      this.Look_CMP_Group = response.data.Look_CMP_Group;
+      this.Look_Ship_ID = response.data.Look_Ship_ID;
+      this.Look_Ship_Box_No = response.data.Look_Ship_Box_No;
+      this.Disease_ID = response.data.Disease_ID;
+      this.Disease_Desc = response.data.Disease_Desc;
       this.Look_Loc_Code = response.data.Look_Loc_Code;
+      this.Donation_Date = response.data.Donation_Date;
+      this.Look_Ship_Box_No = response.data.Look_Ship_Box_No;
       console.log(this.Lookback_ID);
     },
   },
@@ -645,7 +676,7 @@ h3 {
 #header {
   text-align: center;
   vertical-align: middle;
-  background: #CCC;
+  background: #ccc;
 }
 /* footer {
   position: absolute;
