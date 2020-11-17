@@ -157,7 +157,7 @@ export default new Router({
       component: InitialNotification
     },
     {
-      path: "/chag",
+      path: "/chag/:id",
       name: "Chag",
       component: Chag
     }
