@@ -587,17 +587,9 @@ export default {
       Contact: "",
       Look_BUI: "",
       Look_CMP_Desc: "",
-<<<<<<< HEAD
       Look_CMP_Group: "",
       Look_Loc_Code: "",
       today: ""
-=======
-      Look_Ship_ID: "",
-      Look_Ship_Box_No: "",
-      Disease_ID: "",
-      Disease_Desc: "",
-      Donation_Date: "",
->>>>>>> 6ff9ee42e816d1b1e016a94fcdc663624bef81c5
     };
   },
 
