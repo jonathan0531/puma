@@ -26,6 +26,7 @@ import AddDiseaseConfig from "@/components/AddDiseaseConfig";
 import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
 import InitialNotification from "@/components/InitialNotification";
 import Chag from "@/components/Chag";
+import NAT from "@/components/NAT";
 
 Vue.use(Router);
 
@@ -160,6 +161,11 @@ export default new Router({
       path: "/chag",
       name: "Chag",
       component: Chag
+    },
+    {
+      path: "/nat",
+      name: "NAT",
+      component: NAT
     }
   ]
 });
