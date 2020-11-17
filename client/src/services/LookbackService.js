@@ -4,7 +4,7 @@ export default {
   getOneLookback(params) {
     return Api().get("lookback/" + params.id);
   },
-  getNATLookback(params) {
+  getNatLookback(params) {
     return Api().get("nat/" + params.id);
   }
 };
