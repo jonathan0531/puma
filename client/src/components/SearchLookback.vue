@@ -68,6 +68,10 @@ export default {
           sortable: true,
         },
         {
+          key: "Test_ID",
+          label: "Test_ID",
+        },
+        {
           key: "BUI",
           label: "BUI",
         },

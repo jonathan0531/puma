@@ -89,6 +89,7 @@
           >
             <v-card tile>
               <span style="padding-left: 4px">TEST NAME</span>
+              <input v-model="Test_ID" />
             </v-card>
           </v-col>
           <v-col
