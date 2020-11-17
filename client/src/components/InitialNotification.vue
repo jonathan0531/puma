@@ -174,6 +174,86 @@
         </tr>
       </table>
 
+      <table style="width: 100%">
+        <tr id="header">
+          <th colspan="4">
+            <label>Consignee Response</label>
+          </th>
+        </tr>
+        <tr>
+          <td style="text-align: center" colspan="4">
+            <label>
+              Please complete the disposition information below and return this
+              form to Donor Services
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>
+              <input type="checkbox" />
+              Transfused Date:
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="checkbox" />
+              Pooled/Further Manufacturer
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>
+              <input type="checkbox" />
+              Destroyed / Discarded Date:
+            </label>
+          </td>
+          <td>
+            <label>
+              <input type="checkbox" />
+              Other
+            </label>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>
+              <input type="checkbox" />
+              Transferred / Consigned to:
+            </label>
+          </td>
+          <td>
+            <label> Date: </label>
+          </td>
+        </tr>
+      </table>
+
+      <table id="pad" style="width: 100%">
+        <tr>
+          <td colspan="2">
+            <label>
+              <input type="checkbox" />
+              Form Completed By:
+            </label>
+          </td>
+          <td>
+            <label> Date: </label>
+          </td>
+        </tr>
+      </table>
+      <footer>
+        <div style="text-align: center">
+          <p>
+            Return by Fax to: <br />
+            Technical Services <br />
+            Phone Number (713) 791-6606 <br />
+            Fax Number (713) 791-6651
+          </p>
+        </div>
+        <img class="img" src="../assets/footer.png" alt="" />
+      </footer>
+      <!-- START OF PDF FILE -->
       <div>
         <vue-html2pdf
           :show-layout="false"
@@ -181,12 +261,11 @@
           :enable-download="true"
           :preview-modal="true"
           :paginate-elements-by-height="2000"
-          filename="Initial"
+          :htmlToPdfOptions="htmlToPdfOptions"
           :pdf-quality="2"
           :manual-pagination="false"
-          pdf-format="a3"
-          pdf-orientation="portrait"
           pdf-content-width="90%"
+          @beforeDownload="beforeDownload($event)"
           @progress="onProgress($event)"
           @hasStartedGeneration="hasStartedGeneration()"
           @hasGenerated="hasGenerated($event)"
@@ -365,9 +444,89 @@
                 </td>
               </tr>
             </table>
+            <table style="width: 100%">
+              <tr id="header">
+                <th colspan="4">
+                  <label>Consignee Response</label>
+                </th>
+              </tr>
+              <tr>
+                <td style="text-align: center" colspan="4">
+                  <label>
+                    Please complete the disposition information below and return
+                    this form to Donor Services
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
+                    <input type="checkbox" />
+                    Transfused Date:
+                  </label>
+                </td>
+                <td>
+                  <label>
+                    <input type="checkbox" />
+                    Pooled/Further Manufacturer
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
+                    <input type="checkbox" />
+                    Destroyed / Discarded Date:
+                  </label>
+                </td>
+                <td>
+                  <label>
+                    <input type="checkbox" />
+                    Other
+                  </label>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <label>
+                    <input type="checkbox" />
+                    Transferred / Consigned to:
+                  </label>
+                </td>
+                <td>
+                  <label> Date: </label>
+                </td>
+              </tr>
+            </table>
+
+            <table id="pad" style="width: 100%">
+              <tr>
+                <td colspan="2">
+                  <label>
+                    <input type="checkbox" />
+                    Form Completed By:
+                  </label>
+                </td>
+                <td>
+                  <label> Date: </label>
+                </td>
+              </tr>
+            </table>
+            <footer>
+              <div style="text-align: center">
+                <p>
+                  Return by Fax to: <br />
+                  Technical Services <br />
+                  Phone Number (713) 791-6606 <br />
+                  Fax Number (713) 791-6651
+                </p>
+              </div>
+              <img class="img" src="../assets/footer.png" alt="" />
+            </footer>
           </section>
         </vue-html2pdf>
       </div>
+      <!-- END OF PDF FILE -->
     </v-flex>
   </div>
 </template>
@@ -384,6 +543,19 @@ export default {
   name: "app",
   data() {
     return {
+      htmlToPdfOptions: {
+        margin: [0, 20, 20, 0],
+        filename: `Initial Notification.pdf`,
+        image: {
+          type: "jpeg",
+          quality: 2,
+        },
+
+        jsPDF: {
+          format: "a3",
+          orientation: "portrait",
+        },
+      },
       Lookback_ID: "",
       BUI: "",
       Look_CMP_Code: "",
@@ -474,5 +646,13 @@ h3 {
   text-align: center;
   vertical-align: middle;
   background: #CCC;
+}
+/* footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+} */
+#pad {
+  margin-bottom: 220px;
 }
 </style>
