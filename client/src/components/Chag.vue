@@ -13,7 +13,9 @@
             <v-row no-gutters justify="center">
               <v-col  class="v-col" cols="12" sm="6" md="8" style="border-left: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black;">
                 <v-card class="text-center" color="grey lighten-2" tile>
-                  <span class = "bold letter">TEST NAME</span> 
+                  <span class = "bold letter">
+                    <input v-model="Lookback_ID" />
+                    </span> 
                 </v-card>
               </v-col>
               <v-col class="v-col" cols="6" md="4" style="border-left: 2px solid black; border-bottom: 2px solid black; border-top: 2px solid black; border-right: 2px solid black;">
