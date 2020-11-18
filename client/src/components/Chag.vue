@@ -5,8 +5,8 @@
         >Generate Report</v-btn
       >
       <img class="img" src="../assets/chag_header_1.jpg" alt="" />
-      {{today}}
-      
+      {{ today }}
+
       <br /><br /><br /><br /><br />
       <p class="letter">
         Dear <br />
@@ -32,7 +32,7 @@
               border-top: 2px solid black;
             "
           >
-            <v-card class="text-center" style="background-color: #A8A8A8" tile>
+            <v-card class="text-center" style="background-color: #a8a8a8" tile>
               <span class="bold letter">TEST NAME</span>
             </v-card>
           </v-col>
@@ -47,7 +47,7 @@
               border-right: 2px solid black;
             "
           >
-            <v-card class="text-center" style="background-color: #A8A8A8" tile>
+            <v-card class="text-center" style="background-color: #a8a8a8" tile>
               <span class="bold letter">RESULT</span>
             </v-card>
           </v-col>
@@ -61,7 +61,9 @@
             style="border-left: 2px solid black; border-bottom: 2px solid black"
           >
             <v-card tile>
-              <span style="padding-left: 4px">CHAG (Antibody to Trypanosoma cruzi)</span>
+              <span style="padding-left: 4px"
+                >CHAG (Antibody to Trypanosoma cruzi)</span
+              >
             </v-card>
           </v-col>
           <v-col
@@ -127,7 +129,7 @@
               border-top: 2px solid black;
             "
           >
-            <v-card class="text-center" tile style="background-color: #A8A8A8">
+            <v-card class="text-center" tile style="background-color: #a8a8a8">
               <span class="bold letter">UNIT NUMBER</span>
             </v-card>
           </v-col>
@@ -142,7 +144,7 @@
               border-right: 2px solid black;
             "
           >
-            <v-card class="text-center" tile style="background-color: #A8A8A8">
+            <v-card class="text-center" tile style="background-color: #a8a8a8">
               <span class="bold letter">COMPONENT CODE/TYPE</span>
             </v-card>
           </v-col>
@@ -156,7 +158,7 @@
             style="border-left: 2px solid black; border-bottom: 2px solid black"
           >
             <v-card class="text-center" tile>
-              <span style="padding-left: 4px">{{BUI}}</span>
+              <span style="padding-left: 4px">{{ BUI }}</span>
             </v-card>
           </v-col>
           <v-col
@@ -170,7 +172,9 @@
             "
           >
             <v-card class="text-center" tile>
-              <span style="padding-left: 4px">{{Look_CMP_Code}} / {{Look_CMP_Desc}}</span>
+              <span style="padding-left: 4px"
+                >{{ Look_CMP_Code }} / {{ Look_CMP_Desc }}</span
+              >
             </v-card>
           </v-col>
         </v-row>
@@ -291,7 +295,7 @@
           border-right: 2px solid black;
         "
       >
-        <v-card class="text-center" style="background-color: #A8A8A8" tile>
+        <v-card class="text-center" style="background-color: #a8a8a8" tile>
           <span class="bold letter">TRANSFUSING FACILITY</span>
         </v-card>
       </v-col>
@@ -364,7 +368,7 @@
         style="border-left: 2px solid black; border-bottom: 2px solid black"
       >
         <v-card class="text-center" tile>
-          <span class="letter">{{BUI}}</span>
+          <span class="letter">{{ BUI }}</span>
         </v-card>
       </v-col>
       <v-col
@@ -374,7 +378,7 @@
         style="border-left: 2px solid black; border-bottom: 2px solid black"
       >
         <v-card class="text-center" tile>
-          <span class="letter">{{Look_CMP_Code}} / {{Look_CMP_Desc}}</span>
+          <span class="letter">{{ Look_CMP_Code }} / {{ Look_CMP_Desc }}</span>
         </v-card>
       </v-col>
       <v-col
@@ -384,7 +388,7 @@
         style="border-left: 2px solid black; border-bottom: 2px solid black"
       >
         <v-card class="text-center" tile>
-          <span class="letter">{{Blood_Type}}</span>
+          <span class="letter">{{ Blood_Type }}</span>
         </v-card>
       </v-col>
       <v-col
@@ -397,7 +401,7 @@
           <span class="letter">N/A</span>
         </v-card>
         <v-card class="text-center" tile v-else>
-          <span class="letter">{{Look_Ship_Date}}</span>
+          <span class="letter">{{ Look_Ship_Date }}</span>
         </v-card>
       </v-col>
       <v-col
@@ -414,7 +418,7 @@
           <span class="letter">N/A</span>
         </v-card>
         <v-card class="text-center" tile v-else>
-          <span class="letter">{{Look_Ship_ID}}</span>
+          <span class="letter">{{ Look_Ship_ID }}</span>
         </v-card>
       </v-col>
     </v-row>
@@ -1096,15 +1100,31 @@
         :preview-modal="true"
         :paginate-elements-by-height="2000"
         :htmlToPdfOptions="htmlToPdfOptions"
-        :pdf-quality="2"
         :manual-pagination="false"
         pdf-content-width="90%"
-        @beforeDownload="beforeDownload($event)"
         @progress="onProgress($event)"
         @hasStartedGeneration="hasStartedGeneration()"
         @hasGenerated="hasGenerated($event)"
         ref="html2Pdf"
       >
+        <!-- <div>
+      <vue-html2pdf
+        :show-layout="false"
+        :float-layout="true"
+        :enable-download="true"
+        :preview-modal="true"
+        :paginate-elements-by-height="2000"
+        filename="Initial"
+        :pdf-quality="2"
+        :manual-pagination="false"
+        pdf-format="a3"
+        pdf-orientation="portrait"
+        pdf-content-width="90%"
+        @progress="onProgress($event)"
+        @hasStartedGeneration="hasStartedGeneration()"
+        @hasGenerated="hasGenerated($event)"
+        ref="html2Pdf"
+      > -->
         <section slot="pdf-content">
           <section class="pdf-item">
             <v-container>
@@ -1135,7 +1155,11 @@
                       border-top: 2px solid black;
                     "
                   >
-                    <v-card class="text-center" style="background-color: #A8A8A8" tile>
+                    <v-card
+                      class="text-center"
+                      style="background-color: #a8a8a8"
+                      tile
+                    >
                       <span class="bold letter">TEST NAME</span>
                     </v-card>
                   </v-col>
@@ -1150,7 +1174,11 @@
                       border-right: 2px solid black;
                     "
                   >
-                    <v-card class="text-center" style="background-color: #A8A8A8" tile>
+                    <v-card
+                      class="text-center"
+                      style="background-color: #a8a8a8"
+                      tile
+                    >
                       <span class="bold letter">RESULT</span>
                     </v-card>
                   </v-col>
@@ -1167,7 +1195,9 @@
                     "
                   >
                     <v-card tile>
-                      <span style="padding-left: 4px">CHAG (Antibody to Trypanosoma cruzi)</span>
+                      <span style="padding-left: 4px"
+                        >CHAG (Antibody to Trypanosoma cruzi)</span
+                      >
                     </v-card>
                   </v-col>
                   <v-col
@@ -1236,7 +1266,11 @@
                       border-top: 2px solid black;
                     "
                   >
-                    <v-card class="text-center" tile style="background-color: #A8A8A8">
+                    <v-card
+                      class="text-center"
+                      tile
+                      style="background-color: #a8a8a8"
+                    >
                       <span class="bold letter">UNIT NUMBER</span>
                     </v-card>
                   </v-col>
@@ -1251,7 +1285,11 @@
                       border-right: 2px solid black;
                     "
                   >
-                    <v-card class="text-center" tile style="background-color: #A8A8A8">
+                    <v-card
+                      class="text-center"
+                      tile
+                      style="background-color: #a8a8a8"
+                    >
                       <span class="bold letter">COMPONENT CODE/TYPE</span>
                     </v-card>
                   </v-col>
@@ -1268,7 +1306,7 @@
                     "
                   >
                     <v-card class="text-center" tile>
-                      <span style="padding-left: 4px">{{BUI}}</span>
+                      <span style="padding-left: 4px">{{ BUI }}</span>
                     </v-card>
                   </v-col>
                   <v-col
@@ -1283,7 +1321,7 @@
                   >
                     <v-card class="text-center" tile>
                       <span style="padding-left: 4px"
-                        >{{Look_CMP_Code}} / {{Look_CMP_Desc}}
+                        >{{ Look_CMP_Code }} / {{ Look_CMP_Desc }}
                       </span>
                     </v-card>
                   </v-col>
@@ -1381,8 +1419,8 @@
                       <label for="checkbox" style="font-size: 18px">No</label>
                     </v-col>
                   </v-row>
-                </v-card>
-              </v-container><br><br><br><br><br><br><br><br><br><br>
+                </v-card> </v-container
+              ><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
               <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
             </v-container>
           </section>
@@ -1417,7 +1455,11 @@
                   border-right: 2px solid black;
                 "
               >
-                <v-card class="text-center" style="background-color: #A8A8A8" tile>
+                <v-card
+                  class="text-center"
+                  style="background-color: #a8a8a8"
+                  tile
+                >
                   <span class="bold letter">TRANSFUSING FACILITY</span>
                 </v-card>
               </v-col>
@@ -1505,7 +1547,7 @@
                 "
               >
                 <v-card class="text-center" tile>
-                  <span class="letter">{{BUI}}</span>
+                  <span class="letter">{{ BUI }}</span>
                 </v-card>
               </v-col>
               <v-col
@@ -1518,7 +1560,9 @@
                 "
               >
                 <v-card class="text-center" tile>
-                  <span class="letter">{{Look_CMP_Code}}/{{Look_CMP_Desc}}</span>
+                  <span class="letter"
+                    >{{ Look_CMP_Code }}/{{ Look_CMP_Desc }}</span
+                  >
                 </v-card>
               </v-col>
               <v-col
@@ -1531,7 +1575,7 @@
                 "
               >
                 <v-card class="text-center" tile>
-                  <span class="letter">{{Blood_Type}}</span>
+                  <span class="letter">{{ Blood_Type }}</span>
                 </v-card>
               </v-col>
               <v-col
@@ -1543,11 +1587,15 @@
                   border-bottom: 2px solid black;
                 "
               >
-                <v-card class="text-center" tile v-if="Look_Ship_Date == '12/31/1969'">
+                <v-card
+                  class="text-center"
+                  tile
+                  v-if="Look_Ship_Date == '12/31/1969'"
+                >
                   <span class="letter">N/A</span>
                 </v-card>
                 <v-card class="text-center" tile v-else>
-                  <span class="letter">{{Look_Ship_Date}}</span>
+                  <span class="letter">{{ Look_Ship_Date }}</span>
                 </v-card>
               </v-col>
               <v-col
@@ -1564,7 +1612,7 @@
                   <span class="letter">N/A</span>
                 </v-card>
                 <v-card class="text-center" tile v-else>
-                  <span class="letter">{{Look_Ship_ID}}</span>
+                  <span class="letter">{{ Look_Ship_ID }}</span>
                 </v-card>
               </v-col>
             </v-row>
@@ -2207,8 +2255,8 @@
                     ></span
                   >
                 </v-card>
-              </v-col>
-            </v-row><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              </v-col> </v-row
+            ><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
             <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
           </section>
 
@@ -2301,7 +2349,7 @@
                   >www.CDC.gov</span
                 >) for additional information on diagnosis and testing.<br />
               </p>
-              <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+              <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
               <img class="img" src="../assets/chag_footer_1.jpg" alt="" />
             </v-container>
           </section>
@@ -2324,11 +2372,12 @@ export default {
     return {
       htmlToPdfOptions: {
         margin: [0, 20, 20, 0],
-        filename: `Chag Notification.pdf`,
+        filename: `Chag.pdf`,
         image: {
           type: "jpeg",
           quality: 2,
         },
+
         jsPDF: {
           format: "a3",
           orientation: "portrait",
@@ -2341,11 +2390,11 @@ export default {
       Look_CMP_Desc: "",
       Blood_Type: "",
       Look_Ship_Date: "",
-      Look_Ship_ID: NULL
+      Look_Ship_ID: "",
     };
   },
   mounted() {
-    this.getOneLookback()
+    this.getOneLookback();
   },
   methods: {
     generateReport() {
@@ -2362,24 +2411,32 @@ export default {
       this.Blood_Type = response.data.Blood_Type;
       var Look_Ship_Date = new Date(response.data.Look_Ship_Date);
       var dd = Look_Ship_Date.getDate();
-      var mm = Look_Ship_Date.getMonth()+1; 
+      var mm = Look_Ship_Date.getMonth() + 1;
       var yyyy = Look_Ship_Date.getFullYear();
-      if(dd<10) {dd='0'+dd;} 
+      if (dd < 10) {
+        dd = "0" + dd;
+      }
 
-      if(mm<10) {mm='0'+mm;} 
-      Look_Ship_Date = mm+'/'+dd+'/'+yyyy;
+      if (mm < 10) {
+        mm = "0" + mm;
+      }
+      Look_Ship_Date = mm + "/" + dd + "/" + yyyy;
       this.Look_Ship_Date = Look_Ship_Date;
       this.Look_Ship_ID = response.data.Look_Ship_ID;
 
       var today = new Date();
       var dd2 = today.getDate();
 
-      var mm2 = today.getMonth()+1; 
+      var mm2 = today.getMonth() + 1;
       var yyyy2 = today.getFullYear();
-      if(dd2<10) {dd2='0'+dd2;} 
+      if (dd2 < 10) {
+        dd2 = "0" + dd2;
+      }
 
-      if(mm2<10) {mm2='0'+mm2;} 
-      today = mm2+'/'+dd2+'/'+yyyy2;
+      if (mm2 < 10) {
+        mm2 = "0" + mm2;
+      }
+      today = mm2 + "/" + dd2 + "/" + yyyy2;
       this.today = today;
       console.log(this.Lookback_ID);
     },

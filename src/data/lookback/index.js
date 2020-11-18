@@ -33,11 +33,19 @@ const register = async ({ sql, getConnection }) => {
     return request.query(sqlQueries.getInitLookback);
   };
 
+  const updateLookback = async ({ Lookback_ID }) => {
+    const cnx = await getConnection();
+    const request = await cnx.request();
+    request.input("Lookback_ID", sql.Int, Lookback_ID);
+    return request.query(sqlQueries.updateLookback);
+  };
+
   return {
     getLookback,
     getOneLookback,
     getNatLookback,
     getInitLookback,
+    updateLookback,
   };
 };
 

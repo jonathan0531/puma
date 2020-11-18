@@ -74,4 +74,21 @@ module.exports.register = async (server) => {
       },
     },
   });
+
+  server.route({
+    method: "PUT",
+    path: "/api/lookback/{Lookback_ID}",
+    handler: async (request, h) => {
+      try {
+        const db = request.server.plugins.sql.client;
+        const { Lookback_ID = request.params.Lookback_ID } = request.payload;
+        const res = await db.lookback.updateLookback({
+          Lookback_ID,
+        });
+        return res.recordset[0];
+      } catch (err) {
+        console.log(err);
+      }
+    },
+  });
 };

@@ -1,20 +1,25 @@
 <template>
   <div id="app">
+    <v-btn class="btn" color="primary" @click="generateReport"
+      >Generate Report</v-btn
+    >
     <v-flex xs12>
       <img class="img" src="../assets/bc.png" alt="" />
-      <v-btn class="btn" color="primary" @click="generateReport"
-        >Generate Report</v-btn
-      >
       <h2>URGENT</h2>
       <h3>Consignee Notification - Inventory Lookback</h3>
-      {{today}}
+      {{ today }}
       <table style="width: 100%">
-        <tr>
-          <label style="margin-left: 5px">{{Org_Name}} / {{Contact}}</label>
+        <tr v-if="Contact == NULL">
+          <label style="padding-left: 0px">{{ Org_Name }}</label>
+        </tr>
+        <tr v-else>
+          <label style="padding-left: 0px"
+            >{{ Org_Name }} / {{ Contact }}</label
+          >
         </tr>
         <tr>
           <td>
-            <label>Date of Preliminary Notification: {{today}}</label>
+            <label>Date of Preliminary Notification: {{ today }}</label>
           </td>
           <td>
             <label>Completed By:</label>
@@ -25,7 +30,7 @@
             <label>Date of Final Notification: N/A</label>
           </td>
           <td v-else>
-            <label>Date of Final Notification: {{Follow_Up_Date}}</label>
+            <label>Date of Final Notification: {{ Follow_Up_Date }}</label>
           </td>
           <td>
             <label>Completed By:</label>
@@ -50,8 +55,8 @@
           <td>
             <label>Unit Number:</label>
           </td>
-          <td>
-            <input id="input" v-model="Look_BUI" />
+          <td style="padding-left: 15px">
+            {{ Look_BUI[0] }}
           </td>
 
           <td>
@@ -65,17 +70,15 @@
           <td>
             <label>Component: </label>
           </td>
-          <td>
-            <input id="input" style="width: 50px" v-model="Look_CMP_Code" />
-            /
-            <input v-model="Look_CMP_Desc" />
+          <td style="padding-left: 15px">
+            {{ Look_CMP_Code }} / {{ Look_CMP_Desc }}
           </td>
           <td>
             <label>Box / Shipment</label>
           </td>
           <td>
             <label>N/A </label>
-            <input id="input" v-model="Look_Ship_Box_No" />
+            {{ Look_Ship_Box_No }}
           </td>
         </tr>
         <tr>
@@ -84,7 +87,7 @@
           </td>
           <td>
             <label>N/A </label>
-            <input id="input" v-model="Look_Ship_Date" />
+            {{ Look_Ship_Date }}
           </td>
         </tr>
       </table>
@@ -98,8 +101,8 @@
         <tr>
           <td colspan="4">
             <label>
-              Donor screening test is reactive for the following: Anti-HCV
-              (Antibody to Hepatitis C Virus)
+              <span>Donor screening test is reactive for the following: </span
+              >{{ Disease_Desc[0] }}
             </label>
           </td>
         </tr>
@@ -109,7 +112,7 @@
           </th>
           <td>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" checked />
               <!-- <span class="checkmark"></span> -->
               Quarantine until further notice
             </label>
@@ -121,7 +124,7 @@
             </label>
           </td>
           <td>
-            <label> Comment: Also Reactive For HBC </label>
+            <label> Comment: </label>
           </td>
         </tr>
       </table>
@@ -137,27 +140,25 @@
           <td>
             <label>Confirmatory Test Result:</label>
           </td>
-          <td colspan="4">
-            <input id="input" style="width: 90px" v-model="Disease_ID" />
-            <label>- Negative</label>
+          <td colspan="4" style="padding-left: 15px">
+            {{ Disease_ID }}
+            <label>- Positive</label>
           </td>
         </tr>
         <tr>
           <td>
             <label>NAT Resoultion Result:</label>
           </td>
-          <td colspan="3">
-            <input id="input" placeholder="N/A" />
+          <td colspan="4" style="padding-left: 15px">
+            {{ Disease_Desc[0] }}
+            <label>- Positive</label>
           </td>
         </tr>
         <tr>
           <td>
             <label>Supplemental Test Result:</label>
           </td>
-          <td colspan="3">
-            <input id="input" style="width: 90px" v-model="Disease_ID" />
-            <label>- Negative</label>
-          </td>
+          <td colspan="3" style="padding-left: 15px">N/A</td>
         </tr>
         <tr>
           <th>
@@ -176,7 +177,7 @@
             >
           </td>
           <td>
-            <label>Comment: Also Reactive for HBC</label>
+            <label>Comment:</label>
           </td>
         </tr>
       </table>
@@ -282,31 +283,35 @@
             <img class="img" src="../assets/bc.png" alt="" />
             <h2>URGENT</h2>
             <h3>Consignee Notification - Inventory Lookback</h3>
+            {{ today }}
             <table style="width: 100%">
-              <tr>
-                <input
-                  style="width: 195px; margin-left: 15px"
-                  v-model="Org_Name"
-                />
-                <label style="margin-left: 5px">/</label>
-                <input v-model="Contact" />
+              <tr v-if="Contact == NULL">
+                <label style="padding-left: 0px">{{ Org_Name }}</label>
+              </tr>
+              <tr v-else>
+                <label style="padding-left: 0px"
+                  >{{ Org_Name }} / {{ Contact }}</label
+                >
               </tr>
               <tr>
                 <td>
-                  <label>Date of Preliminary Notification: </label>
-                  <input placeholder="10/01/2020" />
+                  <label>Date of Preliminary Notification: {{ today }}</label>
                 </td>
                 <td>
-                  <label>Completed By: Robin Fuller</label>
+                  <label>Completed By:</label>
                 </td>
               </tr>
               <tr>
-                <td>
-                  <label>Date of Final Notification: </label>
-                  <input placeholder="10/20/2020" />
+                <td v-if="Follow_Up_Days == 0">
+                  <label>Date of Final Notification: N/A</label>
+                </td>
+                <td v-else>
+                  <label
+                    >Date of Final Notification: {{ Follow_Up_Date }}</label
+                  >
                 </td>
                 <td>
-                  <label>Completed By: Robin Fuller</label>
+                  <label>Completed By:</label>
                 </td>
               </tr>
             </table>
@@ -328,8 +333,8 @@
                 <td>
                   <label>Unit Number:</label>
                 </td>
-                <td>
-                  <input id="input" v-model="Look_BUI" />
+                <td style="padding-left: 15px">
+                  {{ Look_BUI[0] }}
                 </td>
 
                 <td>
@@ -347,21 +352,15 @@
                 <td>
                   <label>Component: </label>
                 </td>
-                <td>
-                  <input
-                    id="input"
-                    style="width: 50px"
-                    v-model="Look_CMP_Code"
-                  />
-                  /
-                  <input v-model="Look_CMP_Desc" />
+                <td style="padding-left: 15px">
+                  {{ Look_CMP_Code }} / {{ Look_CMP_Desc }}
                 </td>
                 <td>
                   <label>Box / Shipment</label>
                 </td>
                 <td>
                   <label>N/A </label>
-                  <input id="input" v-model="Look_Ship_Box_No" />
+                  {{ Look_Ship_Box_No }}
                 </td>
               </tr>
               <tr>
@@ -370,7 +369,7 @@
                 </td>
                 <td>
                   <label>N/A </label>
-                  <input id="input" v-model="Look_Ship_Date" />
+                  {{ Look_Ship_Date }}
                 </td>
               </tr>
             </table>
@@ -384,8 +383,9 @@
               <tr>
                 <td colspan="4">
                   <label>
-                    Donor screening test is reactive for the following: Anti-HCV
-                    (Antibody to Hepatitis C Virus)
+                    <span
+                      >Donor screening test is reactive for the following: </span
+                    >{{ Disease_Desc[0] }}
                   </label>
                 </td>
               </tr>
@@ -395,7 +395,7 @@
                 </th>
                 <td>
                   <label>
-                    <input type="checkbox" />
+                    <input type="checkbox" checked />
                     <!-- <span class="checkmark"></span> -->
                     Quarantine until further notice
                   </label>
@@ -407,7 +407,7 @@
                   </label>
                 </td>
                 <td>
-                  <label> Comment: Also Reactive For HBC </label>
+                  <label> Comment: </label>
                 </td>
               </tr>
             </table>
@@ -423,27 +423,25 @@
                 <td>
                   <label>Confirmatory Test Result:</label>
                 </td>
-                <td colspan="4">
-                  <input id="input" style="width: 90px" v-model="Disease_ID" />
-                  <label>- Negative</label>
+                <td colspan="4" style="padding-left: 15px">
+                  {{ Disease_ID }}
+                  <label>- Positive</label>
                 </td>
               </tr>
               <tr>
                 <td>
                   <label>NAT Resoultion Result:</label>
                 </td>
-                <td colspan="3">
-                  <input id="input" placeholder="N/A" />
+                <td colspan="4" style="padding-left: 15px">
+                  {{ Disease_Desc[0] }}
+                  <label>- Positive</label>
                 </td>
               </tr>
               <tr>
                 <td>
                   <label>Supplemental Test Result:</label>
                 </td>
-                <td colspan="3">
-                  <input id="input" style="width: 90px" v-model="Disease_ID" />
-                  <label>- Negative</label>
-                </td>
+                <td colspan="3" style="padding-left: 15px">N/A</td>
               </tr>
               <tr>
                 <th>
@@ -462,7 +460,7 @@
                   >
                 </td>
                 <td>
-                  <label>Comment: Also Reactive for HBC</label>
+                  <label>Comment:</label>
                 </td>
               </tr>
             </table>
@@ -535,17 +533,15 @@
                 </td>
               </tr>
             </table>
-            <footer>
-              <div style="text-align: center">
-                <p>
-                  Return by Fax to: <br />
-                  Technical Services <br />
-                  Phone Number (713) 791-6606 <br />
-                  Fax Number (713) 791-6651
-                </p>
-              </div>
-              <img class="img" src="../assets/footer.png" alt="" />
-            </footer>
+            <div style="text-align: center">
+              <p>
+                Return by Fax to: <br />
+                Technical Services <br />
+                Phone Number (713) 791-6606 <br />
+                Fax Number (713) 791-6651
+              </p>
+            </div>
+            <img class="img" src="../assets/footer.png" alt="" />
           </section>
         </vue-html2pdf>
       </div>
@@ -590,14 +586,14 @@ export default {
       Look_CMP_Group: "",
       Look_Loc_Code: "",
       Look_Ship_ID: "",
-      Look_Ship_Box_No: "",
+      Look_Ship_Date: "",
       Disease_ID: "",
       Disease_Desc: "",
       Look_Loc_Code: "",
       Donation_Date: "",
       Follow_Up_Days: "",
       Follow_Up_Date: "",
-      today: ""
+      today: "",
     };
   },
 
@@ -627,27 +623,36 @@ export default {
       this.Disease_Desc = response.data.Disease_Desc;
       this.Look_Loc_Code = response.data.Look_Loc_Code;
       this.Donation_Date = response.data.Donation_Date;
-      this.Follow_Up_Days = response.data.Follow_Up_Days;
-      var Follow_Up_Date = new Date(response.data.Follow_Up_Days);
-      var ddf = Follow_Up_Date.getDate()+Follow_Up_Days;
-      var mmf = today.getMonth()+1; 
-      var yyyyf = today.getFullYear();
-      if(ddf<10) {ddf='0'+ddf;} 
-
-      if(mmf<10) {mmf='0'+mmf;} 
-      Follow_Up_Date = mmf+'/'+ddf+'/'+yyyyf;
-      this.Follow_Up_Date = Follow_Up_Date;
-
       var today = new Date();
       var dd2 = today.getDate();
 
-      var mm2 = today.getMonth()+1; 
+      var mm2 = today.getMonth() + 1;
       var yyyy2 = today.getFullYear();
-      if(dd2<10) {dd2='0'+dd2;} 
+      if (dd2 < 10) {
+        dd2 = "0" + dd2;
+      }
 
-      if(mm2<10) {mm2='0'+mm2;} 
-      today = mm2+'/'+dd2+'/'+yyyy2;
+      if (mm2 < 10) {
+        mm2 = "0" + mm2;
+      }
+      today = mm2 + "/" + dd2 + "/" + yyyy2;
       this.today = today;
+      this.Follow_Up_Days = response.data.Follow_Up_Days;
+      var Follow_Up_Days = response.data.Follow_Up_Days;
+      var Follow_Up_Date = new Date();
+      Follow_Up_Date.setDate(Follow_Up_Date.getDate() + Follow_Up_Days);
+      var ddf = Follow_Up_Date.getDate();
+      var mmf = Follow_Up_Date.getMonth() + 1;
+      var yyyyf = Follow_Up_Date.getFullYear();
+      if (ddf < 10) {
+        ddf = "0" + ddf;
+      }
+
+      if (mmf < 10) {
+        mmf = "0" + mmf;
+      }
+      Follow_Up_Date = mmf + "/" + ddf + "/" + yyyyf;
+      this.Follow_Up_Date = Follow_Up_Date;
       console.log(this.Lookback_ID);
     },
   },
@@ -710,6 +715,6 @@ h3 {
   width: 100%;
 } */
 #pad {
-  margin-bottom: 220px;
+  margin-bottom: 210px;
 }
 </style>

@@ -9,5 +9,8 @@ export default {
   },
   getInitLookback(params) {
     return Api().get("init/" + params.id);
+  },
+  updateLookback(params) {
+    return Api().put("lookback/" + params.id, params);
   }
 };

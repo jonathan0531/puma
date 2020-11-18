@@ -11,6 +11,13 @@
         head-variant="dark"
         small
       >
+        <template v-slot:cell(action)="data">
+          <input
+            type="checkbox"
+            v-model="data.item.Lookback_ID"
+            @click="updateLookback"
+          />
+        </template>
       </b-table>
     </div>
   </div>
@@ -18,12 +25,18 @@
 
 <script>
 import axios from "axios";
+import swal from "sweetalert";
+import LookbackService from "@/services/LookbackService";
 
 export default {
   name: "app",
   data() {
     return {
       fields: [
+        {
+          key: "action",
+          label: "Mark Lookback Complete",
+        },
         {
           key: "Lookback_ID",
           label: "Lookback_ID",
@@ -144,6 +157,14 @@ export default {
           console.log(err);
         });
     },
+  },
+  async updateLookback() {
+    await LookbackService.updateLookback({
+      id: this.$route.params.id,
+      Lookback_ID: this.Lookback_ID,
+    });
+    swal("Success!", `Lookback Marked as complete!`, "success");
+    this.$router.push({ name: "SearchLookback" });
   },
 };
 </script>

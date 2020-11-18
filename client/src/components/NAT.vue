@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <v-flex xs12>
-      <v-btn class="btn" color="primary" @click="generateReport"
+    <v-btn class="btn" color="primary" @click="generateReport"
         >Generate Report</v-btn
       >
+    <v-flex xs12> 
       <head> </head>
       <body>
         <table id="NAT" style="border: none">
@@ -744,7 +744,7 @@
                             </tr>
                           </table>
                         </td>
-                      </tr>
+                      </tr><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                       <img
                         class="img"
                         src="../assets/chag_footer_1.jpg"
@@ -1196,7 +1196,7 @@
                                 </p>
                               </td>
                             </tr>
-                          </table>
+                          </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                           <img
                             class="img"
                             src="../assets/chag_footer_1.jpg"
