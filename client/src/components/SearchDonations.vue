@@ -35,28 +35,25 @@ export default {
     return {
       fields: [
         {
-          key: "TRACK_ID",
+          key: "Track_ID",
           label: "Tracking ID",
           sortable: true,
         },
         {
-          key: "VISIT_DATE",
-          label: "Date Tested",
+          key: "BUI",
+          label: "BUI",
         },
         {
-          key: "DONOR_FNAME",
-          label: "First Name",
-          sortable: true,
+          key: "Disease_ID",
+          label: "Disease_ID",
         },
         {
-          key: "DONOR_LNAME",
-          label: "Last Name",
-          sortable: true,
+          key: "Donor_ID",
+          label: "Donor_ID",
         },
         {
-          key: "DISEASE_ID",
-          label: "Disease Tested",
-          sortable: true,
+          key: "Test_ID",
+          label: "Test_ID",
         },
       ],
       filter: "",
@@ -67,26 +64,13 @@ export default {
     this.getTracking();
   },
   methods: {
-    formatDate(d) {
-      return d ? moment.utc(d).format("MMM D, YYYY") : "";
-    },
-    formatTracking(tracking) {
-      return tracking.map((tracking) => ({
-        TRACK_ID: tracking.TRACK_ID,
-        VISIT_DATE: this.formatDate(tracking.VISIT_DATE),
-        DONOR_FNAME: tracking.DONOR_FNAME,
-        DONOR_LNAME: tracking.DONOR_LNAME,
-        DISEASE_ID: tracking.DISEASE_ID,
-      }));
-    },
     async getTracking() {
       return axios({
         method: "get",
         url: "http://localhost:5000/api/tracking",
       })
         .then((response) => {
-          //this.tracking = response.data;
-          this.tracking = this.formatTracking(response.data);
+          this.tracking = response.data;
         })
         .catch((err) => {
           this.msg = err.message;
