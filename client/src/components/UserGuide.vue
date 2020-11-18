@@ -6,14 +6,37 @@
     <br />
 
     <!-- Pending Lookback Module -->
+    <img class="img" src="../pics/nav.png" alt="" />
+    <h2>Side Navigation Bar:</h2>
+    <h5>
+      On the top of the screen, click on the hamburger icon to open the side
+      navigation pane.
+    </h5>
+    <h5>
+      The side navigation pane displays the list of modules described below.
+    </h5>
+
+    <!-- Pending Lookback Module -->
     <h2>Pending Lookback Module:</h2>
     <h5>
       Pending lookbacks tells the users which lookback haven't been completed
     </h5>
+    <img style="height: 70px; width: 110px" src="../pics/form.png" alt="" />
     <h5>
       The user can generate the Initial Notification form, CHAG form, and NAT
       form on the left hand side of the table
     </h5>
+    <h5>
+      The user can click on one of the icons to take you to the specific form
+      for the Lookback ID
+    </h5>
+    <img style="height: 60px; width: 170px" src="../pics/report.png" alt="" />
+    <h5>
+      Once the user clicks on the form icon, they have the option to generate a
+      PDF for that form that contains information for that specific record for
+      that Lookback ID
+    </h5>
+    <img style="height: 80px; width: 40px" src="../pics/edit.png" alt="" />
     <h5>
       The user can mark a lookback complete by clicking on the edit icon under
       the 'Edit' column to mark a lookback complete
@@ -49,7 +72,7 @@
     </h5>
 
     <!-- Result Set -->
-    <h2>Result Set:</h2>
+    <h2>Result Set Module:</h2>
     <h5>
       This module contains the calculations used for interpreting test results.
     </h5>
@@ -63,9 +86,9 @@
     </h5>
 
     <!-- Disease Configuration -->
-    <h2>Disease Configuration:</h2>
+    <h2>Disease Configuration Module:</h2>
     <h5>
-      This module allows the user to view diseases stored in the system and
+      This module allows the user to view diseases stored in thier database and
       explains how to respond to actionable confirmation.
     </h5>
     <h5>
@@ -73,6 +96,32 @@
     </h5>
     <h5>
       The user can edit the Disease Configuration record by clicking on the
+      'Edit' icon on the right side of the table under the column name 'Edit'.
+    </h5>
+
+    <!-- Test Configuration -->
+    <h2>Test Configuration Module:</h2>
+    <h5>
+      This module contains information about what tests are needed for which
+      disease and how many tests are needed.
+    </h5>
+    <h5>
+      The user can click the 'Add Test' button located just above the table.
+    </h5>
+    <h5>
+      The user can edit the Test Configuration record by clicking on the 'Edit'
+      icon on the right side of the table under the column name 'Edit'.
+    </h5>
+
+    <!-- Component Configuration -->
+    <h2>Component Configuration Module:</h2>
+    <h5>This module indicates the components of consequence for a disease.</h5>
+    <h5>
+      The user can click the 'Add Componenet' button located just above the
+      table.
+    </h5>
+    <h5>
+      The user can edit the Component Configuration record by clicking on the
       'Edit' icon on the right side of the table under the column name 'Edit'.
     </h5>
   </div>
@@ -92,5 +141,9 @@ export default {
 }
 h2 {
   margin-top: 30px;
+}
+.img {
+  height: 150px;
+  width: 400px;
 }
 </style>
