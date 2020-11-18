@@ -7,28 +7,28 @@
       >
       <h2>URGENT</h2>
       <h3>Consignee Notification - Inventory Lookback</h3>
+      {{today}}
       <table style="width: 100%">
         <tr>
-          <input style="width: 195px; margin-left: 15px" v-model="Org_Name" />
-          <label style="margin-left: 5px">/</label>
-          <input v-model="Contact" />
+          <label style="margin-left: 5px">{{Org_Name}} / {{Contact}}</label>
         </tr>
         <tr>
           <td>
-            <label>Date of Preliminary Notification: </label>
-            <input placeholder="10/01/2020" />
+            <label>Date of Preliminary Notification: {{today}}</label>
           </td>
           <td>
-            <label>Completed By: Robin Fuller</label>
+            <label>Completed By:</label>
           </td>
         </tr>
         <tr>
-          <td>
-            <label>Date of Final Notification: </label>
-            <input placeholder="10/20/2020" />
+          <td v-if="Follow_Up_Days == 0">
+            <label>Date of Final Notification: N/A</label>
+          </td>
+          <td v-else>
+            <label>Date of Final Notification: {{Follow_Up_Date}}</label>
           </td>
           <td>
-            <label>Completed By: Robin Fuller</label>
+            <label>Completed By:</label>
           </td>
         </tr>
       </table>
@@ -580,7 +580,7 @@ export default {
         },
       },
       Lookback_ID: "",
-      Look_Ship_date: "",
+      Look_Ship_Date: "",
       Look_CMP_Code: "",
       Org_ID: "",
       Org_Name: "",
@@ -589,6 +589,14 @@ export default {
       Look_CMP_Desc: "",
       Look_CMP_Group: "",
       Look_Loc_Code: "",
+      Look_Ship_ID: "",
+      Look_Ship_Box_No: "",
+      Disease_ID: "",
+      Disease_Desc: "",
+      Look_Loc_Code: "",
+      Donation_Date: "",
+      Follow_Up_Days: "",
+      Follow_Up_Date: "",
       today: ""
     };
   },
@@ -619,7 +627,27 @@ export default {
       this.Disease_Desc = response.data.Disease_Desc;
       this.Look_Loc_Code = response.data.Look_Loc_Code;
       this.Donation_Date = response.data.Donation_Date;
-      this.Look_Ship_Box_No = response.data.Look_Ship_Box_No;
+      this.Follow_Up_Days = response.data.Follow_Up_Days;
+      var Follow_Up_Date = new Date(response.data.Follow_Up_Days);
+      var ddf = Follow_Up_Date.getDate()+Follow_Up_Days;
+      var mmf = today.getMonth()+1; 
+      var yyyyf = today.getFullYear();
+      if(ddf<10) {ddf='0'+ddf;} 
+
+      if(mmf<10) {mmf='0'+mmf;} 
+      Follow_Up_Date = mmf+'/'+ddf+'/'+yyyyf;
+      this.Follow_Up_Date = Follow_Up_Date;
+
+      var today = new Date();
+      var dd2 = today.getDate();
+
+      var mm2 = today.getMonth()+1; 
+      var yyyy2 = today.getFullYear();
+      if(dd2<10) {dd2='0'+dd2;} 
+
+      if(mm2<10) {mm2='0'+mm2;} 
+      today = mm2+'/'+dd2+'/'+yyyy2;
+      this.today = today;
       console.log(this.Lookback_ID);
     },
   },
