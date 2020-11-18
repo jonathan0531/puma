@@ -1,17 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
 import Completed from "@/components/Completed";
-import UserGuide from "@/components/UserGuide";
 import Pending from "@/components/Pending";
-import LookbackConfig from "@/components/LookbackConfig";
 import SearchDonations from "@/components/SearchDonations";
 import SearchLookback from "@/components/SearchLookback";
-import UpdateDonor from "@/components/UpdateDonor";
-import Register from "@/components/Register";
-import Login from "@/components/Login";
-import AddDonor from "@/components/AddDonor";
-import Donor from "@/components/Donor";
-import Welcome from "@/components/Welcome";
 import ResultSet from "@/components/ResultSet";
 import AddResultSet from "@/components/AddResultSet";
 import UpdateResultSet from "@/components/UpdateResultSet";
@@ -33,29 +25,14 @@ Vue.use(Router);
 export default new Router({
   routes: [
     {
-      path: "/",
-      name: "Welcome",
-      component: Welcome
-    },
-    {
       path: "/completed",
       name: "Completed",
       component: Completed
     },
     {
-      path: "/user",
-      name: "UserGuide",
-      component: UserGuide
-    },
-    {
-      path: "/pending",
+      path: "/",
       name: "Pending",
       component: Pending
-    },
-    {
-      path: "/config",
-      name: "LookbackConfig",
-      component: LookbackConfig
     },
     {
       path: "/search/donations",
@@ -66,31 +43,6 @@ export default new Router({
       path: "/search/lookback",
       name: "SearchLookback",
       component: SearchLookback
-    },
-    {
-      path: "/login",
-      name: "Login",
-      component: Login
-    },
-    {
-      path: "/register",
-      name: "Register",
-      component: Register
-    },
-    {
-      path: "/donor/:id",
-      name: "UpdateDonor",
-      component: UpdateDonor
-    },
-    {
-      path: "/donor/add",
-      name: "AddDonor",
-      component: AddDonor
-    },
-    {
-      path: "/donor",
-      name: "Donor",
-      component: Donor
     },
     {
       path: "/config/resultset",

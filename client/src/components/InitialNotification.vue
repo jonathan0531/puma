@@ -709,11 +709,6 @@ h3 {
   vertical-align: middle;
   background: #ccc;
 }
-/* footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-} */
 #pad {
   margin-bottom: 210px;
 }

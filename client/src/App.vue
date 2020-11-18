@@ -92,33 +92,11 @@
             >
           </v-list-item>
         </router-link>
-
-        <!-- <router-link v-bind:to="{ name: 'Donor' }" class="side_bar_link">
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>gavel</v-icon>
-            </v-list-item-action>
-            <v-list-item-content class="text"
-              >Donor Information</v-list-item-content
-            >
-          </v-list-item>
-        </router-link> -->
-        <router-link v-bind:to="{ name: 'UserGuide' }" class="side_bar_link">
-          <v-list-item>
-            <v-list-item-action>
-              <v-icon>info</v-icon>
-            </v-list-item-action>
-            <v-list-item-content class="text">User Guide</v-list-item-content>
-          </v-list-item>
-        </router-link>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="#3257bf" dark app>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title> Lookback Management System </v-toolbar-title>
-      <!-- <v-spacer></v-spacer>
-      <v-btn text v-bind:to="{ name: 'Login' }">Sign In</v-btn>
-      <v-btn text v-bind:to="{ name: 'Register' }">Register</v-btn>  -->
     </v-app-bar>
     <v-content>
       <div id="app">
@@ -147,7 +125,8 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* text-align: center; */
+  margin-left: 30px;
+  margin-right: 30px;
   color: #2c3e50;
 }
 #inspire {

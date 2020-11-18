@@ -143,7 +143,6 @@ export default {
         },
       })
         .then((response) => {
-          // window.localStorage.setItem("auth", response.data.token);
           swal("Success!", "Disease Configuration updated", "success");
           this.$router.push({ name: "DiseaseConfig" });
         })

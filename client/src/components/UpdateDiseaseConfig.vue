@@ -115,19 +115,6 @@ export default {
       Rt_Let: "",
       Rt_on_Ind_Res: "",
       Exception_Comments: "",
-      // dIdRules: [(v) => !!v || "Disease ID is required"],
-      // dDescRules: [(v) => !!v || "Disease Description is required"],
-      // lMinRules: [(v) => !!v || "Lookback Minimum is required"],
-      // lMaxRules: [(v) => !!v || "Lookback Maximum is required"],
-      // confNeededRules: [(v) => !!v || "Confirmation Needed is required"],
-      // rtRules: [(v) => !!v || "Recipient Tracing is required"],
-      // followUpRules: [(v) => !!v || "Follow Up Days is required"],
-      // exceptionRules: [(v) => !!v || "Exception Comments is required"],
-      // rtLetterRules: [(v) => !!v || "Recipient Tracing Letter is required"],
-      // rtlIndecisiveRules: [
-      //   (v) =>
-      //     !!v || "Recipient Tracing Letter with Indecisive Results is required",
-      // ],
     };
   },
   mounted() {

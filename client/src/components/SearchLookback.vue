@@ -9,9 +9,6 @@
         ></b-form-input>
       </b-form-fieldset>
     </div>
-    <v-btn id="btn" color="primary" dark class="mb-2" @click="genPDF"
-      >Generate PDF</v-btn
-    >
 
     <div style="overflow: scroll">
       <b-table
@@ -181,47 +178,6 @@ export default {
     this.getLookback();
   },
   methods: {
-    genPDF() {
-      // Create a new jsPDF instance
-      const doc = new jsPDF("p", "pt", "a4"); // default values
-
-      // set font
-      doc.setFont("calibri");
-
-      // font size
-      doc.setFontSize(20);
-
-      // doc.text(text, x, y, flags, angle, align);
-      doc.text("Lookback Report", 105 * 2.83, 20 * 2.83, null, null, "center");
-
-      // Table
-      const lookbackCol = ["Lookback_ID", "BUI", "Look_CMP_Code"];
-
-      const lookbackRows = this.lookback.map((lookback) => {
-        const row = [
-          lookback.Lookback_ID,
-          lookback.BUI,
-          lookback.Look_CMP_Code,
-        ];
-        return row;
-      });
-      const startY = 25 * 2.83;
-      doc.autoTable(lookbackCol, lookbackRows, {
-        startY,
-        theme: "striped",
-        styles: {
-          fontSize: 10,
-        },
-        // columnStyles: {
-        //   0: { cellWidth: 80 },
-        //   1: { cellWidth: 90 },
-        //   2: { cellWidth: 95 },
-        // },
-      });
-
-      doc.save("Lookback Report.pdf");
-    },
-
     async getLookback() {
       return axios({
         method: "get",
@@ -244,7 +200,6 @@ export default {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  margin-left: 30px;
   color: #2c3e50;
 }
 #btn {

@@ -80,7 +80,6 @@ export default {
         },
       })
         .then((response) => {
-          // window.localStorage.setItem("auth", response.data.token);
           swal("Success!", "Test Configuration Added!", "success");
           this.$router.push({ name: "TestConfig" });
         })

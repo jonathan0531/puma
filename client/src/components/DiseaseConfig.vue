@@ -9,45 +9,6 @@
       v-bind:to="{ name: 'AddDiseaseConfig' }"
       >Add New Disease</v-btn
     >
-    <!-- <table class="table table-sm">
-      <thead>
-        <tr>
-          <th scope="col">Disease_ID</th>
-          <th scope="col">Disease_Desc</th>
-          <th scope="col">Lookback_Min</th>
-          <th scope="col">Lookback_Max</th>
-          <th scope="col">Confirm_Needed</th>
-          <th scope="col">Recip_Tracing</th>
-          <th scope="col">Follow_Up_Days</th>
-          <th scope="col">Rt_Let</th>
-          <th scope="col">Rt_on_Ind_Res</th>
-          <th scope="col">Exception_Comments</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="disease_config in disease_config" :key="disease_config.Disease_ID">
-          <td>{{ disease_config.Disease_ID }}</td>
-          <td>{{ disease_config.Disease_Desc }}</td>
-          <td>{{ disease_config.Lookback_Min }}</td>
-          <td>{{ disease_config.Lookback_Max }}</td>
-          <td>{{ disease_config.confirm_Needed }}</td>
-          <td>{{ disease_config.Recip_Tracing }}</td>
-          <td>{{ disease_config.Follow_Up_Days }}</td>
-          <td>{{ disease_config.Rt_Let }}</td>
-          <td>{{ disease_config.Rt_on_Ind_Res }}</td>
-          <td>{{ disease_config.Exception_Comments }}</td>
-          <td class="justify-center layout px-0">
-            <v-btn icon class="mx-0" v-bind:to="`/disease_config/${disease_config.Disease_ID}`">
-              <v-icon color="teal">edit</v-icon>
-            </v-btn>
-            <v-btn icon class="mx-0" @click="deleteDisease(disease_config.Disease_ID)">
-              <v-icon color="pink">delete</v-icon>
-            </v-btn>
-          </td>
-        </tr>
-        <tr></tr>
-      </tbody>
-    </table> -->
     <div style="overflow: scroll">
       <b-table
         striped
@@ -146,20 +107,6 @@ export default {
           console.log(err);
         });
     },
-    // async deleteDisease(disease_id) {
-    //   return axios({
-    //     method: "delete",
-    //     url: `http://localhost:5000/api/disease_config/${disease_id}`,
-    //   })
-    //     .then((response) => {
-    //       this.$router.go(5);
-    //       swal("Success!", "Disease Deleted!", "success");
-    //     })
-    //     .catch((err) => {
-    //       const message = error.response.data.message;
-    //       swal("Not Deleted!", `${message}`, "error");
-    //     });
-    // },
   },
 };
 </script>

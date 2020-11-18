@@ -103,7 +103,7 @@ import swal from "sweetalert";
 import ResultSetService from "@/services/ResultSetService";
 
 export default {
-  name: "Donors",
+  name: "app",
   data() {
     return {
       Result_ID: "",
