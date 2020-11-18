@@ -416,11 +416,15 @@
                               <td
                                 style="text-align: center"
                                 v-if="Look_Ship_Date == '12/31/1969'"
-                              ></td>
+                              >N/A</td>
                               <td style="text-align: center" v-else>
                                 {{ Look_Ship_Date }}
                               </td>
-                              <td style="text-align: center">
+                              <td
+                                style="text-align: center"
+                                v-if="Look_Ship_ID == NULL"
+                              >N/A</td>
+                              <td style="text-align: center" v-else>
                                 {{ Look_Ship_ID }}
                               </td>
                             </tr>
@@ -1037,11 +1041,15 @@
                                     <td
                                       style="text-align: center"
                                       v-if="Look_Ship_Date == '12/31/1969'"
-                                    ></td>
+                                    >N/A</td>
                                     <td style="text-align: center" v-else>
                                       {{ Look_Ship_Date }}
                                     </td>
-                                    <td style="text-align: center">
+                                    <td
+                                      style="text-align: center"
+                                      v-if="Look_Ship_ID == NULL"
+                                    >N/A</td>
+                                    <td style="text-align: center" v-else>
                                       {{ Look_Ship_ID }}
                                     </td>
                                   </tr>
@@ -1233,6 +1241,7 @@ export default {
       },
       Lookback_ID: "",
       BUI: "",
+      Blood_Type: "",
       Look_CMP_Code: "",
       Org_ID: "",
       Donor_ID: "",
@@ -1244,6 +1253,8 @@ export default {
       Test_ID: "",
       Disease_ID: "",
       Disease_Desc: "",
+      Look_Ship_Date: "",
+      Look_Ship_ID: "",
       today: "",
     };
   },
