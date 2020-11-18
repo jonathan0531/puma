@@ -9,8 +9,11 @@
       <h3>Consignee Notification - Inventory Lookback</h3>
       {{today}}
       <table style="width: 100%">
-        <tr>
-          <label style="margin-left: 5px">{{Org_Name}} / {{Contact}}</label>
+        <tr v-if="Contact == NULL">
+          <label style="padding-left: 0px">{{Org_Name}}</label>
+        </tr>
+        <tr v-else>
+          <label style="padding-left: 0px">{{Org_Name}} / {{Contact}}</label>
         </tr>
         <tr>
           <td>
@@ -50,41 +53,39 @@
           <td>
             <label>Unit Number:</label>
           </td>
-          <td>
-            <input id="input" v-model="Look_BUI" />
+          <td style="padding-left: 15px">
+            {{Look_BUI[0]}}
           </td>
 
           <td>
             <label>Date Drawn</label>
           </td>
           <td>
-            <input id="input" style="width: 82px" v-model="Donation_Date" />
+            <input id="input" style="width: 82px" v-model="Donation_Date" />          
           </td>
         </tr>
         <tr>
           <td>
             <label>Component: </label>
           </td>
-          <td>
-            <input id="input" style="width: 50px" v-model="Look_CMP_Code" />
-            /
-            <input v-model="Look_CMP_Desc" />
+          <td style="padding-left: 15px">
+            {{Look_CMP_Code}} / {{Look_CMP_Desc}}
           </td>
           <td>
             <label>Box / Shipment</label>
           </td>
-          <td>
+          <td >
             <label>N/A </label>
-            <input id="input" v-model="Look_Ship_Box_No" />
+            {{Look_Ship_Box_No}}
           </td>
         </tr>
         <tr>
           <td>
             <label>Shipment Date:</label>
           </td>
-          <td>
+          <td >
             <label>N/A </label>
-            <input id="input" v-model="Look_Ship_Date" />
+            {{Look_Ship_Date}}
           </td>
         </tr>
       </table>
@@ -98,8 +99,7 @@
         <tr>
           <td colspan="4">
             <label>
-              Donor screening test is reactive for the following: Anti-HCV
-              (Antibody to Hepatitis C Virus)
+              <span>Donor screening test is reactive for the following:  </span>{{Disease_Desc[0]}}
             </label>
           </td>
         </tr>
@@ -109,7 +109,7 @@
           </th>
           <td>
             <label>
-              <input type="checkbox" />
+              <input type="checkbox" checked />
               <!-- <span class="checkmark"></span> -->
               Quarantine until further notice
             </label>
@@ -121,7 +121,7 @@
             </label>
           </td>
           <td>
-            <label> Comment: Also Reactive For HBC </label>
+            <label> Comment: </label>
           </td>
         </tr>
       </table>
@@ -137,26 +137,26 @@
           <td>
             <label>Confirmatory Test Result:</label>
           </td>
-          <td colspan="4">
-            <input id="input" style="width: 90px" v-model="Disease_ID" />
-            <label>- Negative</label>
+          <td colspan="4" style="padding-left: 15px">
+            {{Disease_ID}}
+            <label>- Positive</label>
           </td>
         </tr>
         <tr>
           <td>
             <label>NAT Resoultion Result:</label>
           </td>
-          <td colspan="3">
-            <input id="input" placeholder="N/A" />
+          <td colspan="4" style="padding-left: 15px">
+            {{Disease_Desc[0]}}
+            <label>- Positive</label>
           </td>
         </tr>
         <tr>
           <td>
             <label>Supplemental Test Result:</label>
           </td>
-          <td colspan="3">
-            <input id="input" style="width: 90px" v-model="Disease_ID" />
-            <label>- Negative</label>
+          <td colspan="3" style="padding-left: 15px">
+            N/A
           </td>
         </tr>
         <tr>
@@ -176,7 +176,7 @@
             >
           </td>
           <td>
-            <label>Comment: Also Reactive for HBC</label>
+            <label>Comment:</label>
           </td>
         </tr>
       </table>
@@ -288,7 +288,7 @@
                   style="width: 195px; margin-left: 15px"
                   v-model="Org_Name"
                 />
-                <label style="margin-left: 5px">/</label>
+                <label >/</label>
                 <input v-model="Contact" />
               </tr>
               <tr>
@@ -590,7 +590,7 @@ export default {
       Look_CMP_Group: "",
       Look_Loc_Code: "",
       Look_Ship_ID: "",
-      Look_Ship_Box_No: "",
+      Look_Ship_Date: "",
       Disease_ID: "",
       Disease_Desc: "",
       Look_Loc_Code: "",

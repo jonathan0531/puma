@@ -744,7 +744,7 @@
                             </tr>
                           </table>
                         </td>
-                      </tr>
+                      </tr><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                       <img
                         class="img"
                         src="../assets/chag_footer_1.jpg"
@@ -1196,7 +1196,7 @@
                                 </p>
                               </td>
                             </tr>
-                          </table>
+                          </table><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
                           <img
                             class="img"
                             src="../assets/chag_footer_1.jpg"
