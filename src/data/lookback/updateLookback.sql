@@ -1,4 +1,6 @@
-UPDATE [dbo].[LOOKBACK_DATA]
-SET [Complete] = 1
-FROM [dbo].[LOOKBACK_DATA]
-WHERE [Lookback_ID] = @Lookback_ID
+UPDATE  [dbo].[LOOKBACK_DATA]
+SET     [Complete] = @Complete
+WHERE   [Lookback_ID] = @Lookback_ID
+SELECT  [Complete]
+FROM    [dbo].[LOOKBACK_DATA]
+WHERE   [Lookback_ID] = @Lookback_ID

@@ -19,6 +19,8 @@ import UpdateDiseaseConfig from "@/components/UpdateDiseaseConfig";
 import InitialNotification from "@/components/InitialNotification";
 import Chag from "@/components/Chag";
 import NAT from "@/components/NAT";
+import UpdateLookback from "@/components/UpdateLookback";
+import UserGuide from "@/components/UserGuide";
 
 Vue.use(Router);
 
@@ -118,6 +120,16 @@ export default new Router({
       path: "/nat/:id",
       name: "NAT",
       component: NAT
+    },
+    {
+      path: "/lookback/:id",
+      name: "UpdateLookback",
+      component: UpdateLookback
+    },
+    {
+      path: "/userguide",
+      name: "UserGuide",
+      component: UserGuide
     }
   ]
 });

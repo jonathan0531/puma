@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <h1 id="margin">Completed Lookbacks</h1>
     <div style="overflow: scroll">
       <b-table
@@ -11,12 +11,24 @@
         head-variant="dark"
         small
       >
-        <template v-slot:cell(actions)="data">
+        <template v-slot:cell(initial)="data">
           <v-btn
             icon
             class="mx-0"
             v-bind:to="`/form/notification/${data.item.Lookback_ID}`"
           >
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
+
+        <template v-slot:cell(chag)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/chag/${data.item.Lookback_ID}`">
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
+        </template>
+
+        <template v-slot:cell(nat)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/nat/${data.item.Lookback_ID}`">
             <v-icon color="teal">edit</v-icon></v-btn
           >
         </template>
@@ -34,8 +46,16 @@ export default {
     return {
       fields: [
         {
-          key: "actions",
+          key: "initial",
           label: "Initial Notification Form",
+        },
+        {
+          key: "chag",
+          label: "Chag Form",
+        },
+        {
+          key: "nat",
+          label: "NAT Form",
         },
         {
           key: "Lookback_ID",

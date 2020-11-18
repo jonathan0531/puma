@@ -92,6 +92,14 @@
             >
           </v-list-item>
         </router-link>
+        <router-link v-bind:to="{ name: 'UserGuide' }" class="side_bar_link">
+          <v-list-item>
+            <v-list-item-action>
+              <v-icon>info</v-icon>
+            </v-list-item-action>
+            <v-list-item-content class="text"> User Guide</v-list-item-content>
+          </v-list-item>
+        </router-link>
       </v-list>
     </v-navigation-drawer>
     <v-app-bar color="#3257bf" dark app>

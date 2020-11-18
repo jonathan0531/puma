@@ -11,12 +11,14 @@
         head-variant="dark"
         small
       >
-        <template v-slot:cell(action)="data">
-          <input
-            type="checkbox"
-            v-model="data.item.Lookback_ID"
-            @click="updateLookback"
-          />
+        <template v-slot:cell(actions)="data">
+          <v-btn
+            icon
+            class="mx-0"
+            v-bind:to="`/lookback/${data.item.Lookback_ID}`"
+          >
+            <v-icon color="teal">edit</v-icon></v-btn
+          >
         </template>
       </b-table>
     </div>
@@ -34,8 +36,8 @@ export default {
     return {
       fields: [
         {
-          key: "action",
-          label: "Mark Lookback Complete",
+          key: "actions",
+          label: "Edit",
         },
         {
           key: "Lookback_ID",
