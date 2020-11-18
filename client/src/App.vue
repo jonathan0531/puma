@@ -121,11 +121,9 @@
       <v-btn text v-bind:to="{ name: 'Register' }">Register</v-btn>  -->
     </v-app-bar>
     <v-content>
-      <v-container fluid>
-        <div id="app">
-          <router-view />
-        </div>
-      </v-container>
+      <div id="app">
+        <router-view />
+      </div>
     </v-content>
     <v-footer color="#3257bf" class="footer" app>
       <span class="white--text">Copyright &copy; 2020 by Puma Project's</span>

@@ -18,6 +18,8 @@
         :fields="fields"
         bordered
         head-variant="dark"
+        small
+        responsive
       >
         <template v-slot:cell(actions)="data">
           <v-btn

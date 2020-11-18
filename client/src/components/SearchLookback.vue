@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="app">
     <h1 id="margin">Search Lookbacks</h1>
     <div>
       <b-form-fieldset horizontal label="Filter:" class="col-5">
@@ -15,6 +15,7 @@
 
     <div style="overflow: scroll">
       <b-table
+        responsive
         striped
         hover
         :items="lookback"
@@ -239,6 +240,13 @@ export default {
 </script>
 
 <style>
+#app {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin-left: 30px;
+  color: #2c3e50;
+}
 #btn {
   margin-bottom: 50px;
 }
