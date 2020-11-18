@@ -9,4 +9,4 @@ SELECT [ld].[Lookback_ID], (SELECT [d].[Blood_Type] FROM [DONOR] [d] WHERE [d].[
     (SELECT [u].[Donation_Date] FROM [UNIT] [u] WHERE [u].[BUI] = [ld].[Look_BUI]) AS [Donation_Date], [ld].[Look_BUI],
     (SELECT [dc].[Follow_Up_Days] FROM [DISEASE_CONFIG] [dc] WHERE [dc].[Disease_ID] = [ld].[Disease_ID]) AS [Follow_Up_Days]
 FROM [LOOKBACK_DATA] [ld]
-WHERE [Lookback_esc] = @Lookback_ID
+WHERE [Lookback_ID] = @Lookback_ID
