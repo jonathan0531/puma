@@ -1,8 +1,8 @@
 <template>
   <div id="app">
     <v-btn class="btn" color="primary" @click="generateReport"
-        >Generate Report</v-btn
-      >
+      >Generate Report</v-btn
+    >
     <v-flex xs12>
       <img class="img" src="../assets/bc.png" alt="" />
       <h2>URGENT</h2>
@@ -306,7 +306,9 @@
                   <label>Date of Final Notification: N/A</label>
                 </td>
                 <td v-else>
-                  <label>Date of Final Notification: {{ Follow_Up_Date }}</label>
+                  <label
+                    >Date of Final Notification: {{ Follow_Up_Date }}</label
+                  >
                 </td>
                 <td>
                   <label>Completed By:</label>
@@ -314,10 +316,10 @@
               </tr>
             </table>
             <p>
-              Current federal regulations require us to inform you when the donor of a
-              unit consigned to you tests reactive for a viral marker on a subsequent
-              donation. The donor's subsequent, reactive donation date for the unit
-              listed below is: 08/29/2020.
+              Current federal regulations require us to inform you when the
+              donor of a unit consigned to you tests reactive for a viral marker
+              on a subsequent donation. The donor's subsequent, reactive
+              donation date for the unit listed below is: 08/29/2020.
             </p>
 
             <table style="width: 100%">
@@ -339,7 +341,11 @@
                   <label>Date Drawn</label>
                 </td>
                 <td>
-                  <input id="input" style="width: 82px" v-model="Donation_Date" />
+                  <input
+                    id="input"
+                    style="width: 82px"
+                    v-model="Donation_Date"
+                  />
                 </td>
               </tr>
               <tr>
@@ -377,7 +383,8 @@
               <tr>
                 <td colspan="4">
                   <label>
-                    <span>Donor screening test is reactive for the following: </span
+                    <span
+                      >Donor screening test is reactive for the following: </span
                     >{{ Disease_Desc[0] }}
                   </label>
                 </td>
@@ -467,8 +474,8 @@
               <tr>
                 <td style="text-align: center" colspan="4">
                   <label>
-                    Please complete the disposition information below and return this
-                    form to Donor Services
+                    Please complete the disposition information below and return
+                    this form to Donor Services
                   </label>
                 </td>
               </tr>
@@ -708,6 +715,6 @@ h3 {
   width: 100%;
 } */
 #pad {
-  margin-bottom: 220px;
+  margin-bottom: 210px;
 }
 </style>

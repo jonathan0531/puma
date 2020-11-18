@@ -11,6 +11,10 @@
         head-variant="dark"
         small
       >
+        <!-- <template v-slot:cell(action)="data">
+          <input type="checkbox" v-model="test.checked" @click="update(test.checked)">
+          >
+        </template> -->
       </b-table>
     </div>
   </div>
@@ -24,6 +28,10 @@ export default {
   data() {
     return {
       fields: [
+        {
+          key: "action",
+          label: "Mark Lookback Complete",
+        },
         {
           key: "Lookback_ID",
           label: "Lookback_ID",
