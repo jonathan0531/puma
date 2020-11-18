@@ -23,7 +23,7 @@ const register = async ({ sql, getConnection }) => {
     const cnx = await getConnection();
     const request = await cnx.request();
     request.input("Lookback_ID", sql.Int, Lookback_ID);
-    return request.query(sqlQueries.getOneLookback);
+    return request.query(sqlQueries.getNatLookback);
   };
 
   return {
