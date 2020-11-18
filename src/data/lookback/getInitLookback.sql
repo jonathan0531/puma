@@ -18,4 +18,4 @@ SELECT [ld].[Lookback_ID],
     [ld].[Look_BUI],
     (SELECT [dc].[Follow_Up_Days] FROM [DISEASE_CONFIG] [dc] WHERE [dc].[Disease_ID] = [ld].[Disease_ID]) AS [Follow_Up_Days]
 FROM [LOOKBACK_DATA] [ld]
-WHERE [Lookback_ID] = @Lookback_ID;
+WHERE [Lookback_ID] = @Lookback_ID 
