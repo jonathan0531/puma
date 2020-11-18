@@ -82,11 +82,6 @@ export default {
           label: "BUI",
         },
         {
-          key: "Look_CMP_Code",
-          label: "CMP Code",
-          sortable: true,
-        },
-        {
           key: "Disease_ID",
           label: "Disease ID",
         },
@@ -106,6 +101,11 @@ export default {
         {
           key: "Look_BUI",
           label: "Look BUI",
+        },
+        {
+          key: "Look_CMP_Code",
+          label: "CMP Code",
+          sortable: true,
         },
         {
           key: "Look_CMP_Desc",
