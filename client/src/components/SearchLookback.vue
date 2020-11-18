@@ -2,7 +2,6 @@
   <div id="app">
     <h1 style="margin-top: 20px">Search Lookbacks</h1>
     <hr />
-    <br />
     <div>
       <b-form-fieldset horizontal label="Filter:" class="col-5">
         <b-form-input
@@ -50,11 +49,11 @@ export default {
         {
           key: "Disease_ID",
           label: "Disease ID",
+          sortable: true,
         },
         {
           key: "Org_ID",
           label: "Org_ID",
-          sortable: true,
         },
         {
           key: "Donor_ID",

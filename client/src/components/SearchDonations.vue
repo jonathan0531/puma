@@ -2,7 +2,6 @@
   <div>
     <h1 style="margin-top: 20px">Search Donations</h1>
     <hr />
-    <br />
     <div>
       <b-form-fieldset horizontal label="Filter:" class="col-5">
         <b-form-input
