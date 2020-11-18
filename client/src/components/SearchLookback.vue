@@ -22,27 +22,6 @@
         head-variant="dark"
         small
       >
-        <template v-slot:cell(initial)="data">
-          <v-btn
-            icon
-            class="mx-0"
-            v-bind:to="`/form/notification/${data.item.Lookback_ID}`"
-          >
-            <v-icon color="teal">edit</v-icon></v-btn
-          >
-        </template>
-
-        <template v-slot:cell(chag)="data">
-          <v-btn icon class="mx-0" v-bind:to="`/chag/${data.item.Lookback_ID}`">
-            <v-icon color="teal">edit</v-icon></v-btn
-          >
-        </template>
-
-        <template v-slot:cell(nat)="data">
-          <v-btn icon class="mx-0" v-bind:to="`/nat/${data.item.Lookback_ID}`">
-            <v-icon color="teal">edit</v-icon></v-btn
-          >
-        </template>
       </b-table>
     </div>
   </div>
@@ -51,25 +30,12 @@
 <script>
 import axios from "axios";
 import jsPDF from "jspdf";
-import "jspdf-autotable";
 
 export default {
   name: "app",
   data() {
     return {
       fields: [
-        {
-          key: "initial",
-          label: "Initial Notification Form",
-        },
-        {
-          key: "chag",
-          label: "Chag Form",
-        },
-        {
-          key: "nat",
-          label: "NAT Form",
-        },
         {
           key: "Lookback_ID",
           label: "Lookback ID",

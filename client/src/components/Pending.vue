@@ -20,6 +20,27 @@
             <v-icon color="teal">edit</v-icon></v-btn
           >
         </template>
+        <template v-slot:cell(initial)="data">
+          <v-btn
+            icon
+            class="mx-0"
+            v-bind:to="`/form/notification/${data.item.Lookback_ID}`"
+          >
+            <v-icon color="teal">present_to_all</v-icon></v-btn
+          >
+        </template>
+
+        <template v-slot:cell(chag)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/chag/${data.item.Lookback_ID}`">
+            <v-icon color="teal">present_to_all</v-icon></v-btn
+          >
+        </template>
+
+        <template v-slot:cell(nat)="data">
+          <v-btn icon class="mx-0" v-bind:to="`/nat/${data.item.Lookback_ID}`">
+            <v-icon color="teal">present_to_all</v-icon></v-btn
+          >
+        </template>
       </b-table>
     </div>
   </div>
@@ -38,6 +59,18 @@ export default {
         {
           key: "actions",
           label: "Edit",
+        },
+        {
+          key: "initial",
+          label: "Initial Form",
+        },
+        {
+          key: "chag",
+          label: "Chag Form",
+        },
+        {
+          key: "nat",
+          label: "NAT Form",
         },
         {
           key: "Lookback_ID",

@@ -5,7 +5,7 @@
         <router-link v-bind:to="{ name: 'Pending' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>search</v-icon>
+              <v-icon color="blue darken-2">search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Pending Lookbacks</v-list-item-content
@@ -15,7 +15,7 @@
         <router-link v-bind:to="{ name: 'Completed' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>search</v-icon>
+              <v-icon color="blue darken-2">search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Completed Lookbacks</v-list-item-content
@@ -28,7 +28,7 @@
         >
           <v-list-item>
             <v-list-item-action>
-              <v-icon>search</v-icon>
+              <v-icon color="blue darken-2">search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Search Lookbacks</v-list-item-content
@@ -41,7 +41,7 @@
         >
           <v-list-item>
             <v-list-item-action>
-              <v-icon>search</v-icon>
+              <v-icon color="blue darken-2">search</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Search Blood Donations</v-list-item-content
@@ -51,7 +51,7 @@
         <router-link v-bind:to="{ name: 'ResultSet' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>edit</v-icon>
+              <v-icon color="blue darken-2">edit</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text">Result Set</v-list-item-content>
           </v-list-item>
@@ -62,7 +62,7 @@
         >
           <v-list-item>
             <v-list-item-action>
-              <v-icon>edit</v-icon>
+              <v-icon color="blue darken-2">edit</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Disease Configuration</v-list-item-content
@@ -72,7 +72,7 @@
         <router-link v-bind:to="{ name: 'TestConfig' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>edit</v-icon>
+              <v-icon color="blue darken-2">edit</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"
               >Test Configuration</v-list-item-content
@@ -85,7 +85,7 @@
         >
           <v-list-item>
             <v-list-item-action>
-              <v-icon>edit</v-icon>
+              <v-icon color="blue darken-2">edit</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text">
               Component Config</v-list-item-content
@@ -95,7 +95,7 @@
         <router-link v-bind:to="{ name: 'UserGuide' }" class="side_bar_link">
           <v-list-item>
             <v-list-item-action>
-              <v-icon>info</v-icon>
+              <v-icon color="blue darken-2">info</v-icon>
             </v-list-item-action>
             <v-list-item-content class="text"> User Guide</v-list-item-content>
           </v-list-item>
