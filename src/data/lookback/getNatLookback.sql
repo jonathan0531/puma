@@ -7,7 +7,7 @@ SELECT
 
 (SELECT [dc].[Disease_Desc] FROM [dbo].[DISEASE_CONFIG] [dc] WHERE [dc].[Disease_ID] = [ld].[Disease_ID]) AS [Disease_Desc],
 
-(SELECT [td].[Test_ID] FROM [dbo].[TRACKING_DATA] [td] WHERE [td].[BUI] = [ld].[Look_BUI]) AS [Test_ID],
+(SELECT TOP 1 [td].[Test_ID] FROM [dbo].[TRACKING_DATA] [td] WHERE [td].[BUI] = [ld].[Look_BUI]) AS [Test_ID],
 
 [ld].[BUI], 
 [ld].[Look_CMP_Code], 

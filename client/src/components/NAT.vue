@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <v-flex xs12>
-      <v-btn class="btn" color="primary" @click="generateReport"
+    <v-btn class="btn" color="primary" @click="generateReport"
         >Generate Report</v-btn
       >
+    <v-flex xs12> 
       <head> </head>
       <body>
         <table id="NAT" style="border: none">
