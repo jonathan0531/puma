@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 id="margin">Disease Configuration</h1>
+    <h1 style="margin-top: 20px">Disease Configuration</h1>
+    <hr />
+    <br />
     <v-btn
       id="btn"
       color="primary"

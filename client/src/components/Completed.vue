@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <h1 id="margin">Completed Lookbacks</h1>
+    <h1 style="margin-top: 20px">Completed Lookbacks</h1>
+    <hr />
+    <br />
     <div style="overflow: scroll">
       <b-table
         striped

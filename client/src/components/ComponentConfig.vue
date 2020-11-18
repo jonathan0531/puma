@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1 id="margin">Component Configuration</h1>
-    <div></div>
+    <h1 style="margin-top: 20px">Component Configuration</h1>
+    <hr />
+    <br />
     <v-btn
       id="btn"
       color="primary"

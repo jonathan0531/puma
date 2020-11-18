@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 id="margin">Pending Lookbacks</h1>
+    <h1 style="margin-top: 20px">Pending Lookbacks</h1>
+    <hr />
+    <br />
     <div style="overflow: scroll">
       <b-table
         striped
@@ -210,7 +212,6 @@ export default {
 }
 #margin {
   margin-top: 20px;
-  margin-bottom: 20px;
 }
 h1 {
   text-align: center;

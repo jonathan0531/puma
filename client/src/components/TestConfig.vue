@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1 id="margin">Test Configuration</h1>
-    <div></div>
+    <h1 style="margin-top: 20px">Test Configuration</h1>
+    <hr />
+    <br />
     <v-btn
       id="btn"
       color="primary"

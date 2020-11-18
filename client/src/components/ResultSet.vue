@@ -1,7 +1,8 @@
 <template>
   <div>
-    <h1 id="margin">Result Set</h1>
-    <div></div>
+    <h1 style="margin-top: 20px">Result Set</h1>
+    <hr />
+    <br />
     <v-btn
       id="btn"
       color="primary"
