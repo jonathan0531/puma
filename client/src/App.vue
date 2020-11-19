@@ -112,7 +112,7 @@
       </div>
     </v-content>
     <v-footer color="#3257bf" class="footer" app>
-      <span class="white--text">Copyright &copy; 2020 by Puma Project's</span>
+      <span class="white--text">Copyright &copy; 2020 by Puma Projects</span>
     </v-footer>
   </v-app>
 </template>
